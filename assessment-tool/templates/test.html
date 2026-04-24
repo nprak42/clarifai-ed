@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ test.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container container-narrow">
+
+    <!-- Progress bar -->
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+    </div>
+
+    <div class="test-top">
+      <div class="progress-label" id="progress-label">Question 1 of {{ test_data.questions | length }}</div>
+      <div class="student-label">{{ test_data.student_name }}</div>
+    </div>
+
+    <!-- Question display -->
+    <div id="question-area"></div>
+
+    <!-- Completion screen (hidden initially) -->
+    <div id="completion-screen" class="completion-screen hidden">
+      <div class="completion-icon">✓</div>
+      <h2>Test Complete!</h2>
+      <p>Thank you, <strong>{{ test_data.student_name }}</strong>. Your answers have been saved.</p>
+
+      <div id="results-summary" class="results-summary"></div>
+      <div id="results-review" class="results-review"></div>
+    </div>
+
+  </div>
+
+  <!-- All test data embedded for JS -->
+  <script id="test-data" type="application/json">{{ test_data | tojson }}</script>
+
+  <script>
+  (function () {
+    const RAW = JSON.parse(document.getElementById('test-data').textContent);
+    const questions = RAW.questions;
+    const SESSION_ID = RAW.session_id;
+    const STUDENT_NAME = RAW.student_name;
+    const TOTAL = questions.length;
+
+    let currentIndex = RAW.resume_from || 0;
+    const startTimes = {};
+    let submitting = false;
+    const answeredResults = [];  // accumulates server response data per question
+
+    // ----- Render -----
+
+    function showQuestion(index) {
+      if (index >= TOTAL) {
+        finishTest();
+        return;
+      }
+      const q = questions[index];
+      startTimes[q.question_id] = Date.now();
+
+      updateProgress(index);
+
+      const area = document.getElementById('question-area');
+      area.innerHTML = buildQuestionHTML(q, index);
+
+      // Attach click handlers after rendering (keeps selectOption out of global scope)
+      area.querySelectorAll('.option-tile').forEach(btn => {
+        btn.addEventListener('click', function () {
+          selectOption(this, this.dataset.questionId, this.dataset.optionId);
+        });
+      });
+    }
+
+    function buildQuestionHTML(q, index) {
+      let imageHTML = '';
+      if (q.image_path || q.image_description) {
+        if (q.image_path) {
+          // Convert /images/foo.png → /static/images/foo.svg (placeholder) or .png (real)
+          const srcPng = '/static' + q.image_path;
+          const srcSvg = srcPng.replace(/\.png$/, '.svg');
+          imageHTML = `<div class="question-image-wrap">
+            <img src="${srcPng}"
+                 onerror="this.onerror=null;this.src='${srcSvg}'"
+                 alt="${escapeHtml(q.image_description || '')}"
+                 class="question-image">
+            ${q.image_description ? `<div class="image-caption">${escapeHtml(q.image_description)}</div>` : ''}
+          </div>`;
+        } else {
+          imageHTML = `<div class="image-placeholder">
+            <span class="image-label">📷 ${escapeHtml(q.image_description)}</span>
+          </div>`;
+        }
+      }
+
+      const optionsHTML = q.options.map(opt => `
+        <button class="option-tile"
+                data-question-id="${q.question_id}"
+                data-option-id="${opt.option_id}">
+          <span class="option-letter">${opt.option_letter}</span>
+          <span class="option-text">${escapeHtml(opt.option_text)}</span>
+        </button>
+      `).join('');
+
+      // Show question type context without revealing the formula/concept being tested
+      let metaLabel = '';
+      if (q.tier) {
+        const tierNames = {concrete: 'Visual', semi_abstract: 'Diagram', abstract: 'Symbolic'};
+        metaLabel = tierNames[q.tier] || q.tier.replace('_', ' ');
+      } else if (q.question_type) {
+        const typeNames = {mechanical: 'Calculation', understanding: 'Conceptual', mechanical_understanding: 'Application'};
+        metaLabel = typeNames[q.question_type] || q.question_type.replace('_', ' ');
+      }
+
+      return `
+        <div class="question-card" id="q-${q.question_id}">
+          ${metaLabel ? `<div class="question-meta">${escapeHtml(metaLabel)}</div>` : ''}
+          ${imageHTML}
+          <div class="question-text">${formatQuestionText(q.question_text)}</div>
+          <div class="options-list">${optionsHTML}</div>
+          <div class="feedback-area" id="feedback-${q.question_id}"></div>
+        </div>
+      `;
+    }
+
+    function formatQuestionText(text) {
+      // Preserve newlines as line breaks
+      return escapeHtml(text).replace(/\n/g, '<br>');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function updateProgress(index) {
+      const pct = (index / TOTAL) * 100;
+      document.getElementById('progress-bar').style.width = pct + '%';
+      document.getElementById('progress-label').textContent =
+        `Question ${index + 1} of ${TOTAL}`;
+    }
+
+    // ----- Interaction -----
+
+    function selectOption(btn, questionId, optionId) {
+      if (submitting) return;
+
+      // Visual: mark selected
+      document.querySelectorAll(`#q-${questionId} .option-tile`).forEach(b => {
+        b.classList.remove('selected');
+        b.disabled = true;
+      });
+      btn.classList.add('selected');
+
+      const timeSpent = Math.floor((Date.now() - (startTimes[questionId] || Date.now())) / 1000);
+      submitAnswer(questionId, optionId, timeSpent);
+    }
+
+    async function submitAnswer(questionId, optionId, timeSpent, retries = 3) {
+      submitting = true;
+      const feedbackEl = document.getElementById(`feedback-${questionId}`);
+
+      for (let attempt = 0; attempt < retries; attempt++) {
+        try {
+          const resp = await fetch('/api/submit_response', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              session_id: SESSION_ID,
+              student_name: STUDENT_NAME,
+              question_id: questionId,
+              option_id: optionId,
+              time_spent_seconds: timeSpent,
+            }),
+          });
+
+          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+          const data = await resp.json();
+
+          if (data.success) {
+            answeredResults.push({
+              question_text: questions[currentIndex].question_text,
+              question_order: questions[currentIndex].question_order,
+              is_correct: data.is_correct,
+              selected_letter: data.selected_letter,
+              selected_text: data.selected_text,
+              correct_letter: data.correct_letter,
+              correct_text: data.correct_text,
+              correct_explanation: data.correct_explanation,
+              misconception_name: data.misconception_name,
+              misconception_explanation: data.misconception_explanation,
+            });
+            submitting = false;
+            setTimeout(() => {
+              currentIndex++;
+              showQuestion(currentIndex);
+            }, 1000);
+            return;
+          }
+        } catch (err) {
+          if (attempt < retries - 1) {
+            await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
+          } else {
+            feedbackEl.innerHTML = `<div class="feedback error">
+              ⚠ Could not save answer. Check your connection and try selecting again.
+            </div>`;
+            // Re-enable buttons so student can retry
+            document.querySelectorAll(`#q-${questionId} .option-tile`).forEach(b => {
+              b.disabled = false;
+            });
+            submitting = false;
+          }
+        }
+      }
+    }
+
+    async function finishTest() {
+      try {
+        await fetch('/api/complete_test', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({session_id: SESSION_ID}),
+        });
+      } catch (e) {
+        // Not critical - just updating counter
+      }
+
+      document.getElementById('question-area').classList.add('hidden');
+      document.getElementById('progress-label').textContent = 'Complete!';
+      document.getElementById('progress-bar').style.width = '100%';
+
+      renderResults();
+      document.getElementById('completion-screen').classList.remove('hidden');
+    }
+
+    function renderResults() {
+      const total = answeredResults.length;
+      const correct = answeredResults.filter(r => r.is_correct).length;
+      const pct = total > 0 ? Math.round(correct / total * 100) : 0;
+      const scoreClass = pct >= 75 ? 'score-good' : pct >= 50 ? 'score-warn' : 'score-bad';
+
+      document.getElementById('results-summary').innerHTML = `
+        <div class="results-score ${scoreClass}">
+          <span class="results-score-num">${pct}%</span>
+          <span class="results-score-label">${correct} of ${total} correct</span>
+        </div>
+      `;
+
+      const wrongItems = answeredResults.filter(r => !r.is_correct);
+      if (wrongItems.length === 0) {
+        document.getElementById('results-review').innerHTML =
+          '<p class="results-perfect">Perfect score! Well done.</p>';
+        return;
+      }
+
+      const reviewHTML = wrongItems.map(r => `
+        <div class="review-item">
+          <div class="review-question">${escapeHtml(r.question_text)}</div>
+          <div class="review-row review-wrong">
+            <span class="review-label">Your answer:</span>
+            <span class="review-letter">${escapeHtml(r.selected_letter)}</span>
+            <span class="review-text">${escapeHtml(r.selected_text)}</span>
+          </div>
+          <div class="review-row review-correct">
+            <span class="review-label">Correct answer:</span>
+            <span class="review-letter">${escapeHtml(r.correct_letter)}</span>
+            <span class="review-text">${escapeHtml(r.correct_text)}</span>
+          </div>
+          ${r.correct_explanation ? `<div class="review-explanation">${escapeHtml(r.correct_explanation)}</div>` : ''}
+          ${r.misconception_name ? `<div class="review-misconception">Common misunderstanding: <em>${escapeHtml(r.misconception_name)}</em></div>` : ''}
+        </div>
+      `).join('');
+
+      document.getElementById('results-review').innerHTML = `
+        <h3 class="review-heading">Questions to review (${wrongItems.length})</h3>
+        ${reviewHTML}
+      `;
+    }
+
+    // ----- Init -----
+
+    if (currentIndex >= TOTAL) {
+      finishTest();
+    } else {
+      showQuestion(currentIndex);
+    }
+
+  })();
+  </script>
+</body>
+</html>

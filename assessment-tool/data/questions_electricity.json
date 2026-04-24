@@ -1,0 +1,767 @@
+[
+  {
+    "question_id": "elec_mech_01",
+    "test_id": "elec_grade9",
+    "question_order": 1,
+    "question_text": "A current of 0.5 A flows through a conductor for 2 minutes. Calculate the charge that flows through the conductor.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "Q=IT",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "If >30% choose B, pause and drill unit conversions before proceeding",
+    "options": [
+      {
+        "option_id": "elec_mech_01_A",
+        "option_letter": "A",
+        "option_text": "60 C",
+        "is_correct": true,
+        "explanation": "Q = I \u00d7 t = 0.5 A \u00d7 120 s = 60 C (remember to convert minutes to seconds)"
+      },
+      {
+        "option_id": "elec_mech_01_B",
+        "option_letter": "B",
+        "option_text": "1 C",
+        "is_correct": false,
+        "misconception_id": "unit_conversion_error",
+        "diagnostic_note": "Did not convert minutes to seconds: 0.5 \u00d7 2 = 1",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_mech_01_C",
+        "option_letter": "C",
+        "option_text": "0.25 C",
+        "is_correct": false,
+        "misconception_id": "wrong_operation",
+        "diagnostic_note": "Divided instead of multiplied: 0.5 \u00f7 2 = 0.25",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "elec_mech_01_D",
+        "option_letter": "D",
+        "option_text": "240 C",
+        "is_correct": false,
+        "misconception_id": "double_error",
+        "diagnostic_note": "Wrong operation AND unit error: multiple conceptual gaps",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_mech_02",
+    "test_id": "elec_grade9",
+    "question_order": 2,
+    "question_text": "12 J of work is done in moving 3 C of charge between two points. What is the potential difference between the two points?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "V=W/Q",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": null,
+    "options": [
+      {
+        "option_id": "elec_mech_02_D",
+        "option_letter": "A",
+        "option_text": "0.25 V",
+        "is_correct": false,
+        "misconception_id": "inverted_formula",
+        "diagnostic_note": "Used V = Q/W instead of V = W/Q (3/12 = 0.25)",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_mech_02_A",
+        "option_letter": "B",
+        "option_text": "4 V",
+        "is_correct": true,
+        "explanation": "V = W/Q = 12 J / 3 C = 4 V"
+      },
+      {
+        "option_id": "elec_mech_02_B",
+        "option_letter": "C",
+        "option_text": "36 V",
+        "is_correct": false,
+        "misconception_id": "multiplies_instead_of_divides",
+        "diagnostic_note": "Used V = W \u00d7 Q instead of V = W/Q",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_mech_02_C",
+        "option_letter": "D",
+        "option_text": "4 J",
+        "is_correct": false,
+        "misconception_id": "unit_confusion_voltage",
+        "diagnostic_note": "Right calculation (12/3=4) but wrong units - doesn't know voltage is in Volts",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_mech_03",
+    "test_id": "elec_grade9",
+    "question_order": 3,
+    "question_text": "A conductor has a resistance of 20 \u03a9 and a current of 0.5 A flows through it. What is the potential difference across the conductor?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "V=IR",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": null,
+    "options": [
+      {
+        "option_id": "elec_mech_03_C",
+        "option_letter": "A",
+        "option_text": "0.025 V",
+        "is_correct": false,
+        "misconception_id": "inverted_formula_ohms",
+        "diagnostic_note": "Used V = I/R: 0.5/20 = 0.025",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_mech_03_D",
+        "option_letter": "B",
+        "option_text": "10 \u03a9",
+        "is_correct": false,
+        "misconception_id": "unit_confusion_resistance",
+        "diagnostic_note": "Right number, wrong units",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "elec_mech_03_A",
+        "option_letter": "C",
+        "option_text": "10 V",
+        "is_correct": true,
+        "explanation": "V = I \u00d7 R = 0.5 A \u00d7 20 \u03a9 = 10 V"
+      },
+      {
+        "option_id": "elec_mech_03_B",
+        "option_letter": "D",
+        "option_text": "40 V",
+        "is_correct": false,
+        "misconception_id": "decimal_error",
+        "diagnostic_note": "Treated 0.5 as 5, or divided instead: 20/0.5 = 40",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_mech_04",
+    "test_id": "elec_grade9",
+    "question_order": 4,
+    "question_text": "A 12 V battery is connected across a 6 \u03a9 resistor. Calculate the current flowing through the resistor.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "V=IR",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "If many choose B or C, need formula rearrangement practice before more complex problems",
+    "options": [
+      {
+        "option_id": "elec_mech_04_B",
+        "option_letter": "A",
+        "option_text": "72 A",
+        "is_correct": false,
+        "misconception_id": "multiplies_instead_rearrange",
+        "diagnostic_note": "Used I = V \u00d7 R instead of I = V/R - cannot rearrange formula",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_mech_04_C",
+        "option_letter": "B",
+        "option_text": "0.5 A",
+        "is_correct": false,
+        "misconception_id": "inverted_division",
+        "diagnostic_note": "Used I = R/V: 6/12 = 0.5",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_mech_04_D",
+        "option_letter": "C",
+        "option_text": "18 A",
+        "is_correct": false,
+        "misconception_id": "arithmetic_error",
+        "diagnostic_note": "Addition or other calculation mistake: 12+6=18",
+        "severity": "LOW"
+      },
+      {
+        "option_id": "elec_mech_04_A",
+        "option_letter": "D",
+        "option_text": "2 A",
+        "is_correct": true,
+        "explanation": "I = V/R = 12 V / 6 \u03a9 = 2 A"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_mech_05",
+    "test_id": "elec_grade9",
+    "question_order": 5,
+    "question_text": "An electric bulb operates at 220 V and draws a current of 0.5 A. What is the power consumed by the bulb?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "P=VI",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": null,
+    "options": [
+      {
+        "option_id": "elec_mech_05_D",
+        "option_letter": "A",
+        "option_text": "0.0023 W",
+        "is_correct": false,
+        "misconception_id": "wrong_formula_power",
+        "diagnostic_note": "Used P = I/V: 0.5/220 = 0.0023",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_mech_05_A",
+        "option_letter": "B",
+        "option_text": "110 W",
+        "is_correct": true,
+        "explanation": "P = V \u00d7 I = 220 V \u00d7 0.5 A = 110 W"
+      },
+      {
+        "option_id": "elec_mech_05_B",
+        "option_letter": "C",
+        "option_text": "440 W",
+        "is_correct": false,
+        "misconception_id": "decimal_error_power",
+        "diagnostic_note": "Treated 0.5 as 5: 220 \u00d7 5 = 1100, or 220 \u00d7 2 = 440",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "elec_mech_05_C",
+        "option_letter": "D",
+        "option_text": "440 V",
+        "is_correct": false,
+        "misconception_id": "unit_confusion_power",
+        "diagnostic_note": "Calculation close but wrong units - doesn't know power is in Watts",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_concept_01",
+    "test_id": "elec_grade9",
+    "question_order": 6,
+    "question_text": "Electric current is best defined as:",
+    "image_path": null,
+    "image_description": null,
+    "concept": "current_definition",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "If student correct on elec_mech_01 but wrong here \u2192 formula_memorizer pattern",
+    "options": [
+      {
+        "option_id": "elec_concept_01_C",
+        "option_letter": "A",
+        "option_text": "Opposition to flow of charge",
+        "is_correct": false,
+        "misconception_id": "confuses_current_resistance",
+        "diagnostic_note": "Confuses current (I) with resistance (R)",
+        "severity": "CRITICAL"
+      },
+      {
+        "option_id": "elec_concept_01_D",
+        "option_letter": "B",
+        "option_text": "Energy possessed by moving electrons",
+        "is_correct": false,
+        "misconception_id": "confuses_current_energy",
+        "diagnostic_note": "Thinks current is energy or power",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_concept_01_A",
+        "option_letter": "C",
+        "option_text": "Rate of flow of electric charge",
+        "is_correct": true,
+        "explanation": "Current is charge flowing per unit time (I = Q/t)"
+      },
+      {
+        "option_id": "elec_concept_01_B",
+        "option_letter": "D",
+        "option_text": "Total amount of charge flowing through a conductor",
+        "is_correct": false,
+        "misconception_id": "current_equals_charge",
+        "diagnostic_note": "CRITICAL: Confuses current (I) with charge (Q). Doesn't understand current as RATE.",
+        "severity": "CRITICAL"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_concept_02",
+    "test_id": "elec_grade9",
+    "question_order": 7,
+    "question_text": "Potential difference between two points in a circuit is:",
+    "image_path": null,
+    "image_description": null,
+    "concept": "voltage_definition",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": null,
+    "options": [
+      {
+        "option_id": "elec_concept_02_B",
+        "option_letter": "A",
+        "option_text": "Total work done in moving charge between the two points",
+        "is_correct": false,
+        "misconception_id": "voltage_equals_work",
+        "diagnostic_note": "CRITICAL: Thinks V = W (ignores the 'per charge' part)",
+        "severity": "CRITICAL"
+      },
+      {
+        "option_id": "elec_concept_02_C",
+        "option_letter": "B",
+        "option_text": "Rate of charge flow between the two points",
+        "is_correct": false,
+        "misconception_id": "confuses_voltage_current",
+        "diagnostic_note": "Confuses voltage (V) with current (I)",
+        "severity": "CRITICAL"
+      },
+      {
+        "option_id": "elec_concept_02_D",
+        "option_letter": "C",
+        "option_text": "Resistance between the two points",
+        "is_correct": false,
+        "misconception_id": "confuses_voltage_resistance",
+        "diagnostic_note": "Confuses V with R",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_concept_02_A",
+        "option_letter": "D",
+        "option_text": "Work done per unit charge in moving charge between the two points",
+        "is_correct": true,
+        "explanation": "V = W/Q - voltage is work done per coulomb of charge"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_concept_03",
+    "test_id": "elec_grade9",
+    "question_order": 8,
+    "question_text": "In a series circuit, the current is the same at all points because:",
+    "image_path": null,
+    "image_description": null,
+    "concept": "series_circuits",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": null,
+    "options": [
+      {
+        "option_id": "elec_concept_03_A",
+        "option_letter": "A",
+        "option_text": "Charge cannot accumulate at any point - whatever flows in must flow out (conservation of charge)",
+        "is_correct": true,
+        "explanation": "In series, there's only one path, so same charge rate throughout"
+      },
+      {
+        "option_id": "elec_concept_03_B",
+        "option_letter": "B",
+        "option_text": "The battery supplies the same current everywhere",
+        "is_correct": false,
+        "misconception_id": "battery_determines_current_everywhere",
+        "diagnostic_note": "Doesn't understand current is determined by total circuit, not just battery",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "elec_concept_03_C",
+        "option_letter": "C",
+        "option_text": "Resistance is the same at all points",
+        "is_correct": false,
+        "misconception_id": "links_current_to_resistance_incorrectly",
+        "diagnostic_note": "Thinks current same because resistance same (but resistance ISN'T same at all points)",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "elec_concept_03_D",
+        "option_letter": "D",
+        "option_text": "Current gets used up equally at each component",
+        "is_correct": false,
+        "misconception_id": "current_used_up",
+        "diagnostic_note": "CRITICAL: Thinks current is consumed - doesn't understand conservation",
+        "severity": "CRITICAL"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_concept_04",
+    "test_id": "elec_grade9",
+    "question_order": 9,
+    "question_text": "Ohm's law (V = IR) is valid when:",
+    "image_path": null,
+    "image_description": null,
+    "concept": "ohms_law",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": null,
+    "options": [
+      {
+        "option_id": "elec_concept_04_C",
+        "option_letter": "A",
+        "option_text": "Voltage is greater than current",
+        "is_correct": false,
+        "misconception_id": "nonsensical_condition",
+        "diagnostic_note": "Making up conditions - doesn't understand V and I are different quantities",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_concept_04_D",
+        "option_letter": "B",
+        "option_text": "Resistance is constant",
+        "is_correct": false,
+        "misconception_id": "partially_correct_incomplete",
+        "diagnostic_note": "TRUE but incomplete - R is constant when temperature is constant",
+        "severity": "LOW"
+      },
+      {
+        "option_id": "elec_concept_04_A",
+        "option_letter": "C",
+        "option_text": "Temperature and other physical conditions remain constant",
+        "is_correct": true,
+        "explanation": "Ohm's law applies to ohmic conductors at constant temperature"
+      },
+      {
+        "option_id": "elec_concept_04_B",
+        "option_letter": "D",
+        "option_text": "It is always valid for all conductors",
+        "is_correct": false,
+        "misconception_id": "ohms_law_universal",
+        "diagnostic_note": "Doesn't know Ohm's law has conditions - thinks it's universal",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_concept_05",
+    "test_id": "elec_grade9",
+    "question_order": 10,
+    "question_text": "A graph is plotted with voltage (V) on the y-axis and current (I) on the x-axis for a conductor. The graph is a straight line passing through the origin. What does the slope of this line represent?",
+    "image_path": "/images/elec_vi_graph.png",
+    "image_description": "V-I graph showing straight line through origin",
+    "concept": "ohms_law_graph",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Tests graph interpretation - critical for JEE/NEET",
+    "options": [
+      {
+        "option_id": "elec_concept_05_B",
+        "option_letter": "A",
+        "option_text": "Current through the conductor",
+        "is_correct": false,
+        "misconception_id": "cannot_interpret_graph",
+        "diagnostic_note": "Cannot extract meaning from graph - weak graphical analysis",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_concept_05_C",
+        "option_letter": "B",
+        "option_text": "Power consumed",
+        "is_correct": false,
+        "misconception_id": "brings_in_unrelated_concept",
+        "diagnostic_note": "Knows about power but doesn't understand what this specific graph shows",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "elec_concept_05_D",
+        "option_letter": "C",
+        "option_text": "Charge flowing",
+        "is_correct": false,
+        "misconception_id": "fundamental_confusion",
+        "diagnostic_note": "Completely lost",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_concept_05_A",
+        "option_letter": "D",
+        "option_text": "Resistance of the conductor",
+        "is_correct": true,
+        "explanation": "Slope = V/I = R (from Ohm's law)"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_concept_06",
+    "test_id": "elec_grade9",
+    "question_order": 11,
+    "question_text": "Two students measure the potential difference between the same two points in a circuit:\n\nStudent A moves 2 C of charge and does 10 J of work\nStudent B moves 4 C of charge and does 20 J of work\n\nWhat can you conclude about the potential difference they measured?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "voltage_intensive_property",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Expect low class average - this is genuinely hard conceptually",
+    "options": [
+      {
+        "option_id": "elec_concept_06_A",
+        "option_letter": "A",
+        "option_text": "Both measured the same potential difference (5 V)",
+        "is_correct": true,
+        "explanation": "V = W/Q. For A: 10/2 = 5V. For B: 20/4 = 5V. PD depends on the points, not the amount of charge moved."
+      },
+      {
+        "option_id": "elec_concept_06_B",
+        "option_letter": "B",
+        "option_text": "Student B measured higher potential difference because more work was done",
+        "is_correct": false,
+        "misconception_id": "voltage_scales_with_work",
+        "diagnostic_note": "CRITICAL: Doesn't understand V is intensive (work PER charge). Thinks V scales with total work.",
+        "severity": "CRITICAL"
+      },
+      {
+        "option_id": "elec_concept_06_C",
+        "option_letter": "C",
+        "option_text": "Student A measured 10 V, Student B measured 20 V",
+        "is_correct": false,
+        "misconception_id": "voltage_equals_work_directly",
+        "diagnostic_note": "Thinks V = W (completely ignores Q)",
+        "severity": "CRITICAL"
+      },
+      {
+        "option_id": "elec_concept_06_D",
+        "option_letter": "D",
+        "option_text": "Cannot determine without knowing the resistance",
+        "is_correct": false,
+        "misconception_id": "brings_in_irrelevant_factors",
+        "diagnostic_note": "Doesn't understand what determines PD",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_concept_07",
+    "test_id": "elec_grade9",
+    "question_order": 12,
+    "question_text": "An ammeter is connected in series and a voltmeter is connected in parallel in a circuit because:",
+    "image_path": null,
+    "image_description": null,
+    "concept": "measuring_instruments",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": null,
+    "options": [
+      {
+        "option_id": "elec_concept_07_D",
+        "option_letter": "A",
+        "option_text": "Ammeter measures voltage, voltmeter measures current",
+        "is_correct": false,
+        "misconception_id": "instruments_confused",
+        "diagnostic_note": "Has names backwards",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_concept_07_A",
+        "option_letter": "B",
+        "option_text": "Ammeter measures current (must be in path of current). Voltmeter measures potential difference (must be across two points).",
+        "is_correct": true,
+        "explanation": "Their function determines their placement"
+      },
+      {
+        "option_id": "elec_concept_07_B",
+        "option_letter": "C",
+        "option_text": "Ammeter has low resistance, voltmeter has high resistance",
+        "is_correct": false,
+        "misconception_id": "knows_property_not_reason",
+        "diagnostic_note": "TRUE but doesn't answer WHY - knows the property but not the functional reason",
+        "severity": "LOW"
+      },
+      {
+        "option_id": "elec_concept_07_C",
+        "option_letter": "D",
+        "option_text": "It's a convention - could be connected either way",
+        "is_correct": false,
+        "misconception_id": "thinks_arbitrary",
+        "diagnostic_note": "Doesn't understand the functional necessity of placement",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_app_01",
+    "test_id": "elec_grade9",
+    "question_order": 13,
+    "question_text": "A 12 V battery is connected to two resistors in series: R\u2081 = 3 \u03a9 and R\u2082 = 5 \u03a9. What is the current flowing through R\u2082?",
+    "image_path": "/images/elec_series_circuit.png",
+    "image_description": "Circuit diagram showing 12V battery in series with 3\u03a9 and 5\u03a9 resistors",
+    "concept": "series_circuits_application",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "If wrong here but correct on elec_mech_03, elec_mech_04 \u2192 cannot apply formulas to real circuits",
+    "options": [
+      {
+        "option_id": "elec_app_01_B",
+        "option_letter": "A",
+        "option_text": "2.4 A",
+        "is_correct": false,
+        "misconception_id": "uses_only_R2",
+        "diagnostic_note": "Calculated I = V/R\u2082 = 12/5 = 2.4. Doesn't understand series circuit - ignores R\u2081.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_app_01_C",
+        "option_letter": "B",
+        "option_text": "0.94 A",
+        "is_correct": false,
+        "misconception_id": "current_divides_in_series",
+        "diagnostic_note": "Thinks current splits in series",
+        "severity": "CRITICAL"
+      },
+      {
+        "option_id": "elec_app_01_D",
+        "option_letter": "C",
+        "option_text": "4 A",
+        "is_correct": false,
+        "misconception_id": "uses_only_R1",
+        "diagnostic_note": "Used I = V/R\u2081 = 12/3 = 4",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_app_01_A",
+        "option_letter": "D",
+        "option_text": "1.5 A",
+        "is_correct": true,
+        "explanation": "Total R = 8\u03a9, I = 12V/8\u03a9 = 1.5A (same throughout series)"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_app_02",
+    "test_id": "elec_grade9",
+    "question_order": 14,
+    "question_text": "You want to measure the current flowing through a resistor in a circuit. How should you connect the ammeter?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "ammeter_placement",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Anyone choosing B, C, or D gets individual instruction before touching lab equipment",
+    "options": [
+      {
+        "option_id": "elec_app_02_A",
+        "option_letter": "A",
+        "option_text": "In series with the resistor",
+        "is_correct": true,
+        "explanation": "Ammeter must be in the path of current to measure it"
+      },
+      {
+        "option_id": "elec_app_02_B",
+        "option_letter": "B",
+        "option_text": "In parallel with the resistor",
+        "is_correct": false,
+        "misconception_id": "ammeter_voltmeter_confusion",
+        "diagnostic_note": "CRITICAL: Confuses ammeter (series) with voltmeter (parallel). Will blow the ammeter in lab.",
+        "severity": "CRITICAL"
+      },
+      {
+        "option_id": "elec_app_02_C",
+        "option_letter": "C",
+        "option_text": "Either series or parallel - both work",
+        "is_correct": false,
+        "misconception_id": "no_understanding_placement_matters",
+        "diagnostic_note": "Doesn't understand why placement matters",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "elec_app_02_D",
+        "option_letter": "D",
+        "option_text": "Directly across the battery terminals",
+        "is_correct": false,
+        "misconception_id": "fundamental_misunderstanding",
+        "diagnostic_note": "Completely wrong - would create short circuit",
+        "severity": "CRITICAL"
+      }
+    ]
+  },
+  {
+    "question_id": "elec_app_03",
+    "test_id": "elec_grade9",
+    "question_order": 15,
+    "question_text": "An electric heater rated 1000 W operates for 2 hours. If the electricity costs \u20b95 per unit (kWh), what is the cost of operating the heater?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "power_energy_application",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Tests ability to apply electricity concepts to everyday scenarios like electric bills",
+    "options": [
+      {
+        "option_id": "elec_app_03_D",
+        "option_letter": "A",
+        "option_text": "\u20b92.50",
+        "is_correct": false,
+        "misconception_id": "calculation_error_multistep",
+        "diagnostic_note": "Various possible errors in multi-step calculation",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "elec_app_03_A",
+        "option_letter": "B",
+        "option_text": "\u20b910",
+        "is_correct": true,
+        "explanation": "Energy = 1 kW \u00d7 2 h = 2 kWh. Cost = 2 \u00d7 \u20b95 = \u20b910"
+      },
+      {
+        "option_id": "elec_app_03_B",
+        "option_letter": "C",
+        "option_text": "\u20b95",
+        "is_correct": false,
+        "misconception_id": "forgot_time_duration",
+        "diagnostic_note": "Only multiplied rate: 1 kW \u00d7 \u20b95 = \u20b95 (forgot the 2 hours)",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "elec_app_03_C",
+        "option_letter": "D",
+        "option_text": "\u20b910,000",
+        "is_correct": false,
+        "misconception_id": "unit_conversion_error_kwh",
+        "diagnostic_note": "Used 1000 W directly without converting to kW: 1000 \u00d7 2 \u00d7 5 = 10,000",
+        "severity": "HIGH"
+      }
+    ]
+  }
+]

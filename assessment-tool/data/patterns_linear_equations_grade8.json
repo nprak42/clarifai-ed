@@ -1,0 +1,82 @@
+[
+  {
+    "pattern_id": "sign_error_pattern_lineq",
+    "pattern_name": "Systematic Sign Errors",
+    "description": "Student consistently makes sign errors when transposing terms or performing operations on both sides of an equation — adds when should subtract, or fails to reverse signs when moving terms.",
+    "subject": "linear_equations",
+    "detection_logic": {
+      "misconception_ids": ["lineq_wrong_transposition_sign", "lineq_wrong_operation_type"],
+      "min_count": 2
+    },
+    "diagnosis": "The balance model of equations is not internalized. Student treats transposition as a rote rule ('change side, change sign') without understanding it as 'perform the same operation on both sides'. Sign errors will persist and compound in complex equations.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Gets x + c = d correct but x − c = d wrong",
+      "In two-step equations, first step correct but second step has sign error",
+      "Answers are numerically close to correct but with wrong sign"
+    ],
+    "recommended_intervention_type": "balance_model_rebuilding",
+    "intervention_focus": "Use balance scale analogy: every operation must be done to both sides. Start with manipulatives.",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "bracket_algebra_breakdown_lineq",
+    "pattern_name": "Bracket and Distribution Breakdown",
+    "description": "Student cannot correctly expand brackets in equations — either distributes only to the first term, or doesn't distribute the negative sign, leading to systematic errors in all equations with brackets.",
+    "subject": "linear_equations",
+    "detection_logic": {
+      "misconception_ids": ["lineq_distribution_error", "lineq_wrong_transposition_sign"],
+      "min_count": 2
+    },
+    "diagnosis": "The distributive law is understood for simple multiplication but breaks down in equation context, especially when a negative sign is outside the bracket. This pattern appears in the majority of Grade 8 algebra errors.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "3(x − 4) = 9 becomes 3x − 4 = 9",
+      "−(x + 5) becomes −x + 5 instead of −x − 5",
+      "Correctly expands positive brackets but makes errors with negative ones"
+    ],
+    "recommended_intervention_type": "distributive_law_practice",
+    "intervention_focus": "Area model for multiplication before algebraic expansion; explicit negative bracket rules",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "conceptual_algebra_gap_lineq",
+    "pattern_name": "Conceptual Algebra Gap",
+    "description": "Student cannot distinguish expressions from equations and cannot identify special solution cases (no solution, infinite solutions) — showing a fundamental conceptual gap in what equations mean.",
+    "subject": "linear_equations",
+    "detection_logic": {
+      "misconception_ids": ["lineq_expression_vs_equation", "lineq_infinite_no_solution_confusion"],
+      "min_count": 2
+    },
+    "diagnosis": "Student is working mechanically with algebraic symbols without understanding what an equation represents (a balance, a constraint, a claim about equality). This gap means the student cannot reason about when an equation is always true, sometimes true, or never true.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Tries to 'solve' expressions (no equals sign)",
+      "Cannot explain why x = 5 is the answer (just 'because the calculation gave it')",
+      "When variables cancel out, picks randomly between 'no solution' and 'infinite solutions'"
+    ],
+    "recommended_intervention_type": "equation_meaning_rebuilding",
+    "intervention_focus": "What does the equals sign mean? What are we finding when we solve? Use true/false statement framing.",
+    "estimated_intervention_time": "3-4 weeks"
+  },
+  {
+    "pattern_id": "word_problem_translation_breakdown_lineq",
+    "pattern_name": "Word Problem Translation Breakdown",
+    "description": "Student can solve equations when given in symbolic form but fails to set them up correctly from word problems — incorrect translations of 'more than', 'less than', 'times as much', or reporting x instead of the quantity asked.",
+    "subject": "linear_equations",
+    "detection_logic": {
+      "misconception_ids": ["lineq_word_problem_setup_error", "lineq_word_problem_incomplete"],
+      "min_count": 2
+    },
+    "diagnosis": "Procedural equation-solving skills are present but the link between verbal description and algebraic representation is weak. Student doesn't develop a systematic approach to word problems (define variable, write equation, solve, answer the question).",
+    "grade8_risk": "MEDIUM-HIGH",
+    "symptoms": [
+      "Correct on symbolic equation questions but wrong on word problems with same structure",
+      "Finds value of x but gives wrong answer because question asked for a different quantity",
+      "'Less than' phrases inverted — sets up x + 3 for '3 less than x'"
+    ],
+    "recommended_intervention_type": "structured_word_problem_framework",
+    "intervention_focus": "4-step framework: (1) Define variable, (2) Write equation, (3) Solve, (4) Answer the question in context",
+    "estimated_intervention_time": "2-3 weeks"
+  }
+]

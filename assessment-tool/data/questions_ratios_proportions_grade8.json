@@ -1,0 +1,767 @@
+[
+  {
+    "question_id": "ratprop_mech_01",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 1,
+    "question_text": "Write the ratio of 15 to 25 in its simplest form.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "simplifying_ratios",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Entry-level ratio simplification. Students choosing A forgot to simplify. Students choosing C divided only the first term.",
+    "options": [
+      {
+        "option_id": "ratprop_mech_01_A",
+        "option_letter": "A",
+        "option_text": "15 : 25",
+        "is_correct": false,
+        "misconception_id": "ratprop_not_simplifying",
+        "diagnostic_note": "Did not simplify the ratio at all. Does not recognize that ratios should be in lowest terms.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_mech_01_B",
+        "option_letter": "B",
+        "option_text": "3 : 5",
+        "is_correct": true,
+        "explanation": "HCF of 15 and 25 is 5. 15 ÷ 5 = 3, 25 ÷ 5 = 5. Simplified ratio = 3 : 5."
+      },
+      {
+        "option_id": "ratprop_mech_01_C",
+        "option_letter": "C",
+        "option_text": "3 : 25",
+        "is_correct": false,
+        "misconception_id": "ratprop_partial_simplification",
+        "diagnostic_note": "Divided only the first term by 5, not both. Partial simplification error.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_mech_01_D",
+        "option_letter": "D",
+        "option_text": "5 : 3",
+        "is_correct": false,
+        "misconception_id": "ratprop_reversed_ratio",
+        "diagnostic_note": "Inverted the ratio — reversed the order of the two terms.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_mech_02",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 2,
+    "question_text": "If 4 pens cost ₹36, what is the cost of 7 pens?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "unit_rate",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Direct proportion with unit rate. Students choosing B used additive thinking (+3 pens, +₹3).",
+    "options": [
+      {
+        "option_id": "ratprop_mech_02_A",
+        "option_letter": "A",
+        "option_text": "₹39",
+        "is_correct": false,
+        "misconception_id": "ratprop_additive_thinking",
+        "diagnostic_note": "Added 3 to ₹36 because 7 = 4 + 3. Classic additive instead of multiplicative reasoning.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_mech_02_B",
+        "option_letter": "B",
+        "option_text": "₹252",
+        "is_correct": false,
+        "misconception_id": "ratprop_unit_rate_confusion",
+        "diagnostic_note": "Multiplied ₹36 × 7 without finding unit rate first. Did not divide by 4 before scaling.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_mech_02_C",
+        "option_letter": "C",
+        "option_text": "₹63",
+        "is_correct": true,
+        "explanation": "Unit rate = ₹36 ÷ 4 = ₹9 per pen. Cost of 7 pens = 7 × ₹9 = ₹63."
+      },
+      {
+        "option_id": "ratprop_mech_02_D",
+        "option_letter": "D",
+        "option_text": "₹56",
+        "is_correct": false,
+        "misconception_id": "ratprop_wrong_unit_rate",
+        "diagnostic_note": "Used ₹8 per pen (possibly halved 36 then estimated). Incorrect unit rate calculation.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_mech_03",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 3,
+    "question_text": "Are the ratios 3 : 4 and 9 : 12 equivalent?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "equivalent_ratios",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Tests whether students can check equivalence. Students choosing C subtract instead of multiply.",
+    "options": [
+      {
+        "option_id": "ratprop_mech_03_A",
+        "option_letter": "A",
+        "option_text": "No, because 3 + 6 = 9 but 4 + 6 = 10, not 12",
+        "is_correct": false,
+        "misconception_id": "ratprop_additive_thinking",
+        "diagnostic_note": "Checks equivalence by adding same number to both terms — additive thinking, not multiplicative.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_mech_03_B",
+        "option_letter": "B",
+        "option_text": "Yes, because both simplify to 3 : 4",
+        "is_correct": true,
+        "explanation": "9 : 12 → HCF is 3 → 3 : 4. Both ratios are equivalent."
+      },
+      {
+        "option_id": "ratprop_mech_03_C",
+        "option_letter": "C",
+        "option_text": "No, because 9 − 3 = 6 and 12 − 4 = 8, and 6 ≠ 8",
+        "is_correct": false,
+        "misconception_id": "ratprop_ratio_as_difference",
+        "diagnostic_note": "Compares ratios by subtracting terms. Treats ratio as a difference instead of a multiplicative relationship.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_mech_03_D",
+        "option_letter": "D",
+        "option_text": "Yes, because 3 × 4 = 12 and 9 × 4 = 36",
+        "is_correct": false,
+        "misconception_id": "ratprop_cross_multiply_without_understanding",
+        "diagnostic_note": "Uses cross-multiplication incorrectly to conclude equivalence. Does not understand what cross-multiplication tests.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_mech_04",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 4,
+    "question_text": "Find the value of x if 5 : 8 = x : 40.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "finding_missing_term",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Direct proportion missing term. Students choosing A added instead of scaled.",
+    "options": [
+      {
+        "option_id": "ratprop_mech_04_A",
+        "option_letter": "A",
+        "option_text": "37",
+        "is_correct": false,
+        "misconception_id": "ratprop_additive_thinking",
+        "diagnostic_note": "Added the difference (40 − 8 = 32) to 5 to get 37. Additive approach to a multiplicative problem.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_mech_04_B",
+        "option_letter": "B",
+        "option_text": "64",
+        "is_correct": false,
+        "misconception_id": "ratprop_inverted_proportion",
+        "diagnostic_note": "Set up as 8 : 5 = 40 : x instead. Inverted the proportion relationship.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_mech_04_C",
+        "option_letter": "C",
+        "option_text": "25",
+        "is_correct": true,
+        "explanation": "Scale factor = 40 ÷ 8 = 5. So x = 5 × 5 = 25."
+      },
+      {
+        "option_id": "ratprop_mech_04_D",
+        "option_letter": "D",
+        "option_text": "32",
+        "is_correct": false,
+        "misconception_id": "ratprop_cross_multiply_without_understanding",
+        "diagnostic_note": "Multiplied 8 × 40 = 320 then divided by 5 incorrectly, or subtracted 40 − 8. Procedural error without understanding.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_mech_05",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 5,
+    "question_text": "The ratio of boys to girls in a class is 3 : 2. If there are 30 boys, how many girls are there?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "ratio_parts",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Straightforward ratio application. Students choosing D treat ratio as fraction and add parts.",
+    "options": [
+      {
+        "option_id": "ratprop_mech_05_A",
+        "option_letter": "A",
+        "option_text": "45",
+        "is_correct": false,
+        "misconception_id": "ratprop_inverted_proportion",
+        "diagnostic_note": "Set up girls : boys = 3 : 2 and found 3/2 of 30 = 45. Inverted the ratio.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_mech_05_B",
+        "option_letter": "B",
+        "option_text": "20",
+        "is_correct": true,
+        "explanation": "Scale factor = 30 ÷ 3 = 10. Girls = 2 × 10 = 20."
+      },
+      {
+        "option_id": "ratprop_mech_05_C",
+        "option_letter": "C",
+        "option_text": "18",
+        "is_correct": false,
+        "misconception_id": "ratprop_ratio_as_fraction",
+        "diagnostic_note": "Computed (2/3) × 30 = 20, then subtracted 2 giving 18. Fraction-ratio confusion with additional arithmetic error.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_mech_05_D",
+        "option_letter": "D",
+        "option_text": "12",
+        "is_correct": false,
+        "misconception_id": "ratprop_ratio_as_fraction",
+        "diagnostic_note": "Took 2/(3+2) × 30 = 12. Treated the ratio as parts of a total, missing that 30 is already just the boys' share.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_und_01",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 6,
+    "question_text": "Ravi says the ratio of sugar to flour is 1 : 3. Priya says it's 2 : 6. Who is right?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "equivalent_ratios",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Tests conceptual understanding of ratio equivalence. Not just computation.",
+    "options": [
+      {
+        "option_id": "ratprop_und_01_A",
+        "option_letter": "A",
+        "option_text": "Ravi, because 1 : 3 is in simplest form",
+        "is_correct": false,
+        "misconception_id": "ratprop_not_simplifying",
+        "diagnostic_note": "Knows simplest form is 'more correct' but doesn't understand that both ratios describe the same relationship.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_und_01_B",
+        "option_letter": "B",
+        "option_text": "Priya, because 2 : 6 uses bigger numbers so it's more accurate",
+        "is_correct": false,
+        "misconception_id": "ratprop_larger_numbers_more_accurate",
+        "diagnostic_note": "Believes larger numbers in a ratio mean greater precision or accuracy. Fundamental misconception about ratio.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_und_01_C",
+        "option_letter": "C",
+        "option_text": "Both, because 1 : 3 and 2 : 6 represent the same relationship",
+        "is_correct": true,
+        "explanation": "2 : 6 simplifies to 1 : 3. Equivalent ratios describe the same proportional relationship."
+      },
+      {
+        "option_id": "ratprop_und_01_D",
+        "option_letter": "D",
+        "option_text": "Neither, because ratios must always be in whole numbers greater than 1",
+        "is_correct": false,
+        "misconception_id": "ratprop_ratio_must_exceed_one",
+        "diagnostic_note": "Believes ratios cannot contain 1 or must exceed 1. Incorrect constraint on ratio values.",
+        "severity": "LOW"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_und_02",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 7,
+    "question_text": "A recipe needs 2 cups of rice for every 5 cups of water. If Meena uses 6 cups of rice, how much water does she need?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "direct_proportion",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Real-world proportion. Students choosing A use additive thinking — add 4 to rice, add 4 to water.",
+    "options": [
+      {
+        "option_id": "ratprop_und_02_A",
+        "option_letter": "A",
+        "option_text": "9 cups",
+        "is_correct": false,
+        "misconception_id": "ratprop_additive_thinking",
+        "diagnostic_note": "Added 4 to both (2+4=6, 5+4=9). Classic additive approach to a multiplicative situation.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_und_02_B",
+        "option_letter": "B",
+        "option_text": "15 cups",
+        "is_correct": true,
+        "explanation": "Scale factor = 6 ÷ 2 = 3. Water = 5 × 3 = 15 cups."
+      },
+      {
+        "option_id": "ratprop_und_02_C",
+        "option_letter": "C",
+        "option_text": "30 cups",
+        "is_correct": false,
+        "misconception_id": "ratprop_cross_multiply_without_understanding",
+        "diagnostic_note": "Multiplied both values: 5 × 6 = 30. Did not understand the proportional structure.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_und_02_D",
+        "option_letter": "D",
+        "option_text": "12 cups",
+        "is_correct": false,
+        "misconception_id": "ratprop_unit_rate_confusion",
+        "diagnostic_note": "Found water per cup of rice = 5/2 = 2.5, then multiplied 2.5 × 4 (extra rice only). Partial unit rate error.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_und_03",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 8,
+    "question_text": "The ratio of monthly savings to monthly expenses for Arjun is 1 : 4. What fraction of his income does he save?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "ratio_to_fraction",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Distinguishes ratio from fraction. Students choosing A confuse ratio directly with fraction.",
+    "options": [
+      {
+        "option_id": "ratprop_und_03_A",
+        "option_letter": "A",
+        "option_text": "1/4",
+        "is_correct": false,
+        "misconception_id": "ratprop_ratio_as_fraction",
+        "diagnostic_note": "Took 1 : 4 directly as the fraction 1/4. Did not recognize that the total parts = 1 + 4 = 5.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_und_03_B",
+        "option_letter": "B",
+        "option_text": "4/5",
+        "is_correct": false,
+        "misconception_id": "ratprop_inverted_proportion",
+        "diagnostic_note": "Found fraction of expenses (4/5), not fraction saved. Confused savings and expenses.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_und_03_C",
+        "option_letter": "C",
+        "option_text": "1/5",
+        "is_correct": true,
+        "explanation": "Total parts = 1 + 4 = 5. Savings = 1 part out of 5 = 1/5 of income."
+      },
+      {
+        "option_id": "ratprop_und_03_D",
+        "option_letter": "D",
+        "option_text": "1/3",
+        "is_correct": false,
+        "misconception_id": "ratprop_ratio_as_difference",
+        "diagnostic_note": "Used difference (4 − 1 = 3) as denominator giving 1/3. Confused ratio difference with total.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_und_04",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 9,
+    "question_text": "A car travels 90 km in 2 hours. At the same speed, how far will it travel in 5 hours?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "direct_proportion",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Direct proportion in context of speed. Students choosing D add 90+3×15 incorrectly.",
+    "options": [
+      {
+        "option_id": "ratprop_und_04_A",
+        "option_letter": "A",
+        "option_text": "180 km",
+        "is_correct": false,
+        "misconception_id": "ratprop_additive_thinking",
+        "diagnostic_note": "Added 90 again for 3 more hours (90 + 90 = 180) instead of scaling correctly.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_und_04_B",
+        "option_letter": "B",
+        "option_text": "225 km",
+        "is_correct": true,
+        "explanation": "Speed = 90 ÷ 2 = 45 km/h. Distance in 5 hours = 45 × 5 = 225 km."
+      },
+      {
+        "option_id": "ratprop_und_04_C",
+        "option_letter": "C",
+        "option_text": "450 km",
+        "is_correct": false,
+        "misconception_id": "ratprop_unit_rate_confusion",
+        "diagnostic_note": "Multiplied 90 × 5 = 450. Did not divide by 2 to find unit rate first.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_und_04_D",
+        "option_letter": "D",
+        "option_text": "135 km",
+        "is_correct": false,
+        "misconception_id": "ratprop_additive_thinking",
+        "diagnostic_note": "Added 90 + (3 × 15) = 135, distributing the extra 3 hours at 15 km each. Partial additive thinking.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_und_05",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 10,
+    "question_text": "If 8 workers can build a wall in 6 days, how many days will 4 workers take? (Assume all workers work at the same rate.)",
+    "image_path": null,
+    "image_description": null,
+    "concept": "inverse_proportion",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Inverse proportion. Students choosing B apply direct proportion instead of inverse.",
+    "options": [
+      {
+        "option_id": "ratprop_und_05_A",
+        "option_letter": "A",
+        "option_text": "3 days",
+        "is_correct": false,
+        "misconception_id": "ratprop_inverted_proportion",
+        "diagnostic_note": "Halved the days because workers halved. Applied inverse formula with wrong direction: 6 ÷ 2 = 3.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_und_05_B",
+        "option_letter": "B",
+        "option_text": "12 days",
+        "is_correct": true,
+        "explanation": "Inverse proportion: fewer workers → more days. 8 × 6 = 4 × d, so d = 48 ÷ 4 = 12 days."
+      },
+      {
+        "option_id": "ratprop_und_05_C",
+        "option_letter": "C",
+        "option_text": "4 days",
+        "is_correct": false,
+        "misconception_id": "ratprop_additive_thinking",
+        "diagnostic_note": "Subtracted 2 days because 4 fewer workers (6 − 2 = 4). Additive approach to multiplicative inverse relationship.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_und_05_D",
+        "option_letter": "D",
+        "option_text": "24 days",
+        "is_correct": false,
+        "misconception_id": "ratprop_cross_multiply_without_understanding",
+        "diagnostic_note": "Multiplied 6 × 4 = 24. Applied cross multiplication without understanding the inverse relationship.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_app_01",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 11,
+    "question_text": "Sita and Gita invest ₹3,000 and ₹5,000 in a business. They earn a total profit of ₹4,800. How much profit does Sita receive?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "dividing_in_ratio",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Profit sharing in ratio. Students choosing A divide profit equally, ignoring ratio.",
+    "options": [
+      {
+        "option_id": "ratprop_app_01_A",
+        "option_letter": "A",
+        "option_text": "₹2,400",
+        "is_correct": false,
+        "misconception_id": "ratprop_equal_sharing",
+        "diagnostic_note": "Divided profit equally: ₹4800 ÷ 2 = ₹2400. Did not use investment ratio.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_app_01_B",
+        "option_letter": "B",
+        "option_text": "₹1,800",
+        "is_correct": true,
+        "explanation": "Ratio = 3000 : 5000 = 3 : 5. Total parts = 8. Sita's share = (3/8) × 4800 = ₹1,800."
+      },
+      {
+        "option_id": "ratprop_app_01_C",
+        "option_letter": "C",
+        "option_text": "₹3,000",
+        "is_correct": false,
+        "misconception_id": "ratprop_ratio_as_fraction",
+        "diagnostic_note": "Returned Sita's investment amount directly, confusing capital with profit share.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_app_01_D",
+        "option_letter": "D",
+        "option_text": "₹1,440",
+        "is_correct": false,
+        "misconception_id": "ratprop_cross_multiply_without_understanding",
+        "diagnostic_note": "Divided ₹4800 by 5 then multiplied by 3/2. Incorrect application of cross-multiplication in profit sharing.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_app_02",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 12,
+    "question_text": "On a map, 2 cm represents 50 km. What distance does 7 cm represent?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "map_scale",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Map scale as proportion. Students choosing A add 5 cm × 50 = 250 incorrectly.",
+    "options": [
+      {
+        "option_id": "ratprop_app_02_A",
+        "option_letter": "A",
+        "option_text": "300 km",
+        "is_correct": false,
+        "misconception_id": "ratprop_additive_thinking",
+        "diagnostic_note": "Added 50 km for every extra cm: 50 + 5×50 = 300. Mixed additive and multiplicative approaches.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_app_02_B",
+        "option_letter": "B",
+        "option_text": "175 km",
+        "is_correct": true,
+        "explanation": "Scale: 2 cm = 50 km → 1 cm = 25 km. 7 cm = 7 × 25 = 175 km."
+      },
+      {
+        "option_id": "ratprop_app_02_C",
+        "option_letter": "C",
+        "option_text": "350 km",
+        "is_correct": false,
+        "misconception_id": "ratprop_unit_rate_confusion",
+        "diagnostic_note": "Multiplied 7 × 50 = 350 without dividing by 2. Skipped the unit rate step.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_app_02_D",
+        "option_letter": "D",
+        "option_text": "14 km",
+        "is_correct": false,
+        "misconception_id": "ratprop_inverted_proportion",
+        "diagnostic_note": "Divided 50 ÷ 7 ≈ 7 then multiplied by 2 = 14. Inverted the map ratio.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_app_03",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 13,
+    "question_text": "Oranges are sold in the ratio of 3 for ₹25. Amit buys 12 oranges. How much does he pay?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "unit_rate",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Unit rate in shopping context. Students choosing D use additive scaling.",
+    "options": [
+      {
+        "option_id": "ratprop_app_03_A",
+        "option_letter": "A",
+        "option_text": "₹75",
+        "is_correct": false,
+        "misconception_id": "ratprop_unit_rate_confusion",
+        "diagnostic_note": "Multiplied 12 × 25 = 300 then divided by 4 = 75. Incorrect intermediate step.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_app_03_B",
+        "option_letter": "B",
+        "option_text": "₹34",
+        "is_correct": false,
+        "misconception_id": "ratprop_additive_thinking",
+        "diagnostic_note": "Added ₹3 per extra orange beyond 3: 25 + 3×3 = ₹34. Additive thinking with wrong rate.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_app_03_C",
+        "option_letter": "C",
+        "option_text": "₹100",
+        "is_correct": true,
+        "explanation": "3 oranges = ₹25. Scale factor = 12 ÷ 3 = 4. Cost = 4 × ₹25 = ₹100."
+      },
+      {
+        "option_id": "ratprop_app_03_D",
+        "option_letter": "D",
+        "option_text": "₹300",
+        "is_correct": false,
+        "misconception_id": "ratprop_cross_multiply_without_understanding",
+        "diagnostic_note": "Multiplied 12 × 25 = 300 without considering the 3-orange bundle. Ignored the given rate structure.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_app_04",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 14,
+    "question_text": "A mixture of cement and sand is made in the ratio 1 : 3. How much sand is needed to mix with 5 kg of cement?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "ratio_parts",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Part-part ratio in practical context. Students choosing C find total instead of sand only.",
+    "options": [
+      {
+        "option_id": "ratprop_app_04_A",
+        "option_letter": "A",
+        "option_text": "5 kg",
+        "is_correct": false,
+        "misconception_id": "ratprop_ratio_as_fraction",
+        "diagnostic_note": "Gave same amount as cement. May think 1 : 3 means equal parts, or confused ratio with 1 : 1.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_app_04_B",
+        "option_letter": "B",
+        "option_text": "20 kg",
+        "is_correct": false,
+        "misconception_id": "ratprop_cross_multiply_without_understanding",
+        "diagnostic_note": "Multiplied 5 × 4 = 20. May have used total ratio parts (1+3=4) as multiplier for cement.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_app_04_C",
+        "option_letter": "C",
+        "option_text": "20 kg",
+        "is_correct": false,
+        "misconception_id": "ratprop_total_instead_of_part",
+        "diagnostic_note": "Calculated total mixture (5 × 4 = 20 kg) instead of just sand. Found total, not the sand part.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "ratprop_app_04_D",
+        "option_letter": "D",
+        "option_text": "15 kg",
+        "is_correct": true,
+        "explanation": "Ratio cement : sand = 1 : 3. Scale factor = 5 ÷ 1 = 5. Sand = 3 × 5 = 15 kg."
+      }
+    ]
+  },
+  {
+    "question_id": "ratprop_app_05",
+    "test_id": "ratios_proportions_grade8",
+    "question_order": 15,
+    "question_text": "A train covers 240 km in 4 hours. Using the same speed, which proportion correctly gives the time to cover 360 km?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "setting_up_proportion",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Tests whether students can set up a correct proportion, not just compute.",
+    "options": [
+      {
+        "option_id": "ratprop_app_05_A",
+        "option_letter": "A",
+        "option_text": "240/4 = 360/t → t = 6 hours",
+        "is_correct": true,
+        "explanation": "Speed is constant so 240/4 = 360/t. Cross-multiply: 240t = 1440, t = 6 hours."
+      },
+      {
+        "option_id": "ratprop_app_05_B",
+        "option_letter": "B",
+        "option_text": "240/360 = t/4 → t = 2.67 hours",
+        "is_correct": false,
+        "misconception_id": "ratprop_inverted_proportion",
+        "diagnostic_note": "Set up an inverted proportion: distances on one side, times on other, but ratio is flipped.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_app_05_C",
+        "option_letter": "C",
+        "option_text": "t = 4 + (360 − 240) ÷ 60 → t = 6 hours (by adding extra time)",
+        "is_correct": false,
+        "misconception_id": "ratprop_additive_thinking",
+        "diagnostic_note": "Uses additive reasoning: extra distance ÷ 60 = extra time. Gets same answer coincidentally but method is wrong.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "ratprop_app_05_D",
+        "option_letter": "D",
+        "option_text": "4/240 = 360/t → t = 21,600 hours",
+        "is_correct": false,
+        "misconception_id": "ratprop_cross_multiply_without_understanding",
+        "diagnostic_note": "Set up proportion with mismatched units in numerator/denominator. Cross-multiplied without checking the ratio structure.",
+        "severity": "HIGH"
+      }
+    ]
+  }
+]

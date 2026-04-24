@@ -1,0 +1,65 @@
+[
+  {
+    "test_id": "elec_grade9",
+    "subject": "electricity",
+    "grade": 9,
+    "title": "Electricity Diagnostic Assessment",
+    "description": "Diagnostic assessment covering electric current, potential difference, Ohm's law, and circuits. Tests both procedural and conceptual understanding.",
+    "total_questions": 15,
+    "estimated_time_minutes": 30
+  },
+  {
+    "test_id": "ratios_proportions_grade8",
+    "subject": "ratios_proportions",
+    "grade": 8,
+    "title": "Ratios and Proportions Diagnostic Assessment",
+    "description": "Diagnostic assessment covering ratio simplification, equivalent ratios, unit rate, direct and inverse proportion, dividing quantities in a ratio, and setting up proportions. Probes for additive thinking in multiplicative contexts and part-part vs part-whole confusion. NCERT Grade 8 aligned.",
+    "total_questions": 15,
+    "estimated_time_minutes": 25
+  },
+  {
+    "test_id": "simple_interest_grade8",
+    "subject": "simple_interest",
+    "grade": 8,
+    "title": "Simple Interest Diagnostic Assessment",
+    "description": "Diagnostic assessment covering SI = PRT/100, finding P, R, and T, unit conversion (months to years), Amount vs Interest distinction, and multi-loan application problems. Probes for rate-not-converted errors and Amount vs Interest confusion. NCERT Grade 8 aligned.",
+    "total_questions": 15,
+    "estimated_time_minutes": 25
+  },
+  {
+    "test_id": "quadrilaterals_grade8",
+    "subject": "quadrilaterals",
+    "grade": 8,
+    "title": "Quadrilaterals Diagnostic Assessment",
+    "description": "Diagnostic assessment covering angle sum (360\u00b0), properties of parallelogram, rectangle, rhombus, square, and trapezium, diagonal properties, quadrilateral hierarchy, and area formulas. Probes for rectangle overgeneralisation and shape-property mismatches. NCERT Grade 8 aligned.",
+    "total_questions": 15,
+    "estimated_time_minutes": 25
+  },
+  {
+    "test_id": "triangles_grade8",
+    "subject": "triangles",
+    "grade": 8,
+    "title": "Triangles Diagnostic Assessment",
+    "description": "Diagnostic assessment covering angle sum (180\u00b0), Pythagoras theorem and its converse, triangle classification (equilateral, isosceles, scalene, right, obtuse), exterior angle theorem, altitude vs median vs angle bisector, and area. Probes for additive Pythagoras and exterior angle confusion. NCERT Grade 8 aligned.",
+    "total_questions": 15,
+    "estimated_time_minutes": 25
+  },
+  {
+    "test_id": "linear_equations_grade8",
+    "subject": "linear_equations",
+    "grade": 8,
+    "title": "Linear Equations Diagnostic Assessment",
+    "description": "Diagnostic assessment covering one- and two-step equations, equations with brackets, variables on both sides, fractional equations, no-solution and infinite-solution cases, expression vs equation distinction, and word problem setup. Probes for sign errors in transposition and distribution errors. NCERT Grade 8 aligned.",
+    "total_questions": 15,
+    "estimated_time_minutes": 30
+  },
+  {
+    "test_id": "algebraic_expressions_grade8",
+    "subject": "algebraic_expressions",
+    "grade": 8,
+    "title": "Algebraic Expressions Diagnostic Assessment",
+    "description": "Diagnostic assessment covering like and unlike terms, coefficient operations, substitution, subtraction of expressions, expansion with distribution, translation from verbal to algebraic, area/perimeter context, algebraic identities ((a+b)\u00b2), and factorization. Probes for unlike-terms combination and sign distribution errors. NCERT Grade 8 aligned.",
+    "total_questions": 15,
+    "estimated_time_minutes": 25
+  }
+]

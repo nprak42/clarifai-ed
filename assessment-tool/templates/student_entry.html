@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ test.title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a href="{{ url_for('home') }}" class="site-nav-brand">Clarif<span>ai</span></a>
+    </div>
+  </nav>
+
+  <div class="container container-narrow">
+    <header class="test-header">
+      <div class="access-code-badge">{{ session.access_code }}</div>
+      <h1>{{ test.title }}</h1>
+      <p class="test-meta">
+        {{ test.total_questions }} questions &nbsp;·&nbsp; ~{{ test.estimated_time_minutes }} minutes
+      </p>
+    </header>
+
+    {% if error %}
+    <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+
+    <div class="entry-card">
+      <p>Enter your name to begin. Take your time — there's no time pressure.</p>
+
+      <form method="POST" action="{{ url_for('enter_test', access_code=session.access_code) }}">
+        <div class="form-group">
+          <label for="student_name">Your Name</label>
+          <input type="text"
+                 id="student_name"
+                 name="student_name"
+                 placeholder="First and last name"
+                 autocomplete="name"
+                 autofocus
+                 required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-large btn-full">Begin →</button>
+      </form>
+    </div>
+
+    <p class="hint" style="text-align:center;">Already started? Enter your name again to continue.</p>
+  </div>
+</body>
+</html>

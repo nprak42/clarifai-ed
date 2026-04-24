@@ -1,0 +1,82 @@
+[
+  {
+    "pattern_id": "rectangle_overgeneraliser_quad",
+    "pattern_name": "Rectangle Overgeneraliser",
+    "description": "Student applies rectangle properties (right angles, equal diagonals, length×breadth area) to all quadrilaterals, unable to differentiate between parallelogram, rhombus, rectangle, and square.",
+    "subject": "quadrilaterals",
+    "detection_logic": {
+      "misconception_ids": ["quad_all_quads_are_rectangles", "quad_angle_sum_180"],
+      "min_count": 2
+    },
+    "diagnosis": "Student's entire mental model of quadrilaterals is built around the rectangle. Cannot work with non-rectangular shapes correctly. This is a pervasive issue that blocks progress in all quadrilateral and area topics.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Assumes all angles in a parallelogram are 90°",
+      "Uses length × breadth formula for all quadrilaterals",
+      "Cannot identify rhombus or trapezium properties"
+    ],
+    "recommended_intervention_type": "conceptual_rebuilding",
+    "intervention_focus": "Hands-on construction of non-rectangular parallelograms and rhombuses before any formula work",
+    "estimated_intervention_time": "3-4 weeks"
+  },
+  {
+    "pattern_id": "property_shape_mismatch_quad",
+    "pattern_name": "Property-Shape Mismatch",
+    "description": "Student knows individual properties but cannot reliably match them to the correct quadrilateral — attributes rhombus properties to rectangles, parallelogram properties to trapeziums, etc.",
+    "subject": "quadrilaterals",
+    "detection_logic": {
+      "misconception_ids": ["quad_diagonal_properties_confused", "quad_parallelogram_is_rhombus", "quad_rectangle_properties_confused"],
+      "min_count": 2
+    },
+    "diagnosis": "Properties have been memorized as isolated facts rather than tied to shape definitions. Student cannot reconstruct which property belongs to which shape under test conditions. Needs systematic property-shape mapping.",
+    "grade8_risk": "MEDIUM-HIGH",
+    "symptoms": [
+      "Knows that 'diagonals bisect each other' but applies it to wrong shapes",
+      "Gives correct property list but for the wrong shape",
+      "Inconsistent across problems — gets some right, others wrong based on order of teaching"
+    ],
+    "recommended_intervention_type": "systematic_classification",
+    "intervention_focus": "Property table: systematically list Yes/No/Sometimes for each property across all quadrilateral types",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "angle_relationship_confusion_quad",
+    "pattern_name": "Angle Relationship Confusion",
+    "description": "Student confuses supplementary adjacent angles (180°) with equal opposite angles in parallelograms and trapeziums, applying the wrong rule to the wrong pair.",
+    "subject": "quadrilaterals",
+    "detection_logic": {
+      "misconception_ids": ["quad_co_interior_angles_confused", "quad_angle_sum_wrong"],
+      "min_count": 2
+    },
+    "diagnosis": "Student has angle rules but applies them without considering which pair of angles the rule applies to. Needs explicit practice distinguishing 'opposite angles' from 'adjacent angles' in parallelograms and trapeziums.",
+    "grade8_risk": "MEDIUM",
+    "symptoms": [
+      "Sets adjacent angles equal instead of supplementary",
+      "In trapezium, says co-interior angles are equal",
+      "In equations, uses wrong sum (180° vs 360°) for adjacent vs all angles"
+    ],
+    "recommended_intervention_type": "angle_relationship_mapping",
+    "intervention_focus": "Diagrams showing same-side vs opposite angle pairs with color-coding for equal vs supplementary",
+    "estimated_intervention_time": "1-2 weeks"
+  },
+  {
+    "pattern_id": "area_formula_confusion_quad",
+    "pattern_name": "Area Formula Confusion",
+    "description": "Student applies the wrong area formula across quadrilateral types — most commonly uses the triangle formula (½ × b × h) for parallelograms or confuses area with perimeter.",
+    "subject": "quadrilaterals",
+    "detection_logic": {
+      "misconception_ids": ["quad_parallelogram_area_halved", "quad_perimeter_as_area"],
+      "min_count": 2
+    },
+    "diagnosis": "Area formulas for different shapes are not clearly differentiated. Student does not have a reliable procedure for selecting the correct formula based on the shape. Needs explicit formula discrimination practice.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Parallelogram area is consistently half the correct value",
+      "Rhombus area is double the correct value (forgets ÷2 for diagonal formula)",
+      "Occasionally uses sum of sides when area is needed"
+    ],
+    "recommended_intervention_type": "formula_discrimination",
+    "intervention_focus": "Side-by-side comparison: derive each area formula from first principles before practicing",
+    "estimated_intervention_time": "2-3 weeks"
+  }
+]

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Clarifai — Math Tutor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="chat-header">
+    <div class="header-inner">
+      <div class="header-info">
+        <span class="header-brand">Clarif<span>ai</span></span>
+        <span class="header-subtitle">Math Tutor</span>
+        {% if assigned_problem %}
+        <span class="header-problem">{{ assigned_problem }}</span>
+        {% endif %}
+      </div>
+      <button class="reset-btn" id="resetBtn" title="Start over">↺</button>
+    </div>
+  </header>
+
+  <!-- Chat window -->
+  <main class="chat-window" id="chatWindow">
+    <div class="messages" id="messages"></div>
+  </main>
+
+  <!-- Input bar -->
+  <footer class="input-bar">
+    <div class="input-inner">
+      <textarea
+        id="inputBox"
+        placeholder="Type your answer or question…"
+        rows="1"
+        autocorrect="off"
+        autocapitalize="off"
+        autocomplete="off"
+        spellcheck="false"
+      ></textarea>
+      <button id="sendBtn" class="send-btn" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    const STUDENT_NAME = {{ student_name | tojson }};
+  </script>
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

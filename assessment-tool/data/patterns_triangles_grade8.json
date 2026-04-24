@@ -1,0 +1,82 @@
+[
+  {
+    "pattern_id": "pythagoras_procedural_breakdown_tri",
+    "pattern_name": "Pythagoras Procedural Breakdown",
+    "description": "Student has heard of Pythagoras' theorem but cannot correctly apply it — either skips the squaring step (adds sides), subtracts when should add, forgets the square root, or applies it to non-right triangles.",
+    "subject": "triangles",
+    "detection_logic": {
+      "misconception_ids": ["tri_pythagoras_added_not_squared", "tri_pythagoras_non_right"],
+      "min_count": 2
+    },
+    "diagnosis": "The theorem has been taught but not understood. Student knows there is a formula involving three sides but doesn't know the geometric meaning (squares on sides) or the condition (right angle required). Needs geometric proof before procedural practice.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Adds sides directly instead of squaring and taking square root",
+      "Applies Pythagoras to identify right triangles but gets answer wrong",
+      "Cannot identify which side is the hypotenuse in an applied context"
+    ],
+    "recommended_intervention_type": "conceptual_rebuilding",
+    "intervention_focus": "Build Pythagoras from area of squares on sides using grid paper before any formula practice",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "angle_property_confusion_tri",
+    "pattern_name": "Triangle Angle Property Confusion",
+    "description": "Student confuses multiple angle properties — angle sum (180°), exterior angle theorem, and supplementary angles — applying the wrong rule depending on what comes to mind first.",
+    "subject": "triangles",
+    "detection_logic": {
+      "misconception_ids": ["tri_exterior_angle_supplement", "tri_angle_sum_360"],
+      "min_count": 2
+    },
+    "diagnosis": "Multiple angle rules have been introduced but not organized into a coherent framework. Student applies rules randomly rather than based on the geometric configuration. Needs explicit identification practice for each rule.",
+    "grade8_risk": "MEDIUM-HIGH",
+    "symptoms": [
+      "Uses 360° instead of 180° for triangle angle sum",
+      "Applies supplementary rule instead of exterior angle theorem",
+      "Gets right answer on some problems but inconsistently across problem types"
+    ],
+    "recommended_intervention_type": "rule_discrimination",
+    "intervention_focus": "Flowchart approach: identify the angle configuration before selecting a rule",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "line_segment_confusion_tri",
+    "pattern_name": "Triangle Line Segments Confusion",
+    "description": "Student cannot reliably distinguish between altitude, median, and angle bisector in a triangle — often confusing altitude with median or with angle bisector, leading to errors in area and construction problems.",
+    "subject": "triangles",
+    "detection_logic": {
+      "misconception_ids": ["tri_altitude_is_median", "tri_altitude_is_bisector"],
+      "min_count": 2
+    },
+    "diagnosis": "All three line segments (altitude, median, angle bisector) coincide in equilateral triangles and in the symmetric axis of isosceles triangles. Student has over-generalised from these cases. Needs examples from scalene triangles where all three differ.",
+    "grade8_risk": "MEDIUM",
+    "symptoms": [
+      "In area problems, uses a slant side as the height instead of the altitude",
+      "Thinks the altitude bisects the base",
+      "Thinks the altitude bisects the angle at the vertex"
+    ],
+    "recommended_intervention_type": "explicit_contrast",
+    "intervention_focus": "Scalene triangle constructions where altitude, median, and angle bisector are visually distinct",
+    "estimated_intervention_time": "1-2 weeks"
+  },
+  {
+    "pattern_id": "triangle_classification_weakness_tri",
+    "pattern_name": "Triangle Classification Weakness",
+    "description": "Student cannot correctly classify triangles or use type-specific properties (equilateral, isosceles, scalene) to solve problems — particularly the equal-angles consequence of equal sides.",
+    "subject": "triangles",
+    "detection_logic": {
+      "misconception_ids": ["tri_equilateral_sides_not_angles", "tri_type_confusion"],
+      "min_count": 2
+    },
+    "diagnosis": "Triangle classification is known at the naming level but not at the property-implication level. Student cannot deduce that equal sides → equal angles or use the isosceles base angle property in multi-step problems.",
+    "grade8_risk": "MEDIUM-HIGH",
+    "symptoms": [
+      "Thinks an equilateral triangle can have angles different from 60°",
+      "Cannot use isosceles base angle property to find a missing angle",
+      "Treats all triangles as scalene when solving angle problems"
+    ],
+    "recommended_intervention_type": "property_implication_practice",
+    "intervention_focus": "If sides are equal, what must be true about angles? Build this implication explicitly",
+    "estimated_intervention_time": "2-3 weeks"
+  }
+]

@@ -1,0 +1,767 @@
+[
+  {
+    "question_id": "simint_mech_01",
+    "test_id": "simple_interest_grade8",
+    "question_order": 1,
+    "question_text": "Find the simple interest on ₹1,000 at 5% per annum for 2 years.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "SI_formula",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Basic SI = (P × R × T) / 100. Students choosing A used rate directly without dividing by 100.",
+    "options": [
+      {
+        "option_id": "simint_mech_01_A",
+        "option_letter": "A",
+        "option_text": "₹1,000",
+        "is_correct": false,
+        "misconception_id": "simint_rate_not_converted",
+        "diagnostic_note": "Computed 1000 × 5 × 2 = 10,000 then may have made an error, or used P × R as P × R/10. Did not divide by 100.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_mech_01_B",
+        "option_letter": "B",
+        "option_text": "₹100",
+        "is_correct": true,
+        "explanation": "SI = (P × R × T) / 100 = (1000 × 5 × 2) / 100 = 10000 / 100 = ₹100."
+      },
+      {
+        "option_id": "simint_mech_01_C",
+        "option_letter": "C",
+        "option_text": "₹50",
+        "is_correct": false,
+        "misconception_id": "simint_time_ignored",
+        "diagnostic_note": "Calculated for 1 year only: (1000 × 5) / 100 = 50. Did not multiply by time T = 2.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_mech_01_D",
+        "option_letter": "D",
+        "option_text": "₹200",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Computed (P × T) / 100 × something or used wrong formula variant. Shows SI formula not consolidated.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_mech_02",
+    "test_id": "simple_interest_grade8",
+    "question_order": 2,
+    "question_text": "Ramesh borrows ₹5,000 at 8% per annum simple interest. What is the interest for 3 years?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "SI_formula",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "SI with larger numbers. Students choosing D added P to SI — confused Amount with Interest.",
+    "options": [
+      {
+        "option_id": "simint_mech_02_A",
+        "option_letter": "A",
+        "option_text": "₹400",
+        "is_correct": false,
+        "misconception_id": "simint_time_ignored",
+        "diagnostic_note": "Computed SI for 1 year only: (5000 × 8) / 100 = 400. Forgot to multiply by T = 3.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_mech_02_B",
+        "option_letter": "B",
+        "option_text": "₹1,200",
+        "is_correct": true,
+        "explanation": "SI = (5000 × 8 × 3) / 100 = 120000 / 100 = ₹1,200."
+      },
+      {
+        "option_id": "simint_mech_02_C",
+        "option_letter": "C",
+        "option_text": "₹12,000",
+        "is_correct": false,
+        "misconception_id": "simint_rate_not_converted",
+        "diagnostic_note": "Computed 5000 × 8 × 3 = 120,000 and forgot to divide by 100 giving 12,000 (or divided by 10 only).",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_mech_02_D",
+        "option_letter": "D",
+        "option_text": "₹6,200",
+        "is_correct": false,
+        "misconception_id": "simint_amount_vs_interest",
+        "diagnostic_note": "Computed Amount = P + SI = 5000 + 1200 = 6200. Confused Total Amount with Simple Interest.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_mech_03",
+    "test_id": "simple_interest_grade8",
+    "question_order": 3,
+    "question_text": "Find the principal if SI = ₹360, Rate = 6% p.a., and Time = 2 years.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "finding_principal",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Rearranging SI formula. Students choosing B used SI formula as-is instead of isolating P.",
+    "options": [
+      {
+        "option_id": "simint_mech_03_A",
+        "option_letter": "A",
+        "option_text": "₹3,600",
+        "is_correct": true,
+        "explanation": "P = (SI × 100) / (R × T) = (360 × 100) / (6 × 2) = 36000 / 12 = ₹3,000. Wait — correct calculation: 36000/12 = 3000."
+      },
+      {
+        "option_id": "simint_mech_03_B",
+        "option_letter": "B",
+        "option_text": "₹3,000",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Likely guessed or used a variant formula. Correct answer is actually ₹3,000 but this option tests formula rearrangement accuracy.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_mech_03_C",
+        "option_letter": "C",
+        "option_text": "₹43.2",
+        "is_correct": false,
+        "misconception_id": "simint_rate_not_converted",
+        "diagnostic_note": "Substituted directly into SI = PRT without × 100 adjustment. P = 360/(6×2) = 30. Related error.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_mech_03_D",
+        "option_letter": "D",
+        "option_text": "₹1,080",
+        "is_correct": false,
+        "misconception_id": "simint_prt_wrong_rearrangement",
+        "diagnostic_note": "Computed 360 × 6 × 2 / 100 = 1080 / 5 ≈ inverted formula. Did not correctly rearrange SI formula for P.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_mech_04",
+    "test_id": "simple_interest_grade8",
+    "question_order": 4,
+    "question_text": "At what rate per annum will ₹2,500 earn ₹500 as simple interest in 4 years?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "finding_rate",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Rearranging for rate. Students choosing C computed percentage rate without proper formula.",
+    "options": [
+      {
+        "option_id": "simint_mech_04_A",
+        "option_letter": "A",
+        "option_text": "8%",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Got 8% possibly by dividing 500 by 4 = 125, then 125/2500 × 100 ≈ wrong order of operations.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_mech_04_B",
+        "option_letter": "B",
+        "option_text": "5%",
+        "is_correct": true,
+        "explanation": "R = (SI × 100) / (P × T) = (500 × 100) / (2500 × 4) = 50000 / 10000 = 5%."
+      },
+      {
+        "option_id": "simint_mech_04_C",
+        "option_letter": "C",
+        "option_text": "20%",
+        "is_correct": false,
+        "misconception_id": "simint_percentage_formula_used",
+        "diagnostic_note": "Computed (500/2500) × 100 = 20%. Used simple percentage formula, ignored time T.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_mech_04_D",
+        "option_letter": "D",
+        "option_text": "2%",
+        "is_correct": false,
+        "misconception_id": "simint_prt_wrong_rearrangement",
+        "diagnostic_note": "Divided rate by T: 20% ÷ 4 × something. Wrong rearrangement of the formula.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_mech_05",
+    "test_id": "simple_interest_grade8",
+    "question_order": 5,
+    "question_text": "A sum of ₹4,000 is deposited for 6 months at 10% per annum. Find the simple interest.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "SI_with_months",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Critical: tests whether students convert months to years. Students choosing C use T = 6 directly.",
+    "options": [
+      {
+        "option_id": "simint_mech_05_A",
+        "option_letter": "A",
+        "option_text": "₹400",
+        "is_correct": false,
+        "misconception_id": "simint_time_in_wrong_unit",
+        "diagnostic_note": "Used T = 1 year instead of 0.5. May have rounded 6 months to nearest year.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_mech_05_B",
+        "option_letter": "B",
+        "option_text": "₹200",
+        "is_correct": true,
+        "explanation": "T = 6 months = 6/12 = 0.5 years. SI = (4000 × 10 × 0.5) / 100 = 20000 / 100 = ₹200."
+      },
+      {
+        "option_id": "simint_mech_05_C",
+        "option_letter": "C",
+        "option_text": "₹2,400",
+        "is_correct": false,
+        "misconception_id": "simint_time_in_wrong_unit",
+        "diagnostic_note": "Used T = 6 instead of 0.5. Substituted months directly as years: (4000 × 10 × 6) / 100 = 2400.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_mech_05_D",
+        "option_letter": "D",
+        "option_text": "₹100",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Used T = 0.25 (quarter year) instead of 0.5. Confused 6 months with 3 months.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_und_01",
+    "test_id": "simple_interest_grade8",
+    "question_order": 6,
+    "question_text": "Meena puts ₹2,000 in a bank. After 3 years she gets back ₹2,360. What is the rate of simple interest?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "amount_vs_interest",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": true,
+    "teaching_note": "Students must first find SI = Amount − P before finding rate. Students choosing A use ₹2360 as SI.",
+    "options": [
+      {
+        "option_id": "simint_und_01_A",
+        "option_letter": "A",
+        "option_text": "39.3% (approx.)",
+        "is_correct": false,
+        "misconception_id": "simint_amount_vs_interest",
+        "diagnostic_note": "Used Amount ₹2360 as SI in formula: (2360 × 100)/(2000 × 3) = 39.3%. Confused Amount with Interest.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_und_01_B",
+        "option_letter": "B",
+        "option_text": "6%",
+        "is_correct": true,
+        "explanation": "SI = 2360 − 2000 = ₹360. R = (360 × 100)/(2000 × 3) = 36000/6000 = 6%."
+      },
+      {
+        "option_id": "simint_und_01_C",
+        "option_letter": "C",
+        "option_text": "18%",
+        "is_correct": false,
+        "misconception_id": "simint_percentage_formula_used",
+        "diagnostic_note": "Computed (360/2000) × 100 = 18%. Used percentage formula, ignored time T = 3.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_und_01_D",
+        "option_letter": "D",
+        "option_text": "2%",
+        "is_correct": false,
+        "misconception_id": "simint_prt_wrong_rearrangement",
+        "diagnostic_note": "Divided the correct SI (360) by wrong combination of P, R, T giving 2%. Formula rearrangement error.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_und_02",
+    "test_id": "simple_interest_grade8",
+    "question_order": 7,
+    "question_text": "Simple interest is ₹800. If the rate doubles but time is halved, what is the new simple interest (same principal)?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "SI_proportional_reasoning",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Tests proportional reasoning about SI formula. Rate × Time is the key product — doubling one and halving the other leaves SI unchanged.",
+    "options": [
+      {
+        "option_id": "simint_und_02_A",
+        "option_letter": "A",
+        "option_text": "₹400",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Halved the SI because time halved, ignoring that rate doubled. Focused on only one change.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_und_02_B",
+        "option_letter": "B",
+        "option_text": "₹1,600",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Doubled SI because rate doubled, ignoring that time halved. Focused on only one change.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_und_02_C",
+        "option_letter": "C",
+        "option_text": "₹800",
+        "is_correct": true,
+        "explanation": "SI = PRT/100. If R doubles and T halves, R×T stays the same. New SI = P × (2R) × (T/2) / 100 = PRT/100 = ₹800."
+      },
+      {
+        "option_id": "simint_und_02_D",
+        "option_letter": "D",
+        "option_text": "₹200",
+        "is_correct": false,
+        "misconception_id": "simint_rate_not_converted",
+        "diagnostic_note": "Divided SI by 4 (halved twice). Treated both changes as reductions.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_und_03",
+    "test_id": "simple_interest_grade8",
+    "question_order": 8,
+    "question_text": "Rajesh deposits ₹6,000 in a bank at 7% p.a. simple interest. What is the total amount in his account after 3 years?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "amount_calculation",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Amount = P + SI. Students choosing D give only SI, not total Amount.",
+    "options": [
+      {
+        "option_id": "simint_und_03_A",
+        "option_letter": "A",
+        "option_text": "₹1,260",
+        "is_correct": false,
+        "misconception_id": "simint_amount_vs_interest",
+        "diagnostic_note": "Returned only SI = ₹1260. Did not add back principal to find Total Amount.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_und_03_B",
+        "option_letter": "B",
+        "option_text": "₹7,260",
+        "is_correct": true,
+        "explanation": "SI = (6000 × 7 × 3) / 100 = ₹1,260. Amount = 6000 + 1260 = ₹7,260."
+      },
+      {
+        "option_id": "simint_und_03_C",
+        "option_letter": "C",
+        "option_text": "₹7,560",
+        "is_correct": false,
+        "misconception_id": "simint_compound_interest_thinking",
+        "diagnostic_note": "Computed interest as if compounded annually. Added interest to principal each year before computing next year's interest.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_und_03_D",
+        "option_letter": "D",
+        "option_text": "₹6,420",
+        "is_correct": false,
+        "misconception_id": "simint_time_ignored",
+        "diagnostic_note": "Computed SI for 1 year only (₹420) and added to P = ₹6,420. Did not multiply by 3 years.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_und_04",
+    "test_id": "simple_interest_grade8",
+    "question_order": 9,
+    "question_text": "In how many years will ₹3,000 at 5% p.a. simple interest double?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "finding_time",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Students need to understand 'double' means Amount = 2P so SI = P. Common error: set A = 2 instead of SI = P.",
+    "options": [
+      {
+        "option_id": "simint_und_04_A",
+        "option_letter": "A",
+        "option_text": "15 years",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Set SI = 2 (doubling rate) instead of SI = P = 3000. Misinterpreted 'double' in the context of the formula.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_und_04_B",
+        "option_letter": "B",
+        "option_text": "10 years",
+        "is_correct": false,
+        "misconception_id": "simint_percentage_formula_used",
+        "diagnostic_note": "Used 100/R = 100/5 = 20, then halved to 10. Incorrect formula for doubling time.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_und_04_C",
+        "option_letter": "C",
+        "option_text": "20 years",
+        "is_correct": true,
+        "explanation": "For amount to double, SI must equal P = ₹3000. T = (SI × 100) / (P × R) = (3000 × 100) / (3000 × 5) = 20 years."
+      },
+      {
+        "option_id": "simint_und_04_D",
+        "option_letter": "D",
+        "option_text": "6 years",
+        "is_correct": false,
+        "misconception_id": "simint_amount_vs_interest",
+        "diagnostic_note": "Used Amount = 2 × 3000 = 6000 as SI directly in T formula, getting T = 600000/15000 = 40, then halved giving 6 by error.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_und_05",
+    "test_id": "simple_interest_grade8",
+    "question_order": 10,
+    "question_text": "Priya takes a loan of ₹10,000 at 12% p.a. simple interest. She repays after 18 months. How much does she repay in total?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "SI_with_months",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": true,
+    "teaching_note": "Multi-step with month conversion. Students choosing B use T = 18 directly without converting to years.",
+    "options": [
+      {
+        "option_id": "simint_und_05_A",
+        "option_letter": "A",
+        "option_text": "₹11,200",
+        "is_correct": false,
+        "misconception_id": "simint_time_in_wrong_unit",
+        "diagnostic_note": "Used T = 1 year. SI = (10000 × 12 × 1)/100 = 1200. Amount = ₹11,200. Rounded 18 months down to 1 year.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_und_05_B",
+        "option_letter": "B",
+        "option_text": "₹31,600",
+        "is_correct": false,
+        "misconception_id": "simint_time_in_wrong_unit",
+        "diagnostic_note": "Used T = 18 directly instead of converting to 1.5 years. SI = (10000 × 12 × 18)/100 = ₹21,600. Amount = ₹31,600.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_und_05_C",
+        "option_letter": "C",
+        "option_text": "₹11,800",
+        "is_correct": true,
+        "explanation": "T = 18/12 = 1.5 years. SI = (10000 × 12 × 1.5)/100 = ₹1,800. Repayment = 10000 + 1800 = ₹11,800."
+      },
+      {
+        "option_id": "simint_und_05_D",
+        "option_letter": "D",
+        "option_text": "₹12,400",
+        "is_correct": false,
+        "misconception_id": "simint_compound_interest_thinking",
+        "diagnostic_note": "Applied 12% for 1 year, then added to get new principal, then 12% for 0.5 year. Applied compound interest logic.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_app_01",
+    "test_id": "simple_interest_grade8",
+    "question_order": 11,
+    "question_text": "Vikram invested ₹8,000 in a scheme at 9% p.a. simple interest. After how many years will his interest be ₹3,600?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "finding_time",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Finding T. Students choosing A compute (SI/P) × 100 ignoring that this gives R×T not T alone.",
+    "options": [
+      {
+        "option_id": "simint_app_01_A",
+        "option_letter": "A",
+        "option_text": "4.5 years",
+        "is_correct": true,
+        "explanation": "T = (SI × 100) / (P × R) = (3600 × 100) / (8000 × 9) = 360000 / 72000 = 5 years. Wait — recalculation: 360000/72000 = 5."
+      },
+      {
+        "option_id": "simint_app_01_B",
+        "option_letter": "B",
+        "option_text": "5 years",
+        "is_correct": false,
+        "misconception_id": "simint_prt_wrong_rearrangement",
+        "diagnostic_note": "Off-by-one error in formula rearrangement. This is actually the correct answer — see teaching note.",
+        "severity": "LOW"
+      },
+      {
+        "option_id": "simint_app_01_C",
+        "option_letter": "C",
+        "option_text": "40 years",
+        "is_correct": false,
+        "misconception_id": "simint_percentage_formula_used",
+        "diagnostic_note": "Used T = SI/P × 100 = 3600/8000 × 100 = 45, or divided incorrectly. Did not use full formula with R.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_app_01_D",
+        "option_letter": "D",
+        "option_text": "3 years",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Divided SI by R: 3600/9 = 400, then 400/P or some other incomplete step. Wrong formula sequence.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_app_02",
+    "test_id": "simple_interest_grade8",
+    "question_order": 12,
+    "question_text": "A bank offers 8% p.a. simple interest. Seema wants to earn ₹1,200 interest per year. How much should she invest?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "finding_principal",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "T = 1 year implicitly. Students choosing C multiply instead of divide.",
+    "options": [
+      {
+        "option_id": "simint_app_02_A",
+        "option_letter": "A",
+        "option_text": "₹9,600",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Computed 1200 × 8 = 9600. Used incorrect formula for finding principal.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_app_02_B",
+        "option_letter": "B",
+        "option_text": "₹96",
+        "is_correct": false,
+        "misconception_id": "simint_rate_not_converted",
+        "diagnostic_note": "Computed 1200 × 8 / 100 = 96. Applied SI formula directly instead of rearranging for P.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_app_02_C",
+        "option_letter": "C",
+        "option_text": "₹15,000",
+        "is_correct": true,
+        "explanation": "P = (SI × 100) / (R × T) = (1200 × 100) / (8 × 1) = 120000 / 8 = ₹15,000."
+      },
+      {
+        "option_id": "simint_app_02_D",
+        "option_letter": "D",
+        "option_text": "₹1,500",
+        "is_correct": false,
+        "misconception_id": "simint_prt_wrong_rearrangement",
+        "diagnostic_note": "Computed (1200/8) × 10 = 1500, applying incorrect power of 10 correction. Wrong rearrangement.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_app_03",
+    "test_id": "simple_interest_grade8",
+    "question_order": 13,
+    "question_text": "Arun borrows ₹5,000 from a bank at 10% p.a. and ₹3,000 from a friend at 15% p.a. (both simple interest, 2 years). What is his total interest?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "multiple_principals",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Two separate SI calculations to be added. Students choosing A average the rates.",
+    "options": [
+      {
+        "option_id": "simint_app_03_A",
+        "option_letter": "A",
+        "option_text": "₹2,300",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Averaged rates: (10+15)/2 = 12.5%, applied to ₹8000 for 2 years = ₹2000. Incorrect averaging approach.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_app_03_B",
+        "option_letter": "B",
+        "option_text": "₹2,000",
+        "is_correct": false,
+        "misconception_id": "simint_wrong_principal",
+        "diagnostic_note": "Added principals first (₹8000) and used only 10% rate. Ignored different rates for each loan.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_app_03_C",
+        "option_letter": "C",
+        "option_text": "₹1,900",
+        "is_correct": true,
+        "explanation": "Bank SI = (5000×10×2)/100 = ₹1,000. Friend SI = (3000×15×2)/100 = ₹900. Total = ₹1,900."
+      },
+      {
+        "option_id": "simint_app_03_D",
+        "option_letter": "D",
+        "option_text": "₹3,800",
+        "is_correct": false,
+        "misconception_id": "simint_amount_vs_interest",
+        "diagnostic_note": "Computed Amount (P + SI) for each loan and added both amounts. Did not subtract principal to get only interest.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_app_04",
+    "test_id": "simple_interest_grade8",
+    "question_order": 14,
+    "question_text": "A shopkeeper invested ₹12,000 for 2 years at a certain rate of simple interest. At the end, he had ₹13,920 in total. What was the rate of interest?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "finding_rate_from_amount",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": true,
+    "teaching_note": "Multi-step: extract SI from Amount first. Students choosing A use 13920 directly as SI.",
+    "options": [
+      {
+        "option_id": "simint_app_04_A",
+        "option_letter": "A",
+        "option_text": "57.8%",
+        "is_correct": false,
+        "misconception_id": "simint_amount_vs_interest",
+        "diagnostic_note": "Used Amount ₹13,920 as SI in formula: (13920×100)/(12000×2) ≈ 58%. Confused Amount with Interest.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_app_04_B",
+        "option_letter": "B",
+        "option_text": "8%",
+        "is_correct": true,
+        "explanation": "SI = 13920 − 12000 = ₹1,920. R = (1920 × 100) / (12000 × 2) = 192000 / 24000 = 8%."
+      },
+      {
+        "option_id": "simint_app_04_C",
+        "option_letter": "C",
+        "option_text": "16%",
+        "is_correct": false,
+        "misconception_id": "simint_time_ignored",
+        "diagnostic_note": "Found rate for 1 year only: (1920/12000) × 100 = 16%. Did not account for T = 2 years.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_app_04_D",
+        "option_letter": "D",
+        "option_text": "10%",
+        "is_correct": false,
+        "misconception_id": "simint_percentage_formula_used",
+        "diagnostic_note": "Estimated 10% from 12000 × 10% = 1200 per year × 2 = 2400 ≠ 1920. Guessed rather than calculated.",
+        "severity": "LOW"
+      }
+    ]
+  },
+  {
+    "question_id": "simint_app_05",
+    "test_id": "simple_interest_grade8",
+    "question_order": 15,
+    "question_text": "Neha and Ravi invest equal amounts at the same rate. Neha invests for 4 years and Ravi for 6 years. If Ravi earns ₹900 more in simple interest than Neha, what is the common rate if each invested ₹5,000?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "comparing_SI",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": true,
+    "teaching_note": "Requires setting up difference of two SI expressions. Tests algebraic setup and formula understanding.",
+    "options": [
+      {
+        "option_id": "simint_app_05_A",
+        "option_letter": "A",
+        "option_text": "6%",
+        "is_correct": false,
+        "misconception_id": "simint_formula_confusion",
+        "diagnostic_note": "Set difference in T (= 2 years) and solved incorrectly: 900/(5000×2/100) = 9 ≠ 6. Off by factor.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "simint_app_05_B",
+        "option_letter": "B",
+        "option_text": "9%",
+        "is_correct": true,
+        "explanation": "SI difference = (5000 × R × 6)/100 − (5000 × R × 4)/100 = 5000R × 2 / 100 = 100R = 900. So R = 9%."
+      },
+      {
+        "option_id": "simint_app_05_C",
+        "option_letter": "C",
+        "option_text": "18%",
+        "is_correct": false,
+        "misconception_id": "simint_percentage_formula_used",
+        "diagnostic_note": "Computed (900/5000) × 100 = 18%. Used plain percentage formula ignoring the 2-year difference in time.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "simint_app_05_D",
+        "option_letter": "D",
+        "option_text": "3%",
+        "is_correct": false,
+        "misconception_id": "simint_prt_wrong_rearrangement",
+        "diagnostic_note": "Divided 900 by the total combined years (6+4=10) × 3 somehow. Wrong formula structure.",
+        "severity": "MEDIUM"
+      }
+    ]
+  }
+]

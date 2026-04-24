@@ -1,0 +1,102 @@
+[
+  {
+    "pattern_id": "additive_thinker_ratprop",
+    "pattern_name": "Additive Thinker",
+    "description": "Student consistently uses addition/subtraction to solve proportion and ratio problems instead of multiplicative reasoning. This is the most fundamental barrier to proportional understanding.",
+    "subject": "ratios_proportions",
+    "detection_logic": {
+      "misconception_ids": ["ratprop_additive_thinking", "ratprop_ratio_as_difference"],
+      "min_count": 2
+    },
+    "diagnosis": "Student has not made the transition from additive to multiplicative reasoning. All ratio and proportion work is built on this foundation. Without intervention, this will block progress in percentage, algebra, and science.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Adds the same number to both quantities when scaling",
+      "Compares ratios by subtracting rather than dividing",
+      "Correct on easy problems (direct doubling) but fails on non-integer scales"
+    ],
+    "recommended_intervention_type": "conceptual_rebuilding",
+    "intervention_focus": "Build multiplicative comparison with concrete materials before returning to abstract ratio notation",
+    "estimated_intervention_time": "3-4 weeks"
+  },
+  {
+    "pattern_id": "procedural_ratio_without_meaning",
+    "pattern_name": "Procedural Ratio Without Meaning",
+    "description": "Student can mechanically simplify or compute ratios but applies the wrong procedure in unfamiliar contexts, revealing lack of conceptual understanding of what a ratio represents.",
+    "subject": "ratios_proportions",
+    "detection_logic": {
+      "misconception_ids": ["ratprop_cross_multiply_without_understanding", "ratprop_ratio_as_fraction", "ratprop_equal_sharing"],
+      "min_count": 2
+    },
+    "diagnosis": "Student has memorized some procedures (cross-multiply, divide) but doesn't understand the underlying proportional relationships. Knowledge is brittle and fails when context changes.",
+    "grade8_risk": "MEDIUM-HIGH",
+    "symptoms": [
+      "Correct on mechanical ratio simplification",
+      "Incorrect on word problems requiring ratio interpretation",
+      "Applies cross-multiplication in inappropriate contexts"
+    ],
+    "recommended_intervention_type": "conceptual_deepening",
+    "intervention_focus": "Re-teach what a ratio means using real objects and contexts before procedural practice",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "part_whole_confusion_ratprop",
+    "pattern_name": "Part-Part vs Part-Whole Confusion",
+    "description": "Student confuses ratios (part-to-part) with fractions (part-to-whole), leading to systematic errors when converting between the two or dividing quantities in a given ratio.",
+    "subject": "ratios_proportions",
+    "detection_logic": {
+      "misconception_ids": ["ratprop_ratio_as_fraction", "ratprop_total_instead_of_part"],
+      "min_count": 2
+    },
+    "diagnosis": "Student cannot reliably distinguish between 'the ratio of A to B is 1:3' and 'A is 1/3 of the total'. This confusion is extremely common and affects percentage, probability, and statistics.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Given ratio a:b, computes a/b instead of a/(a+b) for fraction of whole",
+      "In profit-sharing problems, treats ratio directly as fraction of total profit",
+      "Finds total mixture instead of one component"
+    ],
+    "recommended_intervention_type": "explicit_distinction",
+    "intervention_focus": "Explicit side-by-side comparison of part-part and part-whole representations using diagrams",
+    "estimated_intervention_time": "1-2 weeks"
+  },
+  {
+    "pattern_id": "unit_rate_breakdown_ratprop",
+    "pattern_name": "Unit Rate Breakdown",
+    "description": "Student struggles specifically with unit rate problems — either skipping the normalization step or applying the wrong operation when finding cost/speed/rate per single unit.",
+    "subject": "ratios_proportions",
+    "detection_logic": {
+      "misconception_ids": ["ratprop_unit_rate_confusion", "ratprop_wrong_unit_rate"],
+      "min_count": 2
+    },
+    "diagnosis": "Student understands proportional scaling in simple cases but breaks down when required to find a per-unit rate before scaling. The two-step process (divide then multiply) is not consolidated.",
+    "grade8_risk": "MEDIUM",
+    "symptoms": [
+      "Multiplies directly by the new quantity without dividing by original quantity",
+      "Makes arithmetic errors in the division step",
+      "Correct when scale factor is a whole number, wrong when it requires division"
+    ],
+    "recommended_intervention_type": "procedural_consolidation",
+    "intervention_focus": "Explicit two-step rate problems with emphasis on the 'per unit' concept",
+    "estimated_intervention_time": "1-2 weeks"
+  },
+  {
+    "pattern_id": "direct_inverse_confusion_ratprop",
+    "pattern_name": "Direct vs Inverse Proportion Confusion",
+    "description": "Student cannot distinguish between direct and inverse proportional relationships and defaults to direct proportion in all contexts.",
+    "subject": "ratios_proportions",
+    "detection_logic": {
+      "misconception_ids": ["ratprop_inverted_proportion", "ratprop_additive_thinking"],
+      "min_count": 2
+    },
+    "diagnosis": "Student has only one mental model of proportion (more of A → more of B) and cannot recognize when increasing one quantity should decrease another. Affects speed-time, work-time, and resource allocation problems.",
+    "grade8_risk": "MEDIUM-HIGH",
+    "symptoms": [
+      "Halves the days when workers double instead of halving days",
+      "Sets up inverse proportion as direct proportion",
+      "Cannot identify which situations are inversely proportional"
+    ],
+    "recommended_intervention_type": "conceptual_contrast",
+    "intervention_focus": "Contrasting direct and inverse proportion with real-world investigations (e.g., more workers vs fewer days)",
+    "estimated_intervention_time": "2-3 weeks"
+  }
+]

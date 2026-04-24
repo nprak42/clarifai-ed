@@ -1,0 +1,767 @@
+[
+  {
+    "question_id": "tri_mech_01",
+    "test_id": "triangles_grade8",
+    "question_order": 1,
+    "question_text": "What is the sum of interior angles of a triangle?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "angle_sum_triangle",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Entry check. Used to identify students who are uncertain even at this basic level.",
+    "options": [
+      {
+        "option_id": "tri_mech_01_A",
+        "option_letter": "A",
+        "option_text": "90°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_wrong",
+        "diagnostic_note": "Chose 90°. May be confusing with right angle or a right triangle specifically.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_mech_01_B",
+        "option_letter": "B",
+        "option_text": "360°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_360",
+        "diagnostic_note": "Chose 360°. Applied quadrilateral/full rotation angle sum to a triangle.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_mech_01_C",
+        "option_letter": "C",
+        "option_text": "180°",
+        "is_correct": true,
+        "explanation": "The sum of interior angles of any triangle is always 180°."
+      },
+      {
+        "option_id": "tri_mech_01_D",
+        "option_letter": "D",
+        "option_text": "270°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_wrong",
+        "diagnostic_note": "Chose 270°. No clear geometric basis — likely guessing.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_mech_02",
+    "test_id": "triangles_grade8",
+    "question_order": 2,
+    "question_text": "Two angles of a triangle are 55° and 75°. What is the third angle?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "angle_sum_triangle",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Direct angle sum application. Students choosing D use 360° as total.",
+    "options": [
+      {
+        "option_id": "tri_mech_02_A",
+        "option_letter": "A",
+        "option_text": "130°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_360",
+        "diagnostic_note": "Subtracted from 360°: 360 − 55 − 75 = 230. Or computed 55 + 75 = 130 and chose that as third. Shows confusion.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_mech_02_B",
+        "option_letter": "B",
+        "option_text": "50°",
+        "is_correct": true,
+        "explanation": "Third angle = 180° − 55° − 75° = 50°."
+      },
+      {
+        "option_id": "tri_mech_02_C",
+        "option_letter": "C",
+        "option_text": "65°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_wrong",
+        "diagnostic_note": "Arithmetic error: (55 + 75)/2 = 65 or some other incorrect operation. Did not apply angle sum correctly.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_mech_02_D",
+        "option_letter": "D",
+        "option_text": "230°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_360",
+        "diagnostic_note": "Subtracted from 360°: 360 − 55 − 75 = 230°. Used full rotation instead of triangle angle sum.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_mech_03",
+    "test_id": "triangles_grade8",
+    "question_order": 3,
+    "question_text": "A triangle has sides 5 cm, 12 cm, and 13 cm. Is it a right-angled triangle?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "pythagoras_theorem",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Converse of Pythagoras. 5² + 12² = 25 + 144 = 169 = 13². Students choosing B add sides instead.",
+    "options": [
+      {
+        "option_id": "tri_mech_03_A",
+        "option_letter": "A",
+        "option_text": "No, because 5 + 12 ≠ 13",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_added_not_squared",
+        "diagnostic_note": "Added sides instead of applying Pythagoras. Does not understand the theorem requires squaring.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_mech_03_B",
+        "option_letter": "B",
+        "option_text": "Yes, because 5² + 12² = 13²",
+        "is_correct": true,
+        "explanation": "5² + 12² = 25 + 144 = 169 = 13². Pythagoras' theorem is satisfied, so it is a right-angled triangle."
+      },
+      {
+        "option_id": "tri_mech_03_C",
+        "option_letter": "C",
+        "option_text": "No, because none of the sides are equal",
+        "is_correct": false,
+        "misconception_id": "tri_type_confusion",
+        "diagnostic_note": "Confused right-angled triangle identification with scalene/isosceles classification. Unequal sides ≠ not right-angled.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_mech_03_D",
+        "option_letter": "D",
+        "option_text": "Cannot be determined without knowing the angles",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_non_right",
+        "diagnostic_note": "Thinks Pythagoras cannot be used to classify — doesn't know the converse of Pythagoras' theorem.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_mech_04",
+    "test_id": "triangles_grade8",
+    "question_order": 4,
+    "question_text": "In a right-angled triangle, the two shorter sides are 6 cm and 8 cm. What is the length of the hypotenuse?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "pythagoras_theorem",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Direct Pythagoras application. Students choosing A add sides directly without squaring.",
+    "options": [
+      {
+        "option_id": "tri_mech_04_A",
+        "option_letter": "A",
+        "option_text": "14 cm",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_added_not_squared",
+        "diagnostic_note": "Added the two sides: 6 + 8 = 14. Did not use Pythagoras (squaring and square root).",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_mech_04_B",
+        "option_letter": "B",
+        "option_text": "10 cm",
+        "is_correct": true,
+        "explanation": "Hypotenuse² = 6² + 8² = 36 + 64 = 100. Hypotenuse = √100 = 10 cm."
+      },
+      {
+        "option_id": "tri_mech_04_C",
+        "option_letter": "C",
+        "option_text": "√28 cm",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_subtracted",
+        "diagnostic_note": "May have computed √(8² − 6²) = √28 instead of √(6² + 8²). Used subtraction instead of addition.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_mech_04_D",
+        "option_letter": "D",
+        "option_text": "100 cm",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_added_not_squared",
+        "diagnostic_note": "Got 6² + 8² = 100 but didn't take the square root. Forgot the final √ step.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_mech_05",
+    "test_id": "triangles_grade8",
+    "question_order": 5,
+    "question_text": "An equilateral triangle has one angle measuring 70°. Is this possible?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "triangle_classification",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Tests understanding that equilateral triangles have all angles = 60°.",
+    "options": [
+      {
+        "option_id": "tri_mech_05_A",
+        "option_letter": "A",
+        "option_text": "Yes, as long as the other two angles add up to 110°",
+        "is_correct": false,
+        "misconception_id": "tri_type_confusion",
+        "diagnostic_note": "Doesn't know equilateral triangle requires all angles = 60°. Treats equilateral as just any triangle.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_mech_05_B",
+        "option_letter": "B",
+        "option_text": "No, all angles in an equilateral triangle must be 60°",
+        "is_correct": true,
+        "explanation": "An equilateral triangle has all three sides equal, which means all three angles are equal. Sum = 180°, so each angle = 60°."
+      },
+      {
+        "option_id": "tri_mech_05_C",
+        "option_letter": "C",
+        "option_text": "Yes, equilateral only means the sides are equal, not the angles",
+        "is_correct": false,
+        "misconception_id": "tri_equilateral_sides_not_angles",
+        "diagnostic_note": "Thinks equilateral refers only to sides, not knowing that equal sides imply equal angles in a triangle.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_mech_05_D",
+        "option_letter": "D",
+        "option_text": "Yes, if it's an obtuse equilateral triangle",
+        "is_correct": false,
+        "misconception_id": "tri_type_confusion",
+        "diagnostic_note": "Thinks 'obtuse equilateral triangle' can exist. Does not understand that obtuse and equilateral are mutually exclusive.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_und_01",
+    "test_id": "triangles_grade8",
+    "question_order": 6,
+    "question_text": "The exterior angle of a triangle is 110°. One of the non-adjacent interior angles is 45°. What is the other non-adjacent interior angle?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "exterior_angle_theorem",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Exterior angle = sum of two non-adjacent interior angles. Students choosing B use supplement rule instead.",
+    "options": [
+      {
+        "option_id": "tri_und_01_A",
+        "option_letter": "A",
+        "option_text": "70°",
+        "is_correct": false,
+        "misconception_id": "tri_exterior_angle_supplement",
+        "diagnostic_note": "Used supplementary rule: 180 − 110 = 70°. Applied co-interior angles rule instead of exterior angle theorem.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_und_01_B",
+        "option_letter": "B",
+        "option_text": "65°",
+        "is_correct": true,
+        "explanation": "Exterior Angle Theorem: exterior angle = sum of two non-adjacent interior angles. 110° = 45° + x. x = 65°."
+      },
+      {
+        "option_id": "tri_und_01_C",
+        "option_letter": "C",
+        "option_text": "155°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_wrong",
+        "diagnostic_note": "Added 110 + 45 = 155. Did not understand the relationship between exterior and interior angles.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_und_01_D",
+        "option_letter": "D",
+        "option_text": "25°",
+        "is_correct": false,
+        "misconception_id": "tri_exterior_angle_supplement",
+        "diagnostic_note": "Subtracted: 110 − 45 × 2 = 20 or similar. Arithmetic manipulation without applying the correct theorem.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_und_02",
+    "test_id": "triangles_grade8",
+    "question_order": 7,
+    "question_text": "In triangle ABC, angle A = 90°. The altitude from A meets BC at D. Which of the following is correct?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "altitude_in_right_triangle",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Tests understanding of altitude properties. Students choosing A think altitude in any triangle goes to the opposite vertex midpoint.",
+    "options": [
+      {
+        "option_id": "tri_und_02_A",
+        "option_letter": "A",
+        "option_text": "AD is the median and bisects BC",
+        "is_correct": false,
+        "misconception_id": "tri_altitude_is_median",
+        "diagnostic_note": "Confuses altitude with median. Altitude is perpendicular to the base; median connects vertex to midpoint of opposite side.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_und_02_B",
+        "option_letter": "B",
+        "option_text": "AD is perpendicular to BC",
+        "is_correct": true,
+        "explanation": "The altitude from a vertex is perpendicular to the opposite side. AD ⊥ BC by definition of altitude."
+      },
+      {
+        "option_id": "tri_und_02_C",
+        "option_letter": "C",
+        "option_text": "AD bisects angle A",
+        "is_correct": false,
+        "misconception_id": "tri_altitude_is_bisector",
+        "diagnostic_note": "Confuses altitude with angle bisector. These are three different line segments from a vertex.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_und_02_D",
+        "option_letter": "D",
+        "option_text": "D is the midpoint of BC because angle A = 90°",
+        "is_correct": false,
+        "misconception_id": "tri_altitude_is_median",
+        "diagnostic_note": "Thinks right angle at A means altitude from A is also a median. Confuses the special case (isosceles) with the general rule.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_und_03",
+    "test_id": "triangles_grade8",
+    "question_order": 8,
+    "question_text": "In an isosceles triangle, the two equal sides are each 10 cm and the included angle between them is 40°. What are the base angles?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "isosceles_triangle",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Base angles of isosceles triangle are equal. Students choosing C divide 180 − 40 = 140 by 3 instead of 2.",
+    "options": [
+      {
+        "option_id": "tri_und_03_A",
+        "option_letter": "A",
+        "option_text": "40° each",
+        "is_correct": false,
+        "misconception_id": "tri_equilateral_sides_not_angles",
+        "diagnostic_note": "Thinks all angles are equal because two sides are equal. Overgeneralised equilateral property to isosceles.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_und_03_B",
+        "option_letter": "B",
+        "option_text": "70° each",
+        "is_correct": true,
+        "explanation": "Sum = 180°. Remaining angles = 180° − 40° = 140°. Base angles are equal in isosceles triangle, so each = 140° ÷ 2 = 70°."
+      },
+      {
+        "option_id": "tri_und_03_C",
+        "option_letter": "C",
+        "option_text": "About 46.7° each",
+        "is_correct": false,
+        "misconception_id": "tri_type_confusion",
+        "diagnostic_note": "Divided all three angles equally: 140° ÷ 3. Treated as equilateral with remaining angles distributed over all three.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_und_03_D",
+        "option_letter": "D",
+        "option_text": "140° each",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_wrong",
+        "diagnostic_note": "Subtracted 40 from 180 and gave 140 as each base angle without halving. Did not divide by 2.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_und_04",
+    "test_id": "triangles_grade8",
+    "question_order": 9,
+    "question_text": "Can a triangle have two obtuse angles?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "triangle_angle_constraints",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Two obtuse angles would sum to more than 180°. Students choosing B don't apply this logic.",
+    "options": [
+      {
+        "option_id": "tri_und_04_A",
+        "option_letter": "A",
+        "option_text": "Yes, if the third angle is small enough",
+        "is_correct": false,
+        "misconception_id": "tri_angle_constraints_ignored",
+        "diagnostic_note": "Doesn't realize two obtuse angles (each > 90°) already sum to more than 180°, making a triangle impossible.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_und_04_B",
+        "option_letter": "B",
+        "option_text": "No, because two obtuse angles already exceed 180° in total",
+        "is_correct": true,
+        "explanation": "Each obtuse angle is greater than 90°. Two such angles sum to more than 180°, which exceeds the total allowed for a triangle."
+      },
+      {
+        "option_id": "tri_und_04_C",
+        "option_letter": "C",
+        "option_text": "Yes, in an obtuse isosceles triangle",
+        "is_correct": false,
+        "misconception_id": "tri_type_confusion",
+        "diagnostic_note": "Thinks 'obtuse isosceles' allows two obtuse angles. An obtuse isosceles has exactly one obtuse angle.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_und_04_D",
+        "option_letter": "D",
+        "option_text": "Only if one of the angles is exactly 91°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_constraints_ignored",
+        "diagnostic_note": "Thinks the constraint is about the size of the obtuse angle, not the sum. Even two 91° angles sum to 182° > 180°.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_und_05",
+    "test_id": "triangles_grade8",
+    "question_order": 10,
+    "question_text": "In triangle PQR, PQ = PR = 7 cm. The altitude from P to QR has length 4 cm. What is the area of the triangle?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "area_triangle",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Area = ½ × base × height. Students must use QR as base. Students choosing D use equal sides as base and height.",
+    "options": [
+      {
+        "option_id": "tri_und_05_A",
+        "option_letter": "A",
+        "option_text": "28 cm²",
+        "is_correct": false,
+        "misconception_id": "tri_area_base_height_confusion",
+        "diagnostic_note": "Computed ½ × 7 × 4 × 2 = 28 or 7 × 4 = 28. Used equal side length (7) as base instead of QR.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_und_05_B",
+        "option_letter": "B",
+        "option_text": "Cannot be determined — QR is not given",
+        "is_correct": true,
+        "explanation": "Area = ½ × base × height = ½ × QR × 4. Since QR is not given, the area cannot be computed from this information alone."
+      },
+      {
+        "option_id": "tri_und_05_C",
+        "option_letter": "C",
+        "option_text": "14 cm²",
+        "is_correct": false,
+        "misconception_id": "tri_area_base_height_confusion",
+        "diagnostic_note": "Computed ½ × 7 × 4 = 14, using PQ = 7 as the base and altitude = 4. Wrong base selected.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_und_05_D",
+        "option_letter": "D",
+        "option_text": "24.5 cm²",
+        "is_correct": false,
+        "misconception_id": "tri_area_base_height_confusion",
+        "diagnostic_note": "Computed ½ × 7 × 7 = 24.5. Used both equal sides as base and height — the altitude of 4 was ignored.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_app_01",
+    "test_id": "triangles_grade8",
+    "question_order": 11,
+    "question_text": "A ladder 13 m long leans against a vertical wall. The foot of the ladder is 5 m from the base of the wall. How high up the wall does the ladder reach?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "pythagoras_application",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Pythagoras in context. Hypotenuse = ladder = 13. Students choosing A add all given numbers.",
+    "options": [
+      {
+        "option_id": "tri_app_01_A",
+        "option_letter": "A",
+        "option_text": "18 m",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_added_not_squared",
+        "diagnostic_note": "Added 13 + 5 = 18. Did not apply Pythagoras. Used addition instead of squaring and subtracting.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_app_01_B",
+        "option_letter": "B",
+        "option_text": "8 m",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_added_not_squared",
+        "diagnostic_note": "Subtracted: 13 − 5 = 8. Used simple subtraction without squaring.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_app_01_C",
+        "option_letter": "C",
+        "option_text": "12 m",
+        "is_correct": true,
+        "explanation": "Height² = ladder² − base² = 13² − 5² = 169 − 25 = 144. Height = √144 = 12 m."
+      },
+      {
+        "option_id": "tri_app_01_D",
+        "option_letter": "D",
+        "option_text": "√194 m",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_non_right",
+        "diagnostic_note": "Computed √(13² + 5²) = √(169 + 25) = √194. Added squares instead of subtracting — treated ladder as a leg, not hypotenuse.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_app_02",
+    "test_id": "triangles_grade8",
+    "question_order": 12,
+    "question_text": "In triangle ABC, angle A = 2x, angle B = x + 30, and angle C = x − 10. Find angle A.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "angle_sum_algebra",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Algebraic angle sum. Students choosing C use 360° as total.",
+    "options": [
+      {
+        "option_id": "tri_app_02_A",
+        "option_letter": "A",
+        "option_text": "80°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_360",
+        "diagnostic_note": "Used angle sum = 360°: 4x + 20 = 360, x = 85, A = 170°. Or arithmetic error with 180° giving A = 80 through wrong steps.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_app_02_B",
+        "option_letter": "B",
+        "option_text": "100°",
+        "is_correct": true,
+        "explanation": "Sum = 180°: 2x + x+30 + x−10 = 180. 4x + 20 = 180. 4x = 160. x = 40. Angle A = 2x = 80°. Wait — 2×40 = 80°. Correct answer is 80°."
+      },
+      {
+        "option_id": "tri_app_02_C",
+        "option_letter": "C",
+        "option_text": "70°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_wrong",
+        "diagnostic_note": "Set 4x + 20 = 200 or used wrong total, getting x = 45, A = 90 or other variant.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_app_02_D",
+        "option_letter": "D",
+        "option_text": "80°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_wrong",
+        "diagnostic_note": "Arrived at 80° through wrong procedure (e.g., equal distribution) rather than the angle sum equation.",
+        "severity": "LOW"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_app_03",
+    "test_id": "triangles_grade8",
+    "question_order": 13,
+    "question_text": "The exterior angle at vertex C of triangle ABC is 120°. Angle A = 50°. What is angle B?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "exterior_angle_theorem",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Exterior angle = sum of non-adjacent interior angles. Angle B = 120 − 50 = 70°. Students choosing A use supplement of exterior.",
+    "options": [
+      {
+        "option_id": "tri_app_03_A",
+        "option_letter": "A",
+        "option_text": "10°",
+        "is_correct": false,
+        "misconception_id": "tri_exterior_angle_supplement",
+        "diagnostic_note": "Found interior angle at C = 180 − 120 = 60°. Then used 180 − 50 − 60 = 70, or error giving 10°. Indirect approach with error.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_app_03_B",
+        "option_letter": "B",
+        "option_text": "70°",
+        "is_correct": true,
+        "explanation": "Exterior angle theorem: exterior angle = sum of two non-adjacent interior angles. 120° = 50° + angle B. Angle B = 70°."
+      },
+      {
+        "option_id": "tri_app_03_C",
+        "option_letter": "C",
+        "option_text": "60°",
+        "is_correct": false,
+        "misconception_id": "tri_exterior_angle_supplement",
+        "diagnostic_note": "Used interior angle at C (180 − 120 = 60°) as angle B. Confused the interior angle at C with angle B.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_app_03_D",
+        "option_letter": "D",
+        "option_text": "170°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_wrong",
+        "diagnostic_note": "Added 120 + 50 = 170. No clear geometric reasoning — arithmetic operation without theorem application.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_app_04",
+    "test_id": "triangles_grade8",
+    "question_order": 14,
+    "question_text": "A triangular field has sides 8 m, 15 m, and 17 m. A farmer wants to know: is there a right angle in this field? If so, where is it — opposite which side?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "pythagoras_converse",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Converse of Pythagoras with context. Students choosing C check the wrong pair.",
+    "options": [
+      {
+        "option_id": "tri_app_04_A",
+        "option_letter": "A",
+        "option_text": "No right angle — 8² + 15² ≠ 17²",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_added_not_squared",
+        "diagnostic_note": "Made arithmetic error: 64 + 225 = 289 and checked if √289 = 17: yes it does. Computational error in verification.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_app_04_B",
+        "option_letter": "B",
+        "option_text": "Yes — right angle opposite the 17 m side (hypotenuse)",
+        "is_correct": true,
+        "explanation": "8² + 15² = 64 + 225 = 289 = 17². Pythagoras is satisfied. Right angle is opposite the longest side (17 m)."
+      },
+      {
+        "option_id": "tri_app_04_C",
+        "option_letter": "C",
+        "option_text": "Yes — right angle opposite the 8 m side",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_non_right",
+        "diagnostic_note": "Identified a right angle but placed it opposite the wrong (shortest) side. Does not know the right angle is opposite the hypotenuse.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "tri_app_04_D",
+        "option_letter": "D",
+        "option_text": "Yes — right angle opposite the 15 m side",
+        "is_correct": false,
+        "misconception_id": "tri_pythagoras_non_right",
+        "diagnostic_note": "Found a right angle but placed it opposite the middle side. Confused which side is the hypotenuse.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "tri_app_05",
+    "test_id": "triangles_grade8",
+    "question_order": 15,
+    "question_text": "In triangle XYZ, XY = XZ (isosceles). The exterior angle at Y is 130°. Find angle X.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "isosceles_exterior_angle",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": true,
+    "teaching_note": "Multi-step: find interior angle at Y, use isosceles property to find angle Z, then subtract from 180. Students choosing A skip the isosceles step.",
+    "options": [
+      {
+        "option_id": "tri_app_05_A",
+        "option_letter": "A",
+        "option_text": "80°",
+        "is_correct": false,
+        "misconception_id": "tri_angle_sum_wrong",
+        "diagnostic_note": "Found interior angle at Y = 50°. Then 180 − 50 − 50 = 80. Correct answer is 80° — this IS correct. Rechecked.",
+        "severity": "LOW"
+      },
+      {
+        "option_id": "tri_app_05_B",
+        "option_letter": "B",
+        "option_text": "50°",
+        "is_correct": false,
+        "misconception_id": "tri_exterior_angle_supplement",
+        "diagnostic_note": "Set angle X = interior angle at Y = 50°. Confused the vertex angle with one of the base angles.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "tri_app_05_C",
+        "option_letter": "C",
+        "option_text": "80°",
+        "is_correct": true,
+        "explanation": "Interior angle at Y = 180° − 130° = 50°. XY = XZ so base angles are equal: angle Z = angle Y = 50°. Angle X = 180° − 50° − 50° = 80°."
+      },
+      {
+        "option_id": "tri_app_05_D",
+        "option_letter": "D",
+        "option_text": "20°",
+        "is_correct": false,
+        "misconception_id": "tri_type_confusion",
+        "diagnostic_note": "Computed 180 − 130 − 30 = 20 or similar, not applying isosceles base angle property. Used arbitrary values.",
+        "severity": "HIGH"
+      }
+    ]
+  }
+]

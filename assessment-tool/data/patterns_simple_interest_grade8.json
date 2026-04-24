@@ -1,0 +1,82 @@
+[
+  {
+    "pattern_id": "formula_application_breakdown_simint",
+    "pattern_name": "Formula Application Breakdown",
+    "description": "Student knows the SI formula exists but cannot correctly apply it, rearrange it, or identify which variable to solve for in different problem types.",
+    "subject": "simple_interest",
+    "detection_logic": {
+      "misconception_ids": ["simint_formula_confusion", "simint_prt_wrong_rearrangement"],
+      "min_count": 2
+    },
+    "diagnosis": "Student has surface-level formula knowledge but lacks the algebraic reasoning to work flexibly with it. Can plug in when P, R, T are all given but fails when any one is unknown. Needs both algebraic practice and conceptual grounding.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Correct when finding SI directly (all three known)",
+      "Wrong when asked to find P, R, or T",
+      "Inconsistent application of formula across question types"
+    ],
+    "recommended_intervention_type": "algebraic_fluency",
+    "intervention_focus": "Formula triangle practice for SI = PRT/100 combined with meaning of each variable",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "interest_amount_confusion_simint",
+    "pattern_name": "Interest vs Amount Confusion",
+    "description": "Student systematically confuses Simple Interest (the earnings) with the Total Amount (principal + earnings), leading to errors in both directions.",
+    "subject": "simple_interest",
+    "detection_logic": {
+      "misconception_ids": ["simint_amount_vs_interest", "simint_formula_confusion"],
+      "min_count": 2
+    },
+    "diagnosis": "A fundamental conceptual gap: student hasn't built a clear mental model of the difference between what you earn (interest) and what you have in total (amount). This is the most common source of error in SI problems and affects compound interest later.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Given Amount, uses it directly in the rate/time formula instead of finding SI = Amount − P",
+      "Given P and SI, returns SI as the total repayment amount",
+      "Inconsistent answers across problems asking for 'interest earned' vs 'total amount'"
+    ],
+    "recommended_intervention_type": "conceptual_distinction",
+    "intervention_focus": "Real-world money scenarios distinguishing 'profit earned' from 'total money in hand'",
+    "estimated_intervention_time": "1-2 weeks"
+  },
+  {
+    "pattern_id": "unit_and_rate_errors_simint",
+    "pattern_name": "Unit and Rate Conversion Errors",
+    "description": "Student makes systematic errors in handling the rate (not converting % to /100) and time (not converting months to years), indicating weak understanding of units in the formula.",
+    "subject": "simple_interest",
+    "detection_logic": {
+      "misconception_ids": ["simint_rate_not_converted", "simint_time_in_wrong_unit"],
+      "min_count": 2
+    },
+    "diagnosis": "Student substitutes values without checking units. The 'per annum' and '%' conventions are not operationalized. This is a cross-topic issue affecting physics, chemistry, and all quantitative subjects.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Answers are 100× too large (rate used as whole number)",
+      "Answers are 12× too large (months not converted to years)",
+      "Makes different errors on different problems with no consistent pattern"
+    ],
+    "recommended_intervention_type": "unit_checking_habits",
+    "intervention_focus": "Explicit unit analysis before substituting in all formula-based problems",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "procedural_si_without_context",
+    "pattern_name": "Procedural SI Without Context Understanding",
+    "description": "Student can apply the SI formula in straightforward problems but fails in application problems that require interpreting the real-world context (e.g., loan repayment, profit sharing, comparing rates).",
+    "subject": "simple_interest",
+    "detection_logic": {
+      "misconception_ids": ["simint_percentage_formula_used", "simint_wrong_principal"],
+      "min_count": 2
+    },
+    "diagnosis": "Student's formula knowledge is procedural and context-free. When the problem involves multiple loans, comparison, or finding an unknown from real-world language, comprehension breaks down. Needs exposure to varied real-world contexts.",
+    "grade8_risk": "MEDIUM-HIGH",
+    "symptoms": [
+      "Correct on standard SI = PRT/100 problems",
+      "Wrong on problems requiring comprehension of 'borrows', 'repays', 'invests'",
+      "Combines principals or averages rates incorrectly"
+    ],
+    "recommended_intervention_type": "contextual_application",
+    "intervention_focus": "Worked examples with real-world financial scenarios before re-attempting formula problems",
+    "estimated_intervention_time": "2-3 weeks"
+  }
+]

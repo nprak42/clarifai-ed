@@ -1,0 +1,102 @@
+[
+  {
+    "pattern_id": "unlike_terms_combiner_algexp",
+    "pattern_name": "Unlike Terms Combiner",
+    "description": "Student systematically combines unlike terms — adds terms with different variables or different powers as if they were the same. This is the most fundamental algebraic misconception and blocks all further algebra.",
+    "subject": "algebraic_expressions",
+    "detection_logic": {
+      "misconception_ids": ["algexp_unlike_terms_combined", "algexp_like_terms_power_error"],
+      "min_count": 2
+    },
+    "diagnosis": "Student has not built the foundational concept that algebraic terms can only be combined when they represent the same quantity (same variable AND same power). All simplification and polynomial work will be systematically wrong until this is corrected.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "3x + 2y = 5xy or 5x",
+      "5x² + 3x = 8x³",
+      "Cannot explain why unlike terms cannot be added"
+    ],
+    "recommended_intervention_type": "conceptual_rebuilding",
+    "intervention_focus": "Use concrete objects: 3 apples + 2 bananas ≠ 5 'applebananas'. Build the abstract rule from concrete analogy.",
+    "estimated_intervention_time": "3-4 weeks"
+  },
+  {
+    "pattern_id": "sign_distribution_breakdown_algexp",
+    "pattern_name": "Sign Distribution Breakdown",
+    "description": "Student consistently fails to distribute negative signs correctly when subtracting expressions or removing brackets with a negative outside — the sign error pattern appears across multiple expression problems.",
+    "subject": "algebraic_expressions",
+    "detection_logic": {
+      "misconception_ids": ["algexp_sign_error_subtraction", "algexp_distribution_incomplete"],
+      "min_count": 2
+    },
+    "diagnosis": "The negative bracket rule (−(a−b) = −a+b) is not internalized. Student knows to subtract but doesn't apply the sign change to all terms inside the bracket. This error compounds in multi-step simplification and equation solving.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "(7x+5) − (3x−2) gives 4x+3 instead of 4x+7",
+      "2(3x+4) gives 6x+4 instead of 6x+8",
+      "Correct on first term, wrong on subsequent terms inside bracket"
+    ],
+    "recommended_intervention_type": "sign_rule_explicit_practice",
+    "intervention_focus": "Explicit rule: −1 multiplies EVERY term inside the bracket. Use color-coding to track sign changes.",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "substitution_breakdown_algexp",
+    "pattern_name": "Substitution Breakdown",
+    "description": "Student cannot correctly substitute numerical values into algebraic expressions — either adds coefficients to values, mishandles squared terms, or makes systematic sign errors during evaluation.",
+    "subject": "algebraic_expressions",
+    "detection_logic": {
+      "misconception_ids": ["algexp_substitution_error", "algexp_identity_error"],
+      "min_count": 2
+    },
+    "diagnosis": "Algebraic notation — the meaning of 3a (three times a), p² (p multiplied by itself), (a+b)² — is not fully internalized. Student reads the expression differently from how it should be evaluated. This is a notation fluency gap.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "3a with a=4 gives 7 (addition instead of multiplication)",
+      "p² with p=3 gives 6 instead of 9",
+      "(a+b)² with a=3, b=2 gives 13 instead of 25"
+    ],
+    "recommended_intervention_type": "notation_fluency",
+    "intervention_focus": "Explicit mapping of algebraic notation to arithmetic operations: 3a means 3 × a; a² means a × a",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "context_expression_breakdown_algexp",
+    "pattern_name": "Context-Expression Translation Breakdown",
+    "description": "Student cannot reliably translate between verbal descriptions and algebraic expressions, nor apply expressions correctly in geometry or real-world contexts.",
+    "subject": "algebraic_expressions",
+    "detection_logic": {
+      "misconception_ids": ["algexp_expression_word_translation", "algexp_expression_context_error"],
+      "min_count": 2
+    },
+    "diagnosis": "Algebraic expressions are treated as abstract symbol manipulation without connection to meaning. Student cannot write an expression for a described quantity or identify which expression models a given situation. This blocks all applied algebra and mathematical modelling.",
+    "grade8_risk": "MEDIUM-HIGH",
+    "symptoms": [
+      "Cannot write 3n + 5 for 'five more than three times n'",
+      "Computes area when perimeter is asked using algebraic expressions",
+      "Sets up correct symbolic form but uses wrong constant or coefficient from context"
+    ],
+    "recommended_intervention_type": "expression_meaning_focus",
+    "intervention_focus": "Systematic phrase-to-expression mapping and real-world expression building before simplification practice",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "factorization_and_identity_gap_algexp",
+    "pattern_name": "Factorization and Identity Gap",
+    "description": "Student cannot factorize expressions correctly (leaves partially factored) and misapplies algebraic identities (drops the cross term from squared sums), indicating weak understanding of what expressions represent.",
+    "subject": "algebraic_expressions",
+    "detection_logic": {
+      "misconception_ids": ["algexp_factorization_incomplete", "algexp_identity_error"],
+      "min_count": 2
+    },
+    "diagnosis": "Both factorization and identity errors suggest the student has not built a conceptual understanding of what algebraic expressions represent — factorization as 'reversing expansion' and identity as 'area of a square'. Procedural practice alone won't fix this.",
+    "grade8_risk": "MEDIUM",
+    "symptoms": [
+      "6x² + 9x factorized only to 3(2x²+3x) or x(6x+9) but not 3x(2x+3)",
+      "(a+b)² expanded as a²+b²",
+      "Cannot verify factorization by re-expanding"
+    ],
+    "recommended_intervention_type": "conceptual_visual_approach",
+    "intervention_focus": "Area model for both expansion and factorization; visual proof of (a+b)² identity using squares",
+    "estimated_intervention_time": "2-3 weeks"
+  }
+]

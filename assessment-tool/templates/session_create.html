@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Session — Clarifai</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a href="{{ url_for('home') }}" class="site-nav-brand">Clarif<span>ai</span></a>
+      <div class="site-nav-links">
+        <a href="{{ url_for('home') }}">← Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="max-width: 600px;">
+    <header style="padding: 1.5rem 0 1rem;">
+      <h1>New Test Session</h1>
+      <p class="subtitle">Set up a session and share the access code with your students.</p>
+    </header>
+
+    {% if error %}
+    <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('create_session') }}">
+      <div class="form-card">
+        <h2>Select Assessment</h2>
+        <div class="form-group">
+          <label for="test_id">Assessment <span class="required">*</span></label>
+          <select name="test_id" id="test_id" required>
+            <option value="">— Choose an assessment —</option>
+            {% for test in tests %}
+            <option value="{{ test.test_id }}">
+              Grade {{ test.grade }} · {{ test.title }}
+              ({{ test.total_questions }}q · ~{{ test.estimated_time_minutes }} min)
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h2>Session Details <span class="optional">(optional)</span></h2>
+
+        <div class="form-group">
+          <label for="teacher_name">Your Name</label>
+          <input type="text" id="teacher_name" name="teacher_name" placeholder="Ms. Sharma">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="school_name">School</label>
+            <input type="text" id="school_name" name="school_name" placeholder="Delhi Public School">
+          </div>
+          <div class="form-group">
+            <label for="class_section">Class / Section</label>
+            <input type="text" id="class_section" name="class_section" placeholder="Grade 8-A">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="session_date">Date</label>
+          <input type="date" id="session_date" name="session_date" value="{{ today }}">
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-large btn-full">Create Session &amp; Get Code →</button>
+    </form>
+  </div>
+</body>
+</html>

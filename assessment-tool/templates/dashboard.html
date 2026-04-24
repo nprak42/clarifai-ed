@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ data.test.title }} — {{ data.session.access_code }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="site-nav no-print">
+    <div class="site-nav-inner">
+      <a href="{{ url_for('home') }}" class="site-nav-brand">Clarif<span>ai</span></a>
+      <div class="site-nav-links">
+        <a href="{{ url_for('home') }}">← All Sessions</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- ===== SESSION HEADER ===== -->
+    <div class="dashboard-header">
+      <div class="header-left">
+        <h1>{{ data.test.title }}</h1>
+        <div class="session-meta">
+          {% if data.session.class_section %}<span>{{ data.session.class_section }}</span>{% endif %}
+          {% if data.session.school_name %}<span>{{ data.session.school_name }}</span>{% endif %}
+          {% if data.session.session_date %}<span>{{ data.session.session_date }}</span>{% endif %}
+          {% if data.session.created_by_teacher %}<span>{{ data.session.created_by_teacher }}</span>{% endif %}
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="access-code-big">
+          <div class="code-label">Access Code</div>
+          <div class="code-value" id="access-code">{{ access_code }}</div>
+          <div class="code-hint">Share with students</div>
+        </div>
+        <div class="students-count">
+          <span id="students-count">{{ data.session.students_completed }}</span>
+          <div>students completed</div>
+        </div>
+      </div>
+    </div>
+
+    {% if data.class_summary.student_count == 0 %}
+    <!-- Empty state -->
+    <div class="empty-state">
+      <div class="empty-icon">📋</div>
+      <h2>Waiting for students...</h2>
+      <p>Students can join at <strong>/test/{{ access_code }}</strong> using the code above.</p>
+      <p class="hint">This page will update automatically every 30 seconds.</p>
+    </div>
+
+    {% else %}
+
+    <!-- ===== CLASS OVERVIEW ===== -->
+    <section class="dashboard-section">
+      <h2>Class Overview</h2>
+      <div class="overview-row">
+        <div class="overview-stat">
+          <div class="stat-value" data-stat="student-count">{{ data.class_summary.student_count }}</div>
+          <div class="stat-label">Students</div>
+        </div>
+        <div class="overview-stat {% if data.class_summary.avg_score >= 75 %}stat-good{% elif data.class_summary.avg_score >= 50 %}stat-warn{% else %}stat-bad{% endif %}">
+          <div class="stat-value" data-stat="avg-score">{{ data.class_summary.avg_score }}%</div>
+          <div class="stat-label">Class Average</div>
+        </div>
+        <div class="overview-divider"></div>
+        <div class="overview-misconceptions">
+          <div class="overview-miscon-label">Most common errors</div>
+          {% for misconception_id, count in data.class_summary.top_misconceptions %}
+          {% set m = data.all_misconceptions.get(misconception_id) %}
+          {% if m %}
+          <div class="overview-miscon-row">
+            <span class="severity-badge badge-{{ m.severity | lower }}">{{ m.severity }}</span>
+            <span class="overview-miscon-name">{{ m.misconception_name }}</span>
+            <span class="overview-miscon-count">{{ count }} student{% if count != 1 %}s{% endif %}</span>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PATTERNS: PRIMARY ACTION VIEW ===== -->
+    {% if data.pattern_groups %}
+    <section class="dashboard-section">
+      <h2>Learning Patterns Detected</h2>
+      <p class="section-hint no-print">Ordered by risk level. Click a pattern to see diagnosis, affected students, and how to respond.</p>
+
+      <div class="action-list">
+        {% for group in data.pattern_groups %}
+        {% set p = group.pattern %}
+        <div class="action-item risk-{{ p.grade8_risk | lower | replace('-', '') }}" id="pattern-{{ p.pattern_id }}">
+
+          <button class="action-summary no-print"
+                  onclick="toggleAction('detail-{{ p.pattern_id }}', this)"
+                  data-detail-id="detail-{{ p.pattern_id }}"
+                  aria-expanded="false">
+            <div class="action-summary-left">
+              <span class="risk-badge risk-inline-{{ p.grade8_risk | lower | replace('-', '') }}">{{ p.grade8_risk }} risk</span>
+              <span class="action-name">{{ p.pattern_name }}</span>
+              <span class="action-concept text-muted">{{ p.intervention_focus[:60] }}{% if p.intervention_focus|length > 60 %}…{% endif %}</span>
+            </div>
+            <div class="action-summary-right">
+              <div class="action-students-chips">
+                {% for name in group.students %}
+                <span class="student-chip">{{ name }}</span>
+                {% endfor %}
+              </div>
+              <span class="action-count">{{ group.count }} student{% if group.count != 1 %}s{% endif %}</span>
+              <span class="action-chevron">▸</span>
+            </div>
+          </button>
+
+          <div class="action-print-header print-only">
+            <strong>{{ p.pattern_name }}</strong> — {{ p.grade8_risk }} risk
+            <div><strong>Students:</strong> {{ group.students | join(', ') }}</div>
+          </div>
+
+          <div class="action-detail" id="detail-{{ p.pattern_id }}" hidden>
+            <div class="action-detail-inner">
+
+              <div class="detail-students">
+                <strong>Students in this group:</strong>
+                {% for name in group.students %}<span class="student-chip">{{ name }}</span>{% endfor %}
+              </div>
+
+              <div class="detail-explain">
+                <strong>What's happening:</strong> {{ p.diagnosis }}
+              </div>
+
+              {% if p.symptoms %}
+              <div class="detail-symptoms">
+                <strong>Signs you'll notice:</strong>
+                <ul class="symptoms-list">
+                  {% for symptom in p.symptoms %}
+                  <li>{{ symptom }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endif %}
+
+              <div class="detail-intervention-focus">
+                <strong>Approach:</strong> {{ p.intervention_focus }}
+                {% if p.estimated_intervention_time %}
+                <span class="plan-time">· {{ p.estimated_intervention_time }}</span>
+                {% endif %}
+              </div>
+
+              {% if group.misconception_evidence %}
+              <div class="detail-evidence">
+                <strong>Specific errors driving this pattern:</strong>
+                <div class="evidence-list">
+                  {% for m in group.misconception_evidence %}
+                  <div class="evidence-item">
+                    <span class="severity-badge badge-{{ m.severity | lower }}">{{ m.severity }}</span>
+                    <span class="evidence-name">{{ m.misconception_name }}</span>
+                    <span class="evidence-count text-muted">{{ m.count }}×</span>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+
+              <div class="detail-actions no-print">
+                <button class="btn-print" onclick="printCard('pattern-{{ p.pattern_id }}')">Print this card</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ===== STUDENT RESULTS ===== -->
+    <section class="dashboard-section">
+      <button class="section-toggle no-print" onclick="toggleSection('student-section', this)" aria-expanded="false">
+        <h2>Individual Student Results <span class="toggle-hint">({{ data.class_summary.student_count }} students)</span></h2>
+        <span class="section-chevron">▸ Show</span>
+      </button>
+      <h2 class="print-only">Individual Student Results</h2>
+
+      <div id="student-section" hidden>
+        <div class="table-wrap">
+          <table class="student-table" id="student-table">
+            <thead>
+              <tr>
+                <th onclick="sortTable(0)">Student ⇅</th>
+                <th onclick="sortTable(1)">Score ⇅</th>
+                <th>Patterns</th>
+                {% if data.test.subject == 'fractions' %}
+                <th>Visual</th>
+                <th>Diagram</th>
+                <th>Symbolic</th>
+                {% elif data.test.subject in ('motion', 'lines_angles', 'circles') %}
+                <th>Mechanical</th>
+                <th>Conceptual</th>
+                <th>Application</th>
+                {% else %}
+                <th>Calculation</th>
+                <th>Conceptual</th>
+                {% endif %}
+                <th class="no-print">Tutor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for s in data.students | sort(attribute='score_percent') %}
+              <tr class="{% if s.score_percent >= 75 %}row-good{% elif s.score_percent >= 50 %}row-warn{% else %}row-bad{% endif %}">
+                <td>{{ s.name }}</td>
+                <td class="score-cell">
+                  <div class="score-bar-wrap">
+                    <div class="score-bar" style="width: {{ s.score_percent }}%"></div>
+                  </div>
+                  {{ s.score_percent }}% ({{ s.total_correct }}/{{ s.total_questions }})
+                </td>
+                <td>
+                  {% for pid in s.patterns %}
+                  {% set p = data.all_patterns.get(pid) %}
+                  {% if p %}
+                  <span class="pattern-pill risk-pill-{{ p.grade8_risk | lower | replace('-','') }}">{{ p.pattern_name }}</span>
+                  {% endif %}
+                  {% endfor %}
+                  {% if not s.patterns %}
+                  <span class="text-muted">None detected</span>
+                  {% endif %}
+                </td>
+                {% if data.test.subject == 'fractions' %}
+                <td>{{ s.tier_scores.get('concrete', '—') }}{% if s.tier_scores.get('concrete') is not none %}%{% endif %}</td>
+                <td>{{ s.tier_scores.get('semi_abstract', '—') }}{% if s.tier_scores.get('semi_abstract') is not none %}%{% endif %}</td>
+                <td>{{ s.tier_scores.get('abstract', '—') }}{% if s.tier_scores.get('abstract') is not none %}%{% endif %}</td>
+                {% elif data.test.subject in ('motion', 'lines_angles', 'circles') %}
+                <td>{{ s.type_scores.get('mechanical', '—') }}{% if s.type_scores.get('mechanical') is not none %}%{% endif %}</td>
+                <td>{{ s.type_scores.get('understanding', '—') }}{% if s.type_scores.get('understanding') is not none %}%{% endif %}</td>
+                <td>{{ s.type_scores.get('application', '—') }}{% if s.type_scores.get('application') is not none %}%{% endif %}</td>
+                {% else %}
+                <td>{{ s.type_scores.get('mechanical', '—') }}{% if s.type_scores.get('mechanical') is not none %}%{% endif %}</td>
+                <td>{{ s.type_scores.get('understanding', '—') }}{% if s.type_scores.get('understanding') is not none %}%{% endif %}</td>
+                {% endif %}
+                <td class="no-print">
+                  <button class="btn-tutor" onclick="startTutorSession('{{ data.session.session_id }}', '{{ s.name }}')">Start Tutor</button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    {% endif %} {# end if students > 0 #}
+
+    <!-- ===== SESSION NOTES + CLOSE ===== -->
+    <section class="dashboard-section no-print" id="session-actions-section">
+      {% if data.session.status == 'closed' %}
+      <div class="session-closed-banner">
+        Session closed
+        {% if data.session.closed_at %} · {{ data.session.closed_at[:10] }}{% endif %}
+      </div>
+      {% if data.session.teacher_notes %}
+      <div class="teacher-notes-display">
+        <strong>Notes:</strong> {{ data.session.teacher_notes }}
+      </div>
+      {% endif %}
+      {% else %}
+      <div class="session-actions">
+        <label for="teacher-notes" class="notes-label">Teacher notes</label>
+        <textarea id="teacher-notes" class="teacher-notes-input"
+                  placeholder="Record what you observed, interventions planned, follow-up actions..."
+                  rows="3">{{ data.session.teacher_notes or '' }}</textarea>
+        <div class="session-action-buttons">
+          <button class="btn-save-notes" onclick="saveNotes()">Save notes</button>
+          <button class="btn-close-session" onclick="confirmCloseSession()">Close session</button>
+        </div>
+        <div id="session-action-msg" class="session-action-msg hidden"></div>
+      </div>
+      {% endif %}
+    </section>
+
+    <!-- Auto-refresh note -->
+    <div class="refresh-note no-print">
+      <span id="refresh-status">Auto-refreshing every 30 seconds</span>
+      &nbsp;·&nbsp;
+      <a href="{{ url_for('dashboard', access_code=access_code) }}">Refresh now</a>
+    </div>
+
+  </div> <!-- /container -->
+
+  <!-- Embed static metadata for JS use during live updates -->
+  <script id="meta-misconceptions" type="application/json">{{ data.all_misconceptions | tojson }}</script>
+  <script id="meta-patterns" type="application/json">{{ data.all_patterns | tojson }}</script>
+  <script id="meta-subject" type="application/json">"{{ data.test.subject }}"</script>
+  <script id="meta-session-id" type="application/json">"{{ data.session.session_id }}"</script>
+
+  <script>
+  const ALL_MISCONCEPTIONS = JSON.parse(document.getElementById('meta-misconceptions').textContent);
+  const SUBJECT = JSON.parse(document.getElementById('meta-subject').textContent);
+  const SESSION_ID = JSON.parse(document.getElementById('meta-session-id').textContent);
+  const SEVERITY_ORDER = {CRITICAL: 0, HIGH: 1, MEDIUM: 2, LOW: 3};
+
+  // ---- Toggle action detail ----
+  function toggleAction(detailId, btn) {
+    const detail = document.getElementById(detailId);
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    detail.hidden = expanded;
+    btn.setAttribute('aria-expanded', String(!expanded));
+    btn.querySelector('.action-chevron').textContent = expanded ? '▸' : '▾';
+  }
+
+  // ---- Toggle student section ----
+  function toggleSection(sectionId, btn) {
+    const section = document.getElementById(sectionId);
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    section.hidden = expanded;
+    btn.setAttribute('aria-expanded', String(!expanded));
+    btn.querySelector('.section-chevron').textContent = expanded ? '▸ Show' : '▾ Hide';
+  }
+
+  // ---- Sort table ----
+  function sortTable(colIndex) {
+    const table = document.getElementById('student-table');
+    if (!table) return;
+    const rows = Array.from(table.tBodies[0].rows);
+    const asc = table.dataset.sortCol == colIndex && table.dataset.sortDir === 'asc';
+    rows.sort((a, b) => {
+      let va = a.cells[colIndex].textContent.trim();
+      let vb = b.cells[colIndex].textContent.trim();
+      const na = parseFloat(va), nb = parseFloat(vb);
+      if (!isNaN(na) && !isNaN(nb)) return asc ? na - nb : nb - na;
+      return asc ? va.localeCompare(vb) : vb.localeCompare(va);
+    });
+    rows.forEach(r => table.tBodies[0].appendChild(r));
+    table.dataset.sortCol = colIndex;
+    table.dataset.sortDir = asc ? 'desc' : 'asc';
+  }
+
+  // ---- Print individual card ----
+  function printCard(cardId) {
+    const card = document.getElementById(cardId);
+    const w = window.open('', '_blank');
+    w.document.write(`
+      <html><head><title>Intervention Plan</title>
+      <link rel="stylesheet" href="${window.location.origin}/static/style.css">
+      </head><body class="print-only">
+      ${card.outerHTML}
+      </body></html>
+    `);
+    w.document.close();
+    w.focus();
+    setTimeout(() => w.print(), 500);
+  }
+
+  // ---- Live update helpers ----
+
+  function esc(str) {
+    return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function updateOverviewStats(d) {
+    const cs = d.class_summary;
+    document.getElementById('students-count').textContent = d.session.students_completed;
+
+    const avgEl = document.querySelector('[data-stat="avg-score"]');
+    if (avgEl) {
+      avgEl.textContent = cs.avg_score + '%';
+      const stat = avgEl.closest('.overview-stat');
+      if (stat) stat.className = 'overview-stat ' + (cs.avg_score >= 75 ? 'stat-good' : cs.avg_score >= 50 ? 'stat-warn' : 'stat-bad');
+    }
+    const countEl = document.querySelector('[data-stat="student-count"]');
+    if (countEl) countEl.textContent = cs.student_count;
+  }
+
+  function buildStudentRow(s, allPatterns) {
+    const rowClass = s.score_percent >= 75 ? 'row-good' : s.score_percent >= 50 ? 'row-warn' : 'row-bad';
+    const pills = (s.patterns || []).map(pid => {
+      const p = allPatterns[pid];
+      if (!p) return '';
+      const risk = (p.grade8_risk || 'low').toLowerCase().replace(/-/g, '');
+      return `<span class="risk-pill-${risk}">${esc(p.pattern_name)}</span>`;
+    }).join('');
+
+    let tierCells = '';
+    if (SUBJECT === 'fractions') {
+      const t1 = s.tier_scores.concrete;
+      const t2 = s.tier_scores.semi_abstract;
+      const t3 = s.tier_scores.abstract;
+      tierCells = `<td>${t1 != null ? t1 + '%' : '—'}</td><td>${t2 != null ? t2 + '%' : '—'}</td><td>${t3 != null ? t3 + '%' : '—'}</td>`;
+    } else if (SUBJECT === 'motion' || SUBJECT === 'lines_angles' || SUBJECT === 'circles') {
+      const mech = s.type_scores.mechanical;
+      const und  = s.type_scores.understanding;
+      const app  = s.type_scores.application;
+      tierCells = `<td>${mech != null ? mech + '%' : '—'}</td><td>${und != null ? und + '%' : '—'}</td><td>${app != null ? app + '%' : '—'}</td>`;
+    } else {
+      const mech = s.type_scores.mechanical;
+      const und  = s.type_scores.understanding;
+      tierCells = `<td>${mech != null ? mech + '%' : '—'}</td><td>${und != null ? und + '%' : '—'}</td>`;
+    }
+
+    return `<tr class="${rowClass}">
+      <td>${esc(s.name)}</td>
+      <td class="score-cell">
+        <div class="score-bar-wrap"><div class="score-bar" style="width:${s.score_percent}%"></div></div>
+        ${s.score_percent}% (${s.total_correct}/${s.total_questions})
+      </td>
+      <td>${pills || '<span class="text-muted">None detected</span>'}</td>
+      ${tierCells}
+      <td class="no-print"><button class="btn-tutor" onclick="startTutorSession('${SESSION_ID}', '${esc(s.name)}')">Start Tutor</button></td>
+    </tr>`;
+  }
+
+  function updateStudentTable(d) {
+    const tbody = document.querySelector('#student-table tbody');
+    if (!tbody) return;
+    // Build a quick lookup from pattern_groups data
+    const allPatterns = {};
+    (d.pattern_groups || []).forEach(g => { allPatterns[g.pattern.pattern_id] = g.pattern; });
+    const sorted = [...d.students].sort((a,b) => a.score_percent - b.score_percent);
+    tbody.innerHTML = sorted.map(s => buildStudentRow(s, allPatterns)).join('');
+  }
+
+  const RISK_ORDER = {CRITICAL: 0, HIGH: 1, 'MEDIUM-HIGH': 2, MEDIUM: 3, LOW: 4};
+
+  function updateActionList(d) {
+    const list = document.querySelector('.action-list');
+    if (!list) return;
+
+    // Track which detail panels are currently open so we can restore them
+    const openIds = new Set(
+      [...list.querySelectorAll('.action-summary[aria-expanded="true"]')]
+        .map(btn => btn.getAttribute('data-detail-id'))
+    );
+
+    const groups = [...(d.pattern_groups || [])].sort((a, b) => {
+      const ra = RISK_ORDER[a.pattern.grade8_risk] ?? 4;
+      const rb = RISK_ORDER[b.pattern.grade8_risk] ?? 4;
+      return ra !== rb ? ra - rb : b.count - a.count;
+    });
+
+    list.innerHTML = groups.map(group => {
+      const p = group.pattern;
+      const detailId = `detail-${p.pattern_id}`;
+      const isOpen = openIds.has(detailId);
+      const risk = (p.grade8_risk || 'low').toLowerCase().replace(/-/g, '');
+      const chips = group.students.map(n => `<span class="student-chip">${esc(n)}</span>`).join('');
+      const plural = group.count !== 1 ? 's' : '';
+      const focusPreview = (p.intervention_focus || '').length > 60
+        ? p.intervention_focus.slice(0, 60) + '…' : (p.intervention_focus || '');
+
+      const evidenceHTML = (group.misconception_evidence || []).map(m => `
+        <div class="evidence-item">
+          <span class="severity-badge badge-${(m.severity||'low').toLowerCase()}">${esc(m.severity)}</span>
+          <span class="evidence-name">${esc(m.misconception_name)}</span>
+          <span class="evidence-count text-muted">${m.count}×</span>
+        </div>`).join('');
+
+      const symptomsHTML = Array.isArray(p.symptoms) && p.symptoms.length
+        ? `<div class="detail-symptoms"><strong>Signs you'll notice:</strong><ul class="symptoms-list">${p.symptoms.map(s => `<li>${esc(s)}</li>`).join('')}</ul></div>`
+        : '';
+
+      return `
+        <div class="action-item risk-${risk}" id="pattern-${p.pattern_id}">
+          <button class="action-summary no-print"
+                  onclick="toggleAction('${detailId}', this)"
+                  data-detail-id="${detailId}"
+                  aria-expanded="${isOpen}">
+            <div class="action-summary-left">
+              <span class="risk-inline-${risk}">${esc(p.grade8_risk)} risk</span>
+              <span class="action-name">${esc(p.pattern_name)}</span>
+              <span class="action-concept text-muted">${esc(focusPreview)}</span>
+            </div>
+            <div class="action-summary-right">
+              <div class="action-students-chips">${chips}</div>
+              <span class="action-count">${group.count} student${plural}</span>
+              <span class="action-chevron">${isOpen ? '▾' : '▸'}</span>
+            </div>
+          </button>
+          <div class="action-detail" id="${detailId}" ${isOpen ? '' : 'hidden'}>
+            <div class="action-detail-inner">
+              <div class="detail-students"><strong>Students in this group:</strong> ${chips}</div>
+              ${p.diagnosis ? `<div class="detail-explain"><strong>What's happening:</strong> ${esc(p.diagnosis)}</div>` : ''}
+              ${symptomsHTML}
+              ${p.intervention_focus ? `<div class="detail-intervention-focus"><strong>Approach:</strong> ${esc(p.intervention_focus)}${p.estimated_intervention_time ? ` <span class="plan-time">· ${esc(p.estimated_intervention_time)}</span>` : ''}</div>` : ''}
+              ${evidenceHTML ? `<div class="detail-evidence"><strong>Specific errors driving this pattern:</strong><div class="evidence-list">${evidenceHTML}</div></div>` : ''}
+              <div class="detail-actions no-print">
+                <button class="btn-print" onclick="printCard('pattern-${p.pattern_id}')">Print this card</button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function updateSectionToggleLabel(d) {
+    const hint = document.querySelector('.toggle-hint');
+    if (hint) hint.textContent = `(${d.class_summary.student_count} students)`;
+  }
+
+  // ---- Session close + notes ----
+
+  const ACCESS_CODE = '{{ access_code }}';
+
+  function showActionMsg(text, isError) {
+    const el = document.getElementById('session-action-msg');
+    if (!el) return;
+    el.textContent = text;
+    el.className = 'session-action-msg ' + (isError ? 'msg-error' : 'msg-ok');
+    setTimeout(() => el.className = 'session-action-msg hidden', 3000);
+  }
+
+  async function saveNotes() {
+    const notes = document.getElementById('teacher-notes').value.trim();
+    try {
+      const resp = await fetch('/api/save_notes', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({access_code: ACCESS_CODE, teacher_notes: notes}),
+      });
+      const d = await resp.json();
+      showActionMsg(d.success ? 'Notes saved.' : 'Failed to save notes.', !d.success);
+    } catch (e) {
+      showActionMsg('Error saving notes.', true);
+    }
+  }
+
+  async function confirmCloseSession() {
+    if (!confirm('Close this session? Students will no longer be able to take the test.')) return;
+    const notes = document.getElementById('teacher-notes') ?
+      document.getElementById('teacher-notes').value.trim() : null;
+    try {
+      const resp = await fetch('/api/close_session', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({access_code: ACCESS_CODE, teacher_notes: notes}),
+      });
+      const d = await resp.json();
+      if (d.success) {
+        location.reload();
+      } else {
+        showActionMsg('Failed to close session.', true);
+      }
+    } catch (e) {
+      showActionMsg('Error closing session.', true);
+    }
+  }
+
+  // ---- Start Tutor Session ----
+  async function startTutorSession(sessionId, studentName) {
+    try {
+      const resp = await fetch('/api/create_tutor_session', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({session_id: sessionId, student_name: studentName}),
+      });
+      const d = await resp.json();
+      if (d.success) {
+        window.open(d.tutor_url, '_blank');
+      } else {
+        alert('Could not create tutor session: ' + (d.error || 'unknown error'));
+      }
+    } catch (e) {
+      alert('Error connecting to tutor service. Is it running?');
+    }
+  }
+
+  // ---- Auto-refresh (silent, every 30s) ----
+  setInterval(async () => {
+    try {
+      const resp = await fetch('/dashboard/{{ access_code }}/data');
+      if (!resp.ok) return;
+      const d = await resp.json();
+
+      updateOverviewStats(d);
+      updateStudentTable(d);
+      updateActionList(d);
+      updateSectionToggleLabel(d);
+
+      document.getElementById('refresh-status').textContent =
+        'Last updated: ' + new Date().toLocaleTimeString();
+    } catch(e) {}
+  }, 30000);
+  </script>
+</body>
+</html>

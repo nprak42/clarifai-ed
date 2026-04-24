@@ -1,0 +1,88 @@
+[
+  {
+    "pattern_id": "formula_memorizer_electricity",
+    "pattern_name": "Formula Memorizer",
+    "description": "Can plug numbers into formulas but doesn't understand what quantities represent",
+    "subject": "electricity",
+    "detection_logic": {
+      "mechanical_score_min": 70,
+      "conceptual_score_max": 50,
+      "requires_both": true
+    },
+    "diagnosis": "Knows WHAT to do but not WHY. Can calculate but can't explain concepts.",
+    "grade8_risk": "CRITICAL",
+    "symptoms": [
+      "Gets Q=IT, V=IR calculations correct",
+      "Cannot explain what current, voltage actually ARE",
+      "Fails conceptual questions even though calculations work",
+      "Specific: correct on elec_mech_01, wrong on elec_concept_01"
+    ],
+    "recommended_intervention_type": "conceptual_rebuilding",
+    "intervention_focus": "What do these quantities represent physically? Build meaning before formulas.",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "weak_algebra_electricity",
+    "pattern_name": "Cannot Rearrange Formulas",
+    "description": "Understands concepts but weak mathematical manipulation",
+    "subject": "electricity",
+    "detection_logic": {
+      "mechanical_score_min": 60,
+      "rearrangement_score_max": 40,
+      "requires_both": true
+    },
+    "diagnosis": "Knows physics but weak algebra prevents solving problems",
+    "grade8_risk": "MEDIUM",
+    "symptoms": [
+      "Can solve V=IR when solving for V",
+      "Cannot solve when asked for I or R",
+      "Gets lost in algebraic manipulation",
+      "Specific: correct on elec_mech_03, wrong on elec_mech_04"
+    ],
+    "recommended_intervention_type": "math_skills",
+    "intervention_focus": "Formula rearrangement practice, algebraic manipulation",
+    "estimated_intervention_time": "1-2 weeks"
+  },
+  {
+    "pattern_id": "cannot_analyze_circuits",
+    "pattern_name": "Circuit Analysis Failure",
+    "description": "Knows formulas but cannot apply to real circuits",
+    "subject": "electricity",
+    "detection_logic": {
+      "mechanical_score_min": 60,
+      "circuit_score_max": 50,
+      "requires_both": true
+    },
+    "diagnosis": "Can solve isolated formula problems but cannot analyze multi-component circuits",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Correct on isolated formula problems",
+      "Cannot interpret circuit diagrams",
+      "Cannot do multi-step circuit analysis",
+      "Specific: correct on elec_mech_03/04, wrong on elec_app_01"
+    ],
+    "recommended_intervention_type": "systematic_circuit_analysis",
+    "intervention_focus": "Step-by-step problem solving strategies for circuits",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "persistent_unit_errors",
+    "pattern_name": "Unit/Conversion Issues",
+    "description": "Doesn't convert units or confuses quantities",
+    "subject": "electricity",
+    "detection_logic": {
+      "unit_error_count_min": 3
+    },
+    "diagnosis": "Persistent unit conversion errors or quantity confusion",
+    "grade8_risk": "MEDIUM",
+    "symptoms": [
+      "Leaves time in minutes instead of seconds",
+      "Confuses Volts, Joules, Watts",
+      "Right calculation, wrong units",
+      "Pattern across multiple questions"
+    ],
+    "recommended_intervention_type": "unit_discipline",
+    "intervention_focus": "Always write units, check dimensional analysis",
+    "estimated_intervention_time": "1-2 weeks"
+  }
+]

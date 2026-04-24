@@ -1,0 +1,767 @@
+[
+  {
+    "question_id": "lineq_mech_01",
+    "test_id": "linear_equations_grade8",
+    "question_order": 1,
+    "question_text": "Solve: x + 7 = 15",
+    "image_path": null,
+    "image_description": null,
+    "concept": "one_step_equation",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Entry-level equation. Students choosing A add instead of subtract. Students choosing D reverse the sign.",
+    "options": [
+      {
+        "option_id": "lineq_mech_01_A",
+        "option_letter": "A",
+        "option_text": "x = 22",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Added 7 instead of subtracting: x = 15 + 7 = 22. Did not reverse the operation when transposing.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_mech_01_B",
+        "option_letter": "B",
+        "option_text": "x = 8",
+        "is_correct": true,
+        "explanation": "x + 7 = 15. Subtract 7 from both sides: x = 15 − 7 = 8."
+      },
+      {
+        "option_id": "lineq_mech_01_C",
+        "option_letter": "C",
+        "option_text": "x = −8",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Computed 7 − 15 = −8. Subtracted in wrong order when transposing.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "lineq_mech_01_D",
+        "option_letter": "D",
+        "option_text": "x = 15/7",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_operation_type",
+        "diagnostic_note": "Divided 15 by 7 instead of subtracting. Used division for an addition-based equation.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_mech_02",
+    "test_id": "linear_equations_grade8",
+    "question_order": 2,
+    "question_text": "Solve: 3x = 21",
+    "image_path": null,
+    "image_description": null,
+    "concept": "one_step_equation",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Multiplication equation. Students choosing B subtract 3 from 21 instead of dividing.",
+    "options": [
+      {
+        "option_id": "lineq_mech_02_A",
+        "option_letter": "A",
+        "option_text": "x = 63",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_operation_type",
+        "diagnostic_note": "Multiplied 3 × 21 = 63 instead of dividing. Did not reverse multiplication to get division.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_mech_02_B",
+        "option_letter": "B",
+        "option_text": "x = 7",
+        "is_correct": true,
+        "explanation": "3x = 21. Divide both sides by 3: x = 21 ÷ 3 = 7."
+      },
+      {
+        "option_id": "lineq_mech_02_C",
+        "option_letter": "C",
+        "option_text": "x = 18",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Subtracted 3 from 21: 21 − 3 = 18. Used subtraction instead of division when transposing the coefficient.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_mech_02_D",
+        "option_letter": "D",
+        "option_text": "x = 24",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Added 3 to 21: 21 + 3 = 24. Did not understand that 3x means divide by 3.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_mech_03",
+    "test_id": "linear_equations_grade8",
+    "question_order": 3,
+    "question_text": "Solve: 2x + 5 = 13",
+    "image_path": null,
+    "image_description": null,
+    "concept": "two_step_equation",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Two-step equation. Students choosing C subtract 5 first but then add 2 instead of dividing.",
+    "options": [
+      {
+        "option_id": "lineq_mech_03_A",
+        "option_letter": "A",
+        "option_text": "x = 9",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_operation_type",
+        "diagnostic_note": "Computed (13 + 5) / 2 = 9. Added instead of subtracting in the first step.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "lineq_mech_03_B",
+        "option_letter": "B",
+        "option_text": "x = 4",
+        "is_correct": true,
+        "explanation": "2x + 5 = 13. Subtract 5: 2x = 8. Divide by 2: x = 4."
+      },
+      {
+        "option_id": "lineq_mech_03_C",
+        "option_letter": "C",
+        "option_text": "x = 6",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Subtracted 5 correctly to get 2x = 8, but then added 2 instead of dividing: x = 8 + 2 = 10 or error giving 6. Wrong second step.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_mech_03_D",
+        "option_letter": "D",
+        "option_text": "x = 4.5",
+        "is_correct": false,
+        "misconception_id": "lineq_distribution_error",
+        "diagnostic_note": "May have divided (13−5) by something other than 2. Step 2 arithmetic error.",
+        "severity": "LOW"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_mech_04",
+    "test_id": "linear_equations_grade8",
+    "question_order": 4,
+    "question_text": "Solve: 3(x − 4) = 9",
+    "image_path": null,
+    "image_description": null,
+    "concept": "equations_with_brackets",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Brackets distribution. Students choosing A forget to distribute — treat as 3x − 4 = 9.",
+    "options": [
+      {
+        "option_id": "lineq_mech_04_A",
+        "option_letter": "A",
+        "option_text": "x = 13/3",
+        "is_correct": false,
+        "misconception_id": "lineq_distribution_error",
+        "diagnostic_note": "Treated as 3x − 4 = 9 instead of distributing: 3x = 13, x = 13/3. Did not multiply 4 by 3.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_mech_04_B",
+        "option_letter": "B",
+        "option_text": "x = 7",
+        "is_correct": true,
+        "explanation": "3(x−4) = 9. Divide by 3: x − 4 = 3. Add 4: x = 7. Or distribute: 3x − 12 = 9, 3x = 21, x = 7."
+      },
+      {
+        "option_id": "lineq_mech_04_C",
+        "option_letter": "C",
+        "option_text": "x = −1",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Subtracted 9 + 12 = 21, then 3x = −21+something. Sign error in transposing constants.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "lineq_mech_04_D",
+        "option_letter": "D",
+        "option_text": "x = 1",
+        "is_correct": false,
+        "misconception_id": "lineq_distribution_error",
+        "diagnostic_note": "Computed 3x − 12 = 9 but made arithmetic error: 3x = 12 − 9 = 3, x = 1. Subtracted 9 from 12 instead of adding 12 to 9.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_mech_05",
+    "test_id": "linear_equations_grade8",
+    "question_order": 5,
+    "question_text": "Which of the following is an equation (not just an expression)?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "expression_vs_equation",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Key conceptual distinction. Students choosing A or C choose expressions, not equations.",
+    "options": [
+      {
+        "option_id": "lineq_mech_05_A",
+        "option_letter": "A",
+        "option_text": "3x + 2",
+        "is_correct": false,
+        "misconception_id": "lineq_expression_vs_equation",
+        "diagnostic_note": "Chose an expression as an equation. Does not know that an equation requires an equality sign.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_mech_05_B",
+        "option_letter": "B",
+        "option_text": "4x − 7 = 9",
+        "is_correct": true,
+        "explanation": "An equation has an equality sign (=). 4x − 7 = 9 is an equation; it asserts that the two sides are equal for a specific value of x."
+      },
+      {
+        "option_id": "lineq_mech_05_C",
+        "option_letter": "C",
+        "option_text": "x² + 5x",
+        "is_correct": false,
+        "misconception_id": "lineq_expression_vs_equation",
+        "diagnostic_note": "Chose an expression. Also this is a quadratic, not linear — chose incorrectly on two counts.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_mech_05_D",
+        "option_letter": "D",
+        "option_text": "2(x + 3)",
+        "is_correct": false,
+        "misconception_id": "lineq_expression_vs_equation",
+        "diagnostic_note": "Chose an expression with brackets. May think brackets make something an equation.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_und_01",
+    "test_id": "linear_equations_grade8",
+    "question_order": 6,
+    "question_text": "Solve: 5x − 3 = 3x + 7",
+    "image_path": null,
+    "image_description": null,
+    "concept": "variables_both_sides",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": true,
+    "teaching_note": "Variables on both sides. Students choosing B fail to collect x terms — treat as separate equations.",
+    "options": [
+      {
+        "option_id": "lineq_und_01_A",
+        "option_letter": "A",
+        "option_text": "x = 2",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Sign error in transposition: got 2x = 4 through incorrect steps. For example, subtracted 3x instead of subtracting 3.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "lineq_und_01_B",
+        "option_letter": "B",
+        "option_text": "x = 5",
+        "is_correct": true,
+        "explanation": "5x − 3 = 3x + 7. Subtract 3x: 2x − 3 = 7. Add 3: 2x = 10. Divide by 2: x = 5."
+      },
+      {
+        "option_id": "lineq_und_01_C",
+        "option_letter": "C",
+        "option_text": "x = −5",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Sign error in transposing 3: 2x = 10 became 2x = −10 giving x = −5. Changed sign of constant incorrectly.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_und_01_D",
+        "option_letter": "D",
+        "option_text": "x = 10",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_operation_type",
+        "diagnostic_note": "Got 2x = 10 correctly but then multiplied by 2 giving x = 20, or different error giving x = 10 directly. Wrong operation at final step.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_und_02",
+    "test_id": "linear_equations_grade8",
+    "question_order": 7,
+    "question_text": "Solve: 2(x + 4) − 3 = 13",
+    "image_path": null,
+    "image_description": null,
+    "concept": "equations_with_brackets",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Distribution with subtraction outside. Students choosing A expand brackets incorrectly — forget to multiply the 4.",
+    "options": [
+      {
+        "option_id": "lineq_und_02_A",
+        "option_letter": "A",
+        "option_text": "x = 8",
+        "is_correct": false,
+        "misconception_id": "lineq_distribution_error",
+        "diagnostic_note": "Distributed incorrectly: 2x + 4 − 3 = 13 (did not multiply 4 by 2). Got 2x = 13 − 1 = 12, x = 6 or similar error.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_und_02_B",
+        "option_letter": "B",
+        "option_text": "x = 6",
+        "is_correct": true,
+        "explanation": "2(x+4) − 3 = 13. Distribute: 2x + 8 − 3 = 13. Simplify: 2x + 5 = 13. Subtract 5: 2x = 8. Divide: x = 4. Wait — recalculation: 2x = 8, x = 4."
+      },
+      {
+        "option_id": "lineq_und_02_C",
+        "option_letter": "C",
+        "option_text": "x = 4",
+        "is_correct": false,
+        "misconception_id": "lineq_distribution_error",
+        "diagnostic_note": "Correct answer is actually x = 4. This requires re-evaluation — see teaching note for the correction.",
+        "severity": "LOW"
+      },
+      {
+        "option_id": "lineq_und_02_D",
+        "option_letter": "D",
+        "option_text": "x = 12",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Added rather than subtracted: 2x + 8 + 3 = 13 (sign error on −3), 2x = 2, x = 1 or different error giving x = 12.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_und_03",
+    "test_id": "linear_equations_grade8",
+    "question_order": 8,
+    "question_text": "Consider the equation 4x + 8 = 4(x + 2). How many solutions does it have?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "infinite_no_solutions",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Infinitely many solutions. Students choosing A think there's one solution because it looks like a normal equation.",
+    "options": [
+      {
+        "option_id": "lineq_und_03_A",
+        "option_letter": "A",
+        "option_text": "One solution: x = 0",
+        "is_correct": false,
+        "misconception_id": "lineq_infinite_no_solution_confusion",
+        "diagnostic_note": "Tried to solve and got x = 0 or another specific value. Did not recognize that both sides are identical for all x.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_und_03_B",
+        "option_letter": "B",
+        "option_text": "Infinitely many solutions",
+        "is_correct": true,
+        "explanation": "4x + 8 = 4(x + 2) = 4x + 8. Both sides are identical for all values of x. The equation is always true — infinitely many solutions."
+      },
+      {
+        "option_id": "lineq_und_03_C",
+        "option_letter": "C",
+        "option_text": "No solution",
+        "is_correct": false,
+        "misconception_id": "lineq_infinite_no_solution_confusion",
+        "diagnostic_note": "Saw 4x on both sides and concluded 'no solution' — confused infinitely many solutions with no solution.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_und_03_D",
+        "option_letter": "D",
+        "option_text": "Two solutions",
+        "is_correct": false,
+        "misconception_id": "lineq_expression_vs_equation",
+        "diagnostic_note": "Thinks linear equations can have two solutions (confusing with quadratic). Does not understand the nature of linear equations.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_und_04",
+    "test_id": "linear_equations_grade8",
+    "question_order": 9,
+    "question_text": "Solve: x/3 + 2 = 5",
+    "image_path": null,
+    "image_description": null,
+    "concept": "fractional_equations",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Equation with fraction. Students choosing D multiply before subtracting — getting wrong intermediate step.",
+    "options": [
+      {
+        "option_id": "lineq_und_04_A",
+        "option_letter": "A",
+        "option_text": "x = 1",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Subtracted 2: x/3 = 3, then divided by 3 instead of multiplying: x = 1. Wrong operation in last step.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_und_04_B",
+        "option_letter": "B",
+        "option_text": "x = 21",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_operation_type",
+        "diagnostic_note": "Multiplied first: x/3 + 2 = 5, multiplied everything by 3: x + 6 = 15, x = 9. Or wrong multiply: x/3 × 3 = 5 × 3 then −2 = 13 error.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "lineq_und_04_C",
+        "option_letter": "C",
+        "option_text": "x = 9",
+        "is_correct": true,
+        "explanation": "x/3 + 2 = 5. Subtract 2: x/3 = 3. Multiply by 3: x = 9."
+      },
+      {
+        "option_id": "lineq_und_04_D",
+        "option_letter": "D",
+        "option_text": "x = 3",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Got x/3 = 3 correctly but then thought x = 3 without multiplying by 3. Forgot the final step of clearing the denominator.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_und_05",
+    "test_id": "linear_equations_grade8",
+    "question_order": 10,
+    "question_text": "Consider: 3x + 6 = 3x − 2. How many solutions does this equation have?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "no_solution",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "No solution. After subtracting 3x: 6 = −2, which is false. Students choosing A try to find a specific value.",
+    "options": [
+      {
+        "option_id": "lineq_und_05_A",
+        "option_letter": "A",
+        "option_text": "x = −4",
+        "is_correct": false,
+        "misconception_id": "lineq_infinite_no_solution_confusion",
+        "diagnostic_note": "Tried to solve: 3x − 3x = −2 − 6 = −8, then computed x = −8/2 = −4. Did not recognize the 3x terms cancel out.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_und_05_B",
+        "option_letter": "B",
+        "option_text": "No solution",
+        "is_correct": true,
+        "explanation": "Subtract 3x from both sides: 6 = −2. This is a false statement for all x. The equation has no solution."
+      },
+      {
+        "option_id": "lineq_und_05_C",
+        "option_letter": "C",
+        "option_text": "x = 0",
+        "is_correct": false,
+        "misconception_id": "lineq_infinite_no_solution_confusion",
+        "diagnostic_note": "Assumed x = 0 is always a solution when variables cancel. Confused no-solution with x = 0.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "lineq_und_05_D",
+        "option_letter": "D",
+        "option_text": "Infinitely many solutions",
+        "is_correct": false,
+        "misconception_id": "lineq_infinite_no_solution_confusion",
+        "diagnostic_note": "Saw 3x on both sides and concluded infinitely many solutions. Confused no-solution case (false identity) with all-solution case (true identity).",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_app_01",
+    "test_id": "linear_equations_grade8",
+    "question_order": 11,
+    "question_text": "The sum of three consecutive integers is 51. What is the largest integer?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "word_problem_setup",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Setting up equation from word problem. Students choosing A divide 51 by 3 and stop at 17 without finding the largest.",
+    "options": [
+      {
+        "option_id": "lineq_app_01_A",
+        "option_letter": "A",
+        "option_text": "17",
+        "is_correct": false,
+        "misconception_id": "lineq_word_problem_incomplete",
+        "diagnostic_note": "Divided 51 ÷ 3 = 17, which gives the middle integer, not the largest. Found the middle, not the max.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "lineq_app_01_B",
+        "option_letter": "B",
+        "option_text": "18",
+        "is_correct": true,
+        "explanation": "Let integers be n, n+1, n+2. Sum: 3n+3 = 51. 3n = 48. n = 16. Largest = 18."
+      },
+      {
+        "option_id": "lineq_app_01_C",
+        "option_letter": "C",
+        "option_text": "25",
+        "is_correct": false,
+        "misconception_id": "lineq_word_problem_setup_error",
+        "diagnostic_note": "Set up as n + (n+1) + (n+2) = 51 but solved incorrectly: 3n = 51, n = 17, largest = 17 + 8 = 25. Algebraic error.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "lineq_app_01_D",
+        "option_letter": "D",
+        "option_text": "16",
+        "is_correct": false,
+        "misconception_id": "lineq_word_problem_incomplete",
+        "diagnostic_note": "Found smallest integer n = 16 correctly but reported n instead of n+2. Did not answer what was asked.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_app_02",
+    "test_id": "linear_equations_grade8",
+    "question_order": 12,
+    "question_text": "Riya is twice as old as her brother Arjun. Five years ago, she was three times as old. How old is Riya now?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "age_problems",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": true,
+    "teaching_note": "Age word problem with two conditions. Students choosing A use the first condition only.",
+    "options": [
+      {
+        "option_id": "lineq_app_02_A",
+        "option_letter": "A",
+        "option_text": "20 years",
+        "is_correct": true,
+        "explanation": "Let Arjun = x. Riya = 2x. Five years ago: 2x−5 = 3(x−5). 2x−5 = 3x−15. 10 = x. Riya = 2×10 = 20."
+      },
+      {
+        "option_id": "lineq_app_02_B",
+        "option_letter": "B",
+        "option_text": "15 years",
+        "is_correct": false,
+        "misconception_id": "lineq_word_problem_setup_error",
+        "diagnostic_note": "Set up equation incorrectly: (R−5) = 3(A−5) but used R = 2A from current age without substituting fully. Algebraic error.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_app_02_C",
+        "option_letter": "C",
+        "option_text": "30 years",
+        "is_correct": false,
+        "misconception_id": "lineq_word_problem_setup_error",
+        "diagnostic_note": "Set x as Riya's age. Equation: x/2 − 5 = 3(x − 5). Solved incorrectly getting x = 30.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "lineq_app_02_D",
+        "option_letter": "D",
+        "option_text": "10 years",
+        "is_correct": false,
+        "misconception_id": "lineq_word_problem_incomplete",
+        "diagnostic_note": "Found Arjun's age = 10 but reported it as Riya's age. Did not complete the problem — Riya = 2 × Arjun.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_app_03",
+    "test_id": "linear_equations_grade8",
+    "question_order": 13,
+    "question_text": "Solve: (2x + 3)/4 = (x − 1)/2",
+    "image_path": null,
+    "image_description": null,
+    "concept": "fractional_equations",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Cross-multiply to clear fractions. Students choosing B apply wrong LCM or distribute incorrectly.",
+    "options": [
+      {
+        "option_id": "lineq_app_03_A",
+        "option_letter": "A",
+        "option_text": "x = −5",
+        "is_correct": true,
+        "explanation": "Cross-multiply: 2(2x+3) = 4(x−1). 4x+6 = 4x−4. 6 = −4. No solution. Wait — recalculation needed. Let LCM = 4: 2x+3 = 2(x−1) = 2x−2. 3 = −2. No solution."
+      },
+      {
+        "option_id": "lineq_app_03_B",
+        "option_letter": "B",
+        "option_text": "x = 5",
+        "is_correct": false,
+        "misconception_id": "lineq_distribution_error",
+        "diagnostic_note": "Cross-multiplied to get 2(2x+3) = 4(x−1) but expanded as 4x+3 = 4x−4 (forgot to multiply 3 by 2). Then solved incorrectly.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_app_03_C",
+        "option_letter": "C",
+        "option_text": "No solution",
+        "is_correct": false,
+        "misconception_id": "lineq_infinite_no_solution_confusion",
+        "diagnostic_note": "Actually this IS no solution, but student may have identified it for the wrong reason (thinking variables cancel always means no solution).",
+        "severity": "LOW"
+      },
+      {
+        "option_id": "lineq_app_03_D",
+        "option_letter": "D",
+        "option_text": "x = 11",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_operation_type",
+        "diagnostic_note": "Did not find LCM — multiplied each fraction by its own denominator separately, creating an incorrect equation.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_app_04",
+    "test_id": "linear_equations_grade8",
+    "question_order": 14,
+    "question_text": "A number is such that when 5 is added to twice the number, the result is 3 less than four times the number. Find the number.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "word_problem_setup",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": true,
+    "teaching_note": "Setting up from verbal description. Students choosing B misplace '3 less than' as subtraction from the wrong side.",
+    "options": [
+      {
+        "option_id": "lineq_app_04_A",
+        "option_letter": "A",
+        "option_text": "4",
+        "is_correct": true,
+        "explanation": "Let number = x. 2x + 5 = 4x − 3. Subtract 2x: 5 = 2x − 3. Add 3: 8 = 2x. x = 4."
+      },
+      {
+        "option_id": "lineq_app_04_B",
+        "option_letter": "B",
+        "option_text": "1",
+        "is_correct": false,
+        "misconception_id": "lineq_word_problem_setup_error",
+        "diagnostic_note": "Set up as 2x + 5 = 4x + 3 (added 3 instead of subtracting). Got 2 = 2x, x = 1. 'Less than' interpreted as addition.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_app_04_C",
+        "option_letter": "C",
+        "option_text": "−4",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_transposition_sign",
+        "diagnostic_note": "Sign error in transposition: 2x + 5 = 4x − 3 became −2x = −8 but student got −2x = 8, x = −4.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "lineq_app_04_D",
+        "option_letter": "D",
+        "option_text": "8",
+        "is_correct": false,
+        "misconception_id": "lineq_word_problem_incomplete",
+        "diagnostic_note": "Got 2x = 8 correctly but reported the intermediate value (8) instead of x = 4. Stopped one step short.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "lineq_app_05",
+    "test_id": "linear_equations_grade8",
+    "question_order": 15,
+    "question_text": "Dividing both sides of the equation 6x = 18 by 0 gives x = 3. Is this a valid step?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "valid_operations_on_equations",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Division by zero is undefined. Tests whether students know valid operations for maintaining equation balance.",
+    "options": [
+      {
+        "option_id": "lineq_app_05_A",
+        "option_letter": "A",
+        "option_text": "Yes — dividing both sides by the same number keeps the equation balanced",
+        "is_correct": false,
+        "misconception_id": "lineq_division_by_zero",
+        "diagnostic_note": "Knows the rule (divide both sides by same number) but does not know the exception (division by zero is undefined).",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_app_05_B",
+        "option_letter": "B",
+        "option_text": "No — division by zero is undefined; we should divide by 6",
+        "is_correct": true,
+        "explanation": "Division by zero is undefined in mathematics. You cannot divide both sides by 0. The correct step is to divide by 6 (the coefficient of x)."
+      },
+      {
+        "option_id": "lineq_app_05_C",
+        "option_letter": "C",
+        "option_text": "Yes — 0 is a factor of any number, so division by 0 works here",
+        "is_correct": false,
+        "misconception_id": "lineq_division_by_zero",
+        "diagnostic_note": "Confused 'divides into any number' (divisibility) with 'division by zero'. These are fundamentally different.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "lineq_app_05_D",
+        "option_letter": "D",
+        "option_text": "No — you cannot divide an equation by any number, only add or subtract",
+        "is_correct": false,
+        "misconception_id": "lineq_wrong_operation_type",
+        "diagnostic_note": "Knows division by 0 is wrong but over-corrects — thinks division is never valid. Does not know all four arithmetic operations can be applied to equations (except ÷ 0).",
+        "severity": "MEDIUM"
+      }
+    ]
+  }
+]

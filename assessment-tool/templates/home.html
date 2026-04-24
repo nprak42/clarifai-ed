@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clarifai — Diagnostic Assessment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a href="{{ url_for('home') }}" class="site-nav-brand">Clarif<span>ai</span></a>
+      <div class="site-nav-links">
+        <a href="{{ url_for('create_session') }}" class="btn-sm-nav">+ New Session</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="home-header">
+      <div class="home-header-text">
+        <h1>Teacher Dashboard</h1>
+        <p class="subtitle">Create a diagnostic session, share the access code, then open the dashboard to see results and launch tutor sessions.</p>
+      </div>
+      <a href="{{ url_for('create_session') }}" class="btn btn-primary">New Session →</a>
+    </div>
+
+    {% if recent_sessions %}
+    <section class="session-history">
+      <div class="session-history-header">
+        <h2>Recent Sessions</h2>
+        <span class="session-count">{{ recent_sessions | length }} session{% if recent_sessions | length != 1 %}s{% endif %}</span>
+      </div>
+      <div class="history-table-wrap">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Assessment</th>
+              <th>Class</th>
+              <th>Date</th>
+              <th>Code</th>
+              <th>Students</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for s in recent_sessions %}
+            <tr>
+              <td>
+                <div class="history-title">{{ s.title }}</div>
+                <div class="history-meta">Grade {{ s.grade }} · {{ s.subject | replace('_', ' ') | title }}</div>
+              </td>
+              <td>{{ s.class_section or '—' }}</td>
+              <td>{{ s.session_date or s.created_at[:10] }}</td>
+              <td><code class="code-pill">{{ s.access_code }}</code></td>
+              <td>{{ s.students_completed }}</td>
+              <td><span class="status-badge status-{{ s.status }}">{{ s.status }}</span></td>
+              <td><a href="{{ url_for('dashboard', access_code=s.access_code) }}" class="btn btn-sm">Dashboard →</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    {% else %}
+    <div class="home-empty">
+      <div class="home-empty-inner">
+        <div class="home-empty-icon">📋</div>
+        <h2>No sessions yet</h2>
+        <p>Create your first session to get started. Students join using an access code — no accounts needed.</p>
+        <a href="{{ url_for('create_session') }}" class="btn btn-primary btn-large">Create First Session →</a>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="home-student-hint">
+      <span class="hint-label">Student joining?</span>
+      <span class="hint-text">They go to <strong>/test/&lt;code&gt;</strong> or enter the code below:</span>
+      <form id="student-form" class="hint-form">
+        <input type="text"
+               id="access_code"
+               placeholder="Access code"
+               maxlength="8"
+               autocomplete="off"
+               autocapitalize="characters"
+               class="hint-input">
+        <button type="submit" class="btn btn-sm btn-secondary-outline" onclick="goToTest(event)">Go →</button>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    function goToTest(e) {
+      e.preventDefault();
+      const code = document.getElementById('access_code').value.trim().toUpperCase();
+      if (!code) return;
+      window.location.href = '/test/' + code;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,767 @@
+[
+  {
+    "question_id": "algexp_mech_01",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 1,
+    "question_text": "Simplify: 3x + 5x",
+    "image_path": null,
+    "image_description": null,
+    "concept": "like_terms",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Basic like-terms addition. Students choosing D multiply coefficients instead of adding.",
+    "options": [
+      {
+        "option_id": "algexp_mech_01_A",
+        "option_letter": "A",
+        "option_text": "8x²",
+        "is_correct": false,
+        "misconception_id": "algexp_like_terms_power_error",
+        "diagnostic_note": "Added coefficients correctly (8) but added powers too: x + x = x². Does not understand that adding like terms keeps the same power.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_mech_01_B",
+        "option_letter": "B",
+        "option_text": "8x",
+        "is_correct": true,
+        "explanation": "3x + 5x = (3+5)x = 8x. Like terms: add the coefficients, keep the variable."
+      },
+      {
+        "option_id": "algexp_mech_01_C",
+        "option_letter": "C",
+        "option_text": "35x",
+        "is_correct": false,
+        "misconception_id": "algexp_coefficient_error",
+        "diagnostic_note": "Concatenated coefficients: 3 and 5 → 35. Treated coefficients as digits to be placed together, not added.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "algexp_mech_01_D",
+        "option_letter": "D",
+        "option_text": "15x",
+        "is_correct": false,
+        "misconception_id": "algexp_coefficient_error",
+        "diagnostic_note": "Multiplied coefficients: 3 × 5 = 15. Used multiplication for addition of like terms.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_mech_02",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 2,
+    "question_text": "Simplify: 4x + 3y − 2x + y",
+    "image_path": null,
+    "image_description": null,
+    "concept": "like_terms",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Like terms with two variables. Students choosing A add all coefficients regardless of variable.",
+    "options": [
+      {
+        "option_id": "algexp_mech_02_A",
+        "option_letter": "A",
+        "option_text": "6xy",
+        "is_correct": false,
+        "misconception_id": "algexp_unlike_terms_combined",
+        "diagnostic_note": "Combined all terms into one: 4+3−2+1 = 6, then multiplied variables: xy. Treated unlike terms as like terms.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_mech_02_B",
+        "option_letter": "B",
+        "option_text": "2x + 4y",
+        "is_correct": true,
+        "explanation": "Group like terms: (4x − 2x) + (3y + y) = 2x + 4y."
+      },
+      {
+        "option_id": "algexp_mech_02_C",
+        "option_letter": "C",
+        "option_text": "4x + 4y",
+        "is_correct": false,
+        "misconception_id": "algexp_unlike_terms_combined",
+        "diagnostic_note": "Added 4+3−2 = 5x (error giving 4) or treated subtraction of 2x as having no effect. Did not correctly simplify the x-terms.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "algexp_mech_02_D",
+        "option_letter": "D",
+        "option_text": "2x + 3y + y",
+        "is_correct": false,
+        "misconception_id": "algexp_unlike_terms_combined",
+        "diagnostic_note": "Simplified x-terms correctly (2x) but left y-terms unsimplified. Inconsistent application of like-terms rule.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_mech_03",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 3,
+    "question_text": "What is the value of 3a − 2b when a = 4 and b = 5?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "substitution",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Basic substitution. Students choosing C substitute incorrectly — add instead of multiply.",
+    "options": [
+      {
+        "option_id": "algexp_mech_03_A",
+        "option_letter": "A",
+        "option_text": "2",
+        "is_correct": true,
+        "explanation": "3a − 2b = 3(4) − 2(5) = 12 − 10 = 2."
+      },
+      {
+        "option_id": "algexp_mech_03_B",
+        "option_letter": "B",
+        "option_text": "−3",
+        "is_correct": false,
+        "misconception_id": "algexp_substitution_error",
+        "diagnostic_note": "Made arithmetic error: 3(4) = 7 (adding instead of multiplying) or 2(5) = 7. Substitution method is wrong.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "algexp_mech_03_C",
+        "option_letter": "C",
+        "option_text": "7",
+        "is_correct": false,
+        "misconception_id": "algexp_substitution_error",
+        "diagnostic_note": "Computed 3+4 − 2+5 = 7 − 7 = 0 or 3+4 = 7 incorrectly. Added a and b to coefficients instead of multiplying.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_mech_03_D",
+        "option_letter": "D",
+        "option_text": "−2",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "Got 12 − 10 = −2 (sign error in subtraction). Confused subtraction direction.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_mech_04",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 4,
+    "question_text": "Subtract 3x − 2 from 7x + 5.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "subtraction_of_expressions",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Subtraction of expressions. Students choosing B do not change signs when subtracting the second expression.",
+    "options": [
+      {
+        "option_id": "algexp_mech_04_A",
+        "option_letter": "A",
+        "option_text": "4x + 7",
+        "is_correct": true,
+        "explanation": "(7x + 5) − (3x − 2) = 7x + 5 − 3x + 2 = 4x + 7."
+      },
+      {
+        "option_id": "algexp_mech_04_B",
+        "option_letter": "B",
+        "option_text": "4x + 3",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "(7x + 5) − (3x − 2) = 7x + 5 − 3x − 2 = 4x + 3. Did not change sign of −2 to +2 when removing brackets.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_mech_04_C",
+        "option_letter": "C",
+        "option_text": "10x + 3",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "Added instead of subtracted: 7x + 3x = 10x and 5 − 2 = 3 = 10x + 3. Did not understand 'subtract ... from ...' means the second minus the first.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_mech_04_D",
+        "option_letter": "D",
+        "option_text": "4x − 7",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "Changed sign of 5 incorrectly: 7x + 5 − 3x + 2 computed as 4x − 7. Multiple sign errors in bracket removal.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_mech_05",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 5,
+    "question_text": "Multiply: 3x × 4x",
+    "image_path": null,
+    "image_description": null,
+    "concept": "multiplication_of_terms",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Multiplying monomials. Students choosing B add coefficients and exponents. Students choosing A add exponents correctly but use wrong coefficient.",
+    "options": [
+      {
+        "option_id": "algexp_mech_05_A",
+        "option_letter": "A",
+        "option_text": "7x²",
+        "is_correct": false,
+        "misconception_id": "algexp_coefficient_error",
+        "diagnostic_note": "Added coefficients (3+4=7) but multiplied variables correctly (x²). Mixed operations for coefficients and variables.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "algexp_mech_05_B",
+        "option_letter": "B",
+        "option_text": "12x",
+        "is_correct": false,
+        "misconception_id": "algexp_like_terms_power_error",
+        "diagnostic_note": "Multiplied coefficients correctly (12) but added exponents as x + x = x (not x²). Treated multiplication of variables as addition.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_mech_05_C",
+        "option_letter": "C",
+        "option_text": "12x²",
+        "is_correct": true,
+        "explanation": "3x × 4x = (3 × 4)(x × x) = 12x²."
+      },
+      {
+        "option_id": "algexp_mech_05_D",
+        "option_letter": "D",
+        "option_text": "12x⁴",
+        "is_correct": false,
+        "misconception_id": "algexp_like_terms_power_error",
+        "diagnostic_note": "Multiplied coefficients correctly but multiplied exponents: x¹ × x¹ = x² became x^(1×1) = x¹ extended to x⁴ somehow. Confused multiplication of exponents with addition.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_und_01",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 6,
+    "question_text": "Expand and simplify: 2(3x + 4) + 3(x − 2)",
+    "image_path": null,
+    "image_description": null,
+    "concept": "expansion_and_simplification",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Double distribution. Students choosing A partially distribute (multiply only first term in each bracket).",
+    "options": [
+      {
+        "option_id": "algexp_und_01_A",
+        "option_letter": "A",
+        "option_text": "6x + 4 + 3x − 2 = 9x + 2",
+        "is_correct": false,
+        "misconception_id": "algexp_distribution_incomplete",
+        "diagnostic_note": "Multiplied only the variable term in each bracket: 2×3x = 6x (but left +4), 3×x = 3x (but left −2). Did not distribute multiplier to the constant.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_und_01_B",
+        "option_letter": "B",
+        "option_text": "9x + 2",
+        "is_correct": true,
+        "explanation": "2(3x+4) + 3(x−2) = 6x + 8 + 3x − 6 = 9x + 2."
+      },
+      {
+        "option_id": "algexp_und_01_C",
+        "option_letter": "C",
+        "option_text": "9x + 14",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "Expanded correctly to 6x + 8 + 3x − 6 but added 8 + 6 = 14 instead of 8 − 6 = 2. Sign error in combining constants.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_und_01_D",
+        "option_letter": "D",
+        "option_text": "9x − 2",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "Got 8 − 6 = −2 instead of +2, or subtracted 8 from 6. Minor sign confusion in combining constants.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_und_02",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 7,
+    "question_text": "Can 3x + 2y be simplified further?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "like_unlike_terms",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Tests understanding of like vs unlike terms. Students choosing A add them anyway.",
+    "options": [
+      {
+        "option_id": "algexp_und_02_A",
+        "option_letter": "A",
+        "option_text": "Yes: 3x + 2y = 5xy",
+        "is_correct": false,
+        "misconception_id": "algexp_unlike_terms_combined",
+        "diagnostic_note": "Added unlike terms: 3 + 2 = 5, x + y = xy. Fundamental confusion — treats unlike terms as combinable.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_und_02_B",
+        "option_letter": "B",
+        "option_text": "Yes: 3x + 2y = 5x",
+        "is_correct": false,
+        "misconception_id": "algexp_unlike_terms_combined",
+        "diagnostic_note": "Added coefficients and ignored the different variable: just wrote 5x, dropping y entirely.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_und_02_C",
+        "option_letter": "C",
+        "option_text": "No: x and y are different variables and cannot be combined",
+        "is_correct": true,
+        "explanation": "3x and 2y are unlike terms — they have different variables. Unlike terms cannot be combined. The expression is already in simplest form."
+      },
+      {
+        "option_id": "algexp_und_02_D",
+        "option_letter": "D",
+        "option_text": "Yes: 3x + 2y = 6xy (multiply coefficients)",
+        "is_correct": false,
+        "misconception_id": "algexp_coefficient_error",
+        "diagnostic_note": "Used multiplication instead of addition: 3 × 2 = 6, x × y = xy. Confused expression simplification with term multiplication.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_und_03",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 8,
+    "question_text": "If p = 3, find the value of p² + 4p − 7.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "substitution",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Substitution with squared term. Students choosing B compute 3² = 6 instead of 9.",
+    "options": [
+      {
+        "option_id": "algexp_und_03_A",
+        "option_letter": "A",
+        "option_text": "14",
+        "is_correct": true,
+        "explanation": "p² + 4p − 7 = 3² + 4(3) − 7 = 9 + 12 − 7 = 14."
+      },
+      {
+        "option_id": "algexp_und_03_B",
+        "option_letter": "B",
+        "option_text": "11",
+        "is_correct": false,
+        "misconception_id": "algexp_substitution_error",
+        "diagnostic_note": "Computed p² = 2p = 6 (doubled instead of squaring). 6 + 12 − 7 = 11. Does not understand p² means p × p.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_und_03_C",
+        "option_letter": "C",
+        "option_text": "8",
+        "is_correct": false,
+        "misconception_id": "algexp_substitution_error",
+        "diagnostic_note": "Computed 3 + 4 + 3 − 7 = 3 (treating p² as just p). Added 3 once for p² instead of squaring.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_und_03_D",
+        "option_letter": "D",
+        "option_text": "20",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "Computed 9 + 12 + 7 = 28 or 9 + 12 − (−7) = 28. Sign error — subtracted −7 as +7.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_und_04",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 9,
+    "question_text": "Which expression represents 'five more than three times a number n'?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "expression_from_words",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Translating verbal to algebraic. Students choosing B reverse order of operations.",
+    "options": [
+      {
+        "option_id": "algexp_und_04_A",
+        "option_letter": "A",
+        "option_text": "5n + 3",
+        "is_correct": false,
+        "misconception_id": "algexp_expression_word_translation",
+        "diagnostic_note": "Assigned 5 as coefficient of n and added 3 instead. Reversed which number is the multiplier.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_und_04_B",
+        "option_letter": "B",
+        "option_text": "3(n + 5)",
+        "is_correct": false,
+        "misconception_id": "algexp_expression_word_translation",
+        "diagnostic_note": "Grouped 'three times' with 'n + 5' instead of 'three times n' then '+5'. Incorrect grouping from verbal description.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "algexp_und_04_C",
+        "option_letter": "C",
+        "option_text": "3n + 5",
+        "is_correct": true,
+        "explanation": "'Three times a number n' = 3n. 'Five more than' means add 5. Expression = 3n + 5."
+      },
+      {
+        "option_id": "algexp_und_04_D",
+        "option_letter": "D",
+        "option_text": "3n − 5",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "Wrote subtraction instead of addition for 'more than'. Confused 'more than' with 'less than' or reversed the sign.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_und_05",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 10,
+    "question_text": "Simplify: 5x² + 3x − 2x² + x",
+    "image_path": null,
+    "image_description": null,
+    "concept": "like_terms_with_powers",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Like terms including squared terms. Students choosing A combine x² and x as like terms.",
+    "options": [
+      {
+        "option_id": "algexp_und_05_A",
+        "option_letter": "A",
+        "option_text": "7x³",
+        "is_correct": false,
+        "misconception_id": "algexp_unlike_terms_combined",
+        "diagnostic_note": "Combined all terms: (5+3−2+1) = 7, x²+x = x³. Treated x² and x as like terms and added powers.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_und_05_B",
+        "option_letter": "B",
+        "option_text": "3x² + 4x",
+        "is_correct": true,
+        "explanation": "Group like terms: (5x² − 2x²) + (3x + x) = 3x² + 4x."
+      },
+      {
+        "option_id": "algexp_und_05_C",
+        "option_letter": "C",
+        "option_text": "3x² + 4x²",
+        "is_correct": false,
+        "misconception_id": "algexp_like_terms_power_error",
+        "diagnostic_note": "Added x and x² together as both having x²: wrote 4x as 4x². Confused x with x².",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_und_05_D",
+        "option_letter": "D",
+        "option_text": "7x² + 4x",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "Computed 5x² + 2x² = 7x² instead of 5x² − 2x² = 3x². Did not apply subtraction to the x² terms.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_app_01",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 11,
+    "question_text": "The length of a rectangle is (2x + 3) cm and width is (x + 1) cm. What is the perimeter in terms of x?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "expression_in_context",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Perimeter = 2(l + w). Students choosing C compute area (multiply) instead of perimeter.",
+    "options": [
+      {
+        "option_id": "algexp_app_01_A",
+        "option_letter": "A",
+        "option_text": "(3x + 4) cm",
+        "is_correct": false,
+        "misconception_id": "algexp_expression_context_error",
+        "diagnostic_note": "Added l + w = 3x + 4 but forgot to multiply by 2 for perimeter. Found half-perimeter.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "algexp_app_01_B",
+        "option_letter": "B",
+        "option_text": "(6x + 8) cm",
+        "is_correct": true,
+        "explanation": "Perimeter = 2(l + w) = 2((2x+3) + (x+1)) = 2(3x+4) = 6x + 8 cm."
+      },
+      {
+        "option_id": "algexp_app_01_C",
+        "option_letter": "C",
+        "option_text": "(2x² + 5x + 3) cm",
+        "is_correct": false,
+        "misconception_id": "algexp_expression_context_error",
+        "diagnostic_note": "Multiplied l × w = (2x+3)(x+1) = 2x² + 5x + 3. Found area instead of perimeter.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_app_01_D",
+        "option_letter": "D",
+        "option_text": "(4x + 4) cm",
+        "is_correct": false,
+        "misconception_id": "algexp_distribution_incomplete",
+        "diagnostic_note": "Computed 2 × 2x + 2 × 1 = 4x + 2, or 2l + 2w but with distribution error: 2(2x+3) = 4x (forgot + 6).",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_app_02",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 12,
+    "question_text": "Aryan earns ₹x per hour. He works 5 hours on weekdays and 3 hours on the weekend at 1.5 times his normal rate. Which expression gives his total weekly earnings?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "expression_in_context",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Building expression from context. Students choosing B forget the rate multiplier for weekends.",
+    "options": [
+      {
+        "option_id": "algexp_app_02_A",
+        "option_letter": "A",
+        "option_text": "8x",
+        "is_correct": false,
+        "misconception_id": "algexp_expression_context_error",
+        "diagnostic_note": "Added hours: (5+3)x = 8x. Did not account for the 1.5× rate for weekend hours.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_app_02_B",
+        "option_letter": "B",
+        "option_text": "5x + 4.5x",
+        "is_correct": true,
+        "explanation": "Weekday: 5x. Weekend: 3 × 1.5x = 4.5x. Total = 5x + 4.5x = 9.5x. (Option B shows the unsimplified form, which is also valid.)"
+      },
+      {
+        "option_id": "algexp_app_02_C",
+        "option_letter": "C",
+        "option_text": "5x + 3x + 1.5",
+        "is_correct": false,
+        "misconception_id": "algexp_expression_context_error",
+        "diagnostic_note": "Added 1.5 as a constant instead of multiplying it with x. Did not apply the rate correctly to the weekend hours.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_app_02_D",
+        "option_letter": "D",
+        "option_text": "5x × 3 × 1.5x",
+        "is_correct": false,
+        "misconception_id": "algexp_coefficient_error",
+        "diagnostic_note": "Multiplied all terms together. Confused combining expressions (add) with total product (multiply).",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_app_03",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 13,
+    "question_text": "Simplify: (4x² − 3x + 1) − (2x² + x − 5)",
+    "image_path": null,
+    "image_description": null,
+    "concept": "subtraction_of_expressions",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": true,
+    "teaching_note": "Subtracting a multi-term expression. Key error: not distributing the negative to all terms. Students choosing A miss sign change on −5.",
+    "options": [
+      {
+        "option_id": "algexp_app_03_A",
+        "option_letter": "A",
+        "option_text": "2x² − 4x − 4",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "Changed signs of first two terms but not the last: 4x²−2x²=2x², −3x−x=−4x, but +1−(−5) became 1−5=−4 instead of +6.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_app_03_B",
+        "option_letter": "B",
+        "option_text": "2x² − 4x + 6",
+        "is_correct": true,
+        "explanation": "(4x²−3x+1) − (2x²+x−5) = 4x²−3x+1 − 2x²−x+5 = 2x²−4x+6."
+      },
+      {
+        "option_id": "algexp_app_03_C",
+        "option_letter": "C",
+        "option_text": "6x² − 2x − 4",
+        "is_correct": false,
+        "misconception_id": "algexp_sign_error_subtraction",
+        "diagnostic_note": "Added instead of subtracted: 4x²+2x²=6x², −3x+x=−2x, 1−5=−4. Did not recognize this as a subtraction problem.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_app_03_D",
+        "option_letter": "D",
+        "option_text": "2x² − 2x + 6",
+        "is_correct": false,
+        "misconception_id": "algexp_unlike_terms_combined",
+        "diagnostic_note": "Simplified x-terms incorrectly: −3x − x = −2x (should be −4x). Combined unlike steps or arithmetic error.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_app_04",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 14,
+    "question_text": "Evaluate (a + b)² when a = 3 and b = 2. Which method is correct?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "substitution_with_identity",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Tests whether students evaluate brackets first or incorrectly split the square. Most common error: (a+b)² = a² + b².",
+    "options": [
+      {
+        "option_id": "algexp_app_04_A",
+        "option_letter": "A",
+        "option_text": "(3+2)² = 5² = 25",
+        "is_correct": true,
+        "explanation": "Substitute first: (3+2)² = 5² = 25. Alternatively, (a+b)² = a²+2ab+b² = 9+12+4 = 25."
+      },
+      {
+        "option_id": "algexp_app_04_B",
+        "option_letter": "B",
+        "option_text": "a² + b² = 9 + 4 = 13",
+        "is_correct": false,
+        "misconception_id": "algexp_identity_error",
+        "diagnostic_note": "Applied (a+b)² = a² + b². Classic identity error — forgot the 2ab cross term. Very common misconception.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_app_04_C",
+        "option_letter": "C",
+        "option_text": "2a + 2b = 6 + 4 = 10",
+        "is_correct": false,
+        "misconception_id": "algexp_substitution_error",
+        "diagnostic_note": "Treated ² as ×2: (a+b)² = 2(a+b). Confused squaring with doubling.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_app_04_D",
+        "option_letter": "D",
+        "option_text": "a² + 2b = 9 + 4 = 13",
+        "is_correct": false,
+        "misconception_id": "algexp_identity_error",
+        "diagnostic_note": "Applied the squared only to a: computed a² + b (not b²) incorrectly. Partial identity application.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "algexp_app_05",
+    "test_id": "algebraic_expressions_grade8",
+    "question_order": 15,
+    "question_text": "Factorize: 6x² + 9x",
+    "image_path": null,
+    "image_description": null,
+    "concept": "factorization",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Common factor. Students choosing B take out 3 instead of 3x. Students choosing D expand instead of factorize.",
+    "options": [
+      {
+        "option_id": "algexp_app_05_A",
+        "option_letter": "A",
+        "option_text": "3(2x² + 3x)",
+        "is_correct": false,
+        "misconception_id": "algexp_factorization_incomplete",
+        "diagnostic_note": "Took out only the numerical HCF (3) but not the common variable factor (x). Incomplete factorization.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "algexp_app_05_B",
+        "option_letter": "B",
+        "option_text": "3x(2x + 3)",
+        "is_correct": true,
+        "explanation": "HCF of 6x² and 9x is 3x. 6x² + 9x = 3x(2x + 3)."
+      },
+      {
+        "option_id": "algexp_app_05_C",
+        "option_letter": "C",
+        "option_text": "x(6x + 9)",
+        "is_correct": false,
+        "misconception_id": "algexp_factorization_incomplete",
+        "diagnostic_note": "Took out only x as common factor, not 3x. Found a correct factorization but not the fully simplified one.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "algexp_app_05_D",
+        "option_letter": "D",
+        "option_text": "6x³ + 9x²",
+        "is_correct": false,
+        "misconception_id": "algexp_expression_context_error",
+        "diagnostic_note": "Multiplied instead of factorized: multiplied by x instead of dividing out a factor. Confused factorization with multiplication.",
+        "severity": "HIGH"
+      }
+    ]
+  }
+]

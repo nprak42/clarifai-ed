@@ -1,0 +1,768 @@
+[
+  {
+    "question_id": "quad_mech_01",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 1,
+    "question_text": "What is the sum of all interior angles of a quadrilateral?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "angle_sum_quadrilateral",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Entry check. Students choosing A think quadrilateral angles sum like triangle (180°). Students choosing D double the triangle sum correctly.",
+    "options": [
+      {
+        "option_id": "quad_mech_01_A",
+        "option_letter": "A",
+        "option_text": "180°",
+        "is_correct": false,
+        "misconception_id": "quad_angle_sum_180",
+        "diagnostic_note": "Believes the sum is 180° — applies the triangle angle sum rule to quadrilaterals.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_mech_01_B",
+        "option_letter": "B",
+        "option_text": "270°",
+        "is_correct": false,
+        "misconception_id": "quad_angle_sum_wrong",
+        "diagnostic_note": "Arbitrary incorrect value — no clear misconception pattern, may be guessing.",
+        "severity": "LOW"
+      },
+      {
+        "option_id": "quad_mech_01_C",
+        "option_letter": "C",
+        "option_text": "360°",
+        "is_correct": true,
+        "explanation": "A quadrilateral can be divided into 2 triangles, each with 180°. Sum = 2 × 180° = 360°."
+      },
+      {
+        "option_id": "quad_mech_01_D",
+        "option_letter": "D",
+        "option_text": "540°",
+        "is_correct": false,
+        "misconception_id": "quad_angle_sum_pentagon",
+        "diagnostic_note": "Gives the sum for a pentagon (5 sides). Has the polygon angle sum formula but applied to wrong polygon.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_mech_02",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 2,
+    "question_text": "Three angles of a quadrilateral are 80°, 90°, and 110°. What is the fourth angle?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "angle_sum_quadrilateral",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Applying angle sum = 360°. Students choosing A use 180° as total.",
+    "options": [
+      {
+        "option_id": "quad_mech_02_A",
+        "option_letter": "A",
+        "option_text": "−100° (impossible)",
+        "is_correct": false,
+        "misconception_id": "quad_angle_sum_180",
+        "diagnostic_note": "Subtracted from 180°: 180 − 80 − 90 − 110 = −100°. Used triangle angle sum instead of 360°.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_mech_02_B",
+        "option_letter": "B",
+        "option_text": "80°",
+        "is_correct": true,
+        "explanation": "Sum of all 4 angles = 360°. Fourth angle = 360 − 80 − 90 − 110 = 80°."
+      },
+      {
+        "option_id": "quad_mech_02_C",
+        "option_letter": "C",
+        "option_text": "100°",
+        "is_correct": false,
+        "misconception_id": "quad_angle_sum_wrong",
+        "diagnostic_note": "Used sum = 380° or made arithmetic error: 80+90+110 = 270, then 380 − 270 = 110. Incorrect total.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "quad_mech_02_D",
+        "option_letter": "D",
+        "option_text": "90°",
+        "is_correct": false,
+        "misconception_id": "quad_all_quads_are_rectangles",
+        "diagnostic_note": "Assumed the fourth angle must be 90° because 'it looks like a rectangle'. Applied rectangular right-angle property to a general quadrilateral.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_mech_03",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 3,
+    "question_text": "Which of the following is true for a parallelogram?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "parallelogram_properties",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Tests basic parallelogram properties. Students choosing B confuse parallelogram with rectangle.",
+    "options": [
+      {
+        "option_id": "quad_mech_03_A",
+        "option_letter": "A",
+        "option_text": "All four sides are equal",
+        "is_correct": false,
+        "misconception_id": "quad_parallelogram_is_rhombus",
+        "diagnostic_note": "Thinks all parallelograms have equal sides. Confuses parallelogram with rhombus.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "quad_mech_03_B",
+        "option_letter": "B",
+        "option_text": "All four angles are 90°",
+        "is_correct": false,
+        "misconception_id": "quad_all_quads_are_rectangles",
+        "diagnostic_note": "Thinks all parallelograms are rectangles. Over-applies rectangle properties to all quadrilaterals.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_mech_03_C",
+        "option_letter": "C",
+        "option_text": "Opposite sides are equal and parallel",
+        "is_correct": true,
+        "explanation": "Defining property: opposite sides of a parallelogram are equal in length and parallel to each other."
+      },
+      {
+        "option_id": "quad_mech_03_D",
+        "option_letter": "D",
+        "option_text": "Diagonals are equal in length",
+        "is_correct": false,
+        "misconception_id": "quad_diagonal_properties_confused",
+        "diagnostic_note": "Thinks parallelograms have equal diagonals — this is a property of rectangles, not all parallelograms.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_mech_04",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 4,
+    "question_text": "In parallelogram ABCD, angle A = 70°. What is angle C?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "parallelogram_angles",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Opposite angles in parallelogram are equal. Students choosing B use co-interior angle property.",
+    "options": [
+      {
+        "option_id": "quad_mech_04_A",
+        "option_letter": "A",
+        "option_text": "110°",
+        "is_correct": false,
+        "misconception_id": "quad_co_interior_angles_confused",
+        "diagnostic_note": "Used 180° − 70° = 110°. Applied co-interior (same-side) angle rule, which applies to adjacent angles, not opposite.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "quad_mech_04_B",
+        "option_letter": "B",
+        "option_text": "70°",
+        "is_correct": true,
+        "explanation": "In a parallelogram, opposite angles are equal. Angle A = Angle C = 70°."
+      },
+      {
+        "option_id": "quad_mech_04_C",
+        "option_letter": "C",
+        "option_text": "90°",
+        "is_correct": false,
+        "misconception_id": "quad_all_quads_are_rectangles",
+        "diagnostic_note": "Assumed C must be 90°. Overgeneralised the rectangle to all parallelograms.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_mech_04_D",
+        "option_letter": "D",
+        "option_text": "140°",
+        "is_correct": false,
+        "misconception_id": "quad_angle_sum_wrong",
+        "diagnostic_note": "Doubled 70° giving 140°. Incorrectly applied a doubling rule with no geometric basis.",
+        "severity": "LOW"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_mech_05",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 5,
+    "question_text": "Which quadrilateral has all four sides equal but angles are not necessarily 90°?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "quadrilateral_classification",
+    "question_type": "mechanical",
+    "tier": null,
+    "difficulty": "easy",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Classification of rhombus vs square. Students choosing B confuse square with rhombus.",
+    "options": [
+      {
+        "option_id": "quad_mech_05_A",
+        "option_letter": "A",
+        "option_text": "Rectangle",
+        "is_correct": false,
+        "misconception_id": "quad_rectangle_properties_confused",
+        "diagnostic_note": "Thinks rectangle has all equal sides. Confuses equal-sides property with right-angle property.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_mech_05_B",
+        "option_letter": "B",
+        "option_text": "Square",
+        "is_correct": false,
+        "misconception_id": "quad_square_is_only_equal_sided",
+        "diagnostic_note": "Knows square has all sides equal but doesn't know rhombus also does. Thinks square is the only such quadrilateral.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "quad_mech_05_C",
+        "option_letter": "C",
+        "option_text": "Rhombus",
+        "is_correct": true,
+        "explanation": "A rhombus has all four sides equal but its angles need not be 90°. A square is a special rhombus with 90° angles."
+      },
+      {
+        "option_id": "quad_mech_05_D",
+        "option_letter": "D",
+        "option_text": "Trapezium",
+        "is_correct": false,
+        "misconception_id": "quad_trapezium_properties_confused",
+        "diagnostic_note": "Chose trapezium. Has no clear understanding of trapezium's defining property (only one pair of parallel sides).",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_und_01",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 6,
+    "question_text": "A rectangle is a special type of which shape?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "quadrilateral_hierarchy",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Tests understanding of the shape hierarchy. Students choosing D don't know parallelogram definition.",
+    "options": [
+      {
+        "option_id": "quad_und_01_A",
+        "option_letter": "A",
+        "option_text": "Rhombus",
+        "is_correct": false,
+        "misconception_id": "quad_rectangle_is_rhombus",
+        "diagnostic_note": "Thinks rectangle is a type of rhombus. Confuses equal sides (rhombus) with right angles (rectangle).",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "quad_und_01_B",
+        "option_letter": "B",
+        "option_text": "Trapezium",
+        "is_correct": false,
+        "misconception_id": "quad_trapezium_properties_confused",
+        "diagnostic_note": "Thinks rectangle is a type of trapezium. Shows no understanding of the quadrilateral hierarchy.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_und_01_C",
+        "option_letter": "C",
+        "option_text": "Parallelogram",
+        "is_correct": true,
+        "explanation": "A rectangle is a parallelogram with all angles equal to 90°. It satisfies all properties of a parallelogram."
+      },
+      {
+        "option_id": "quad_und_01_D",
+        "option_letter": "D",
+        "option_text": "None — it is its own shape",
+        "is_correct": false,
+        "misconception_id": "quad_all_quads_are_rectangles",
+        "diagnostic_note": "Thinks rectangle is unique and not related to other quadrilateral types. Cannot see the hierarchical relationship.",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_und_02",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 7,
+    "question_text": "In parallelogram PQRS, the diagonals PR and QS bisect each other at O. If PO = 5 cm, what is PR?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "diagonal_bisection",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Diagonals of parallelogram bisect each other. Students choosing A think PO = PR.",
+    "options": [
+      {
+        "option_id": "quad_und_02_A",
+        "option_letter": "A",
+        "option_text": "5 cm",
+        "is_correct": false,
+        "misconception_id": "quad_diagonal_properties_confused",
+        "diagnostic_note": "Thinks PO equals PR. Does not understand that O is the midpoint so PR = 2 × PO.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_und_02_B",
+        "option_letter": "B",
+        "option_text": "10 cm",
+        "is_correct": true,
+        "explanation": "Diagonals of a parallelogram bisect each other, so OR = PO = 5 cm. PR = PO + OR = 5 + 5 = 10 cm."
+      },
+      {
+        "option_id": "quad_und_02_C",
+        "option_letter": "C",
+        "option_text": "2.5 cm",
+        "is_correct": false,
+        "misconception_id": "quad_diagonal_properties_confused",
+        "diagnostic_note": "Halved PO further. Thinks O divides diagonal into quarters or that PO = half of half of PR.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "quad_und_02_D",
+        "option_letter": "D",
+        "option_text": "Cannot be determined without knowing QS",
+        "is_correct": false,
+        "misconception_id": "quad_parallelogram_is_rhombus",
+        "diagnostic_note": "Thinks diagonals of a parallelogram are equal (like a rectangle), so needs QS too. Confuses diagonal bisection with equal diagonals.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_und_03",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 8,
+    "question_text": "Which of the following is NOT a property of a rhombus?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "rhombus_properties",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Tests ability to distinguish rhombus properties from rectangle/square. Students choosing D think all rhombuses are squares.",
+    "options": [
+      {
+        "option_id": "quad_und_03_A",
+        "option_letter": "A",
+        "option_text": "All four sides are equal",
+        "is_correct": false,
+        "misconception_id": "quad_trapezium_properties_confused",
+        "diagnostic_note": "Thinks equal sides is NOT a property of rhombus. Fundamental misidentification.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_und_03_B",
+        "option_letter": "B",
+        "option_text": "Diagonals bisect each other at right angles",
+        "is_correct": false,
+        "misconception_id": "quad_diagonal_properties_confused",
+        "diagnostic_note": "Thinks perpendicular diagonal bisection is not a rhombus property. This IS a property of a rhombus.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "quad_und_03_C",
+        "option_letter": "C",
+        "option_text": "All angles are 90°",
+        "is_correct": true,
+        "explanation": "A rhombus does NOT need to have 90° angles. Only a square (a special rhombus) has all angles equal to 90°."
+      },
+      {
+        "option_id": "quad_und_03_D",
+        "option_letter": "D",
+        "option_text": "Opposite angles are equal",
+        "is_correct": false,
+        "misconception_id": "quad_all_quads_are_rectangles",
+        "diagnostic_note": "Thinks opposite angles equal is not a rhombus property. This IS a property (inherited from parallelogram).",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_und_04",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 9,
+    "question_text": "In a trapezium ABCD, AB ∥ CD. Angles A and D are on the same side as leg AD. If angle A = 65°, what is angle D?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "trapezium_angles",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Co-interior angles between parallel lines are supplementary. Students choosing A think they are equal.",
+    "options": [
+      {
+        "option_id": "quad_und_04_A",
+        "option_letter": "A",
+        "option_text": "65°",
+        "is_correct": false,
+        "misconception_id": "quad_co_interior_angles_confused",
+        "diagnostic_note": "Thinks co-interior angles are equal. Confuses them with alternate angles (which are equal) or vertically opposite angles.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_und_04_B",
+        "option_letter": "B",
+        "option_text": "115°",
+        "is_correct": true,
+        "explanation": "Angles A and D are co-interior angles (same-side interior) between parallel lines AB ∥ CD. They are supplementary: A + D = 180°. D = 180° − 65° = 115°."
+      },
+      {
+        "option_id": "quad_und_04_C",
+        "option_letter": "C",
+        "option_text": "90°",
+        "is_correct": false,
+        "misconception_id": "quad_all_quads_are_rectangles",
+        "diagnostic_note": "Assumed angle must be 90°. Over-applied rectangle properties to trapezium.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_und_04_D",
+        "option_letter": "D",
+        "option_text": "130°",
+        "is_correct": false,
+        "misconception_id": "quad_angle_sum_wrong",
+        "diagnostic_note": "Doubled 65° = 130°. No geometric justification — arithmetic manipulation without understanding.",
+        "severity": "LOW"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_und_05",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 10,
+    "question_text": "A square has a diagonal of length 10 cm. What is the length of each side? (Use √2 ≈ 1.41)",
+    "image_path": null,
+    "image_description": null,
+    "concept": "diagonal_side_relationship",
+    "question_type": "understanding",
+    "tier": null,
+    "difficulty": "medium",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Diagonal of square = side × √2. Students choosing D confuse diagonal with side directly.",
+    "options": [
+      {
+        "option_id": "quad_und_05_A",
+        "option_letter": "A",
+        "option_text": "10 cm",
+        "is_correct": false,
+        "misconception_id": "quad_diagonal_properties_confused",
+        "diagnostic_note": "Set side = diagonal. Thinks diagonal and side are equal in length.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_und_05_B",
+        "option_letter": "B",
+        "option_text": "5 cm",
+        "is_correct": false,
+        "misconception_id": "quad_diagonal_properties_confused",
+        "diagnostic_note": "Halved the diagonal: 10 ÷ 2 = 5. Confused diagonal bisection (half-diagonal = 5) with the full side length.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "quad_und_05_C",
+        "option_letter": "C",
+        "option_text": "Approximately 7.09 cm",
+        "is_correct": true,
+        "explanation": "Diagonal = side × √2. Side = diagonal ÷ √2 = 10 ÷ 1.41 ≈ 7.09 cm."
+      },
+      {
+        "option_id": "quad_und_05_D",
+        "option_letter": "D",
+        "option_text": "Approximately 14.1 cm",
+        "is_correct": false,
+        "misconception_id": "quad_all_quads_are_rectangles",
+        "diagnostic_note": "Multiplied 10 × 1.41 = 14.1. Used diagonal × √2 instead of diagonal ÷ √2. Inverted the formula.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_app_01",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 11,
+    "question_text": "A field is in the shape of a parallelogram with base 20 m and height 12 m. What is its area?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "area_parallelogram",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Area = base × height. Students choosing A use a side instead of perpendicular height.",
+    "options": [
+      {
+        "option_id": "quad_app_01_A",
+        "option_letter": "A",
+        "option_text": "240 m²",
+        "is_correct": true,
+        "explanation": "Area of parallelogram = base × height = 20 × 12 = 240 m²."
+      },
+      {
+        "option_id": "quad_app_01_B",
+        "option_letter": "B",
+        "option_text": "64 m²",
+        "is_correct": false,
+        "misconception_id": "quad_perimeter_as_area",
+        "diagnostic_note": "Computed perimeter-like value: 20 + 12 + 20 + 12 = 64. Confused perimeter with area.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_app_01_C",
+        "option_letter": "C",
+        "option_text": "120 m²",
+        "is_correct": false,
+        "misconception_id": "quad_parallelogram_area_halved",
+        "diagnostic_note": "Computed (base × height) / 2 = 120. Applied triangle area formula to parallelogram.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_app_01_D",
+        "option_letter": "D",
+        "option_text": "400 m²",
+        "is_correct": false,
+        "misconception_id": "quad_all_quads_are_rectangles",
+        "diagnostic_note": "Computed 20² = 400. Assumed it was a square and squared the base.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_app_02",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 12,
+    "question_text": "ABCD is a rhombus with diagonals AC = 16 cm and BD = 12 cm. What is the area of the rhombus?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "area_rhombus",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": false,
+    "teaching_note": "Area of rhombus = (d1 × d2) / 2. Students choosing C use base × height incorrectly.",
+    "options": [
+      {
+        "option_id": "quad_app_02_A",
+        "option_letter": "A",
+        "option_text": "192 cm²",
+        "is_correct": false,
+        "misconception_id": "quad_parallelogram_area_halved",
+        "diagnostic_note": "Computed 16 × 12 = 192 without halving. Used product of diagonals without the ÷ 2.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_app_02_B",
+        "option_letter": "B",
+        "option_text": "56 cm²",
+        "is_correct": false,
+        "misconception_id": "quad_perimeter_as_area",
+        "diagnostic_note": "Added diagonals and doubled: (16 + 12) × 2 = 56. Used perimeter-type calculation instead of area.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_app_02_C",
+        "option_letter": "C",
+        "option_text": "96 cm²",
+        "is_correct": true,
+        "explanation": "Area of rhombus = (d1 × d2) / 2 = (16 × 12) / 2 = 192 / 2 = 96 cm²."
+      },
+      {
+        "option_id": "quad_app_02_D",
+        "option_letter": "D",
+        "option_text": "48 cm²",
+        "is_correct": false,
+        "misconception_id": "quad_diagonal_properties_confused",
+        "diagnostic_note": "Used half-diagonals: (8 × 6) × (1/2) = 24 × 2 = 48. Confusion between using full and half diagonals.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_app_03",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 13,
+    "question_text": "In parallelogram ABCD, angle A = 3x and angle B = 2x + 10. Find x.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "parallelogram_angles",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": true,
+    "teaching_note": "Adjacent angles in parallelogram are supplementary. Students choosing B equate the two angles.",
+    "options": [
+      {
+        "option_id": "quad_app_03_A",
+        "option_letter": "A",
+        "option_text": "34°",
+        "is_correct": true,
+        "explanation": "Adjacent angles in parallelogram are supplementary: 3x + 2x + 10 = 180. 5x = 170. x = 34."
+      },
+      {
+        "option_id": "quad_app_03_B",
+        "option_letter": "B",
+        "option_text": "2°",
+        "is_correct": false,
+        "misconception_id": "quad_co_interior_angles_confused",
+        "diagnostic_note": "Set angles equal: 3x = 2x + 10 → x = 10. Treated adjacent angles as equal (opposite angle property applied wrongly).",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_app_03_C",
+        "option_letter": "C",
+        "option_text": "10°",
+        "is_correct": false,
+        "misconception_id": "quad_co_interior_angles_confused",
+        "diagnostic_note": "Set 3x = 2x + 10 → x = 10. Equated angles as if they were alternate/opposite, not supplementary.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_app_03_D",
+        "option_letter": "D",
+        "option_text": "38°",
+        "is_correct": false,
+        "misconception_id": "quad_angle_sum_wrong",
+        "diagnostic_note": "Used sum = 360° for both angles: 3x + 2x + 10 = 360 → 5x = 350 → x = 70 then divided by something. Wrong total used.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_app_04",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 14,
+    "question_text": "The area of a trapezium is 120 cm². Its parallel sides are 10 cm and 14 cm. What is its height?",
+    "image_path": null,
+    "image_description": null,
+    "concept": "area_trapezium",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": true,
+    "critical_question": false,
+    "teaching_note": "Area of trapezium = ½ × (sum of parallel sides) × h. Students choosing B skip the ½.",
+    "options": [
+      {
+        "option_id": "quad_app_04_A",
+        "option_letter": "B",
+        "option_letter": "A",
+        "option_text": "5 cm",
+        "is_correct": false,
+        "misconception_id": "quad_parallelogram_area_halved",
+        "diagnostic_note": "Used wrong formula: 120 = (10 + 14) × h → h = 120/24 = 5. Forgot the ½ in the trapezium area formula.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_app_04_B",
+        "option_letter": "B",
+        "option_text": "10 cm",
+        "is_correct": true,
+        "explanation": "Area = ½ × (a + b) × h. 120 = ½ × (10 + 14) × h = 12h. h = 120/12 = 10 cm."
+      },
+      {
+        "option_id": "quad_app_04_C",
+        "option_letter": "C",
+        "option_text": "12 cm",
+        "is_correct": false,
+        "misconception_id": "quad_trapezium_properties_confused",
+        "diagnostic_note": "Divided area by one parallel side: 120/10 = 12. Used only one parallel side instead of average of both.",
+        "severity": "MEDIUM"
+      },
+      {
+        "option_id": "quad_app_04_D",
+        "option_letter": "D",
+        "option_text": "8 cm",
+        "is_correct": false,
+        "misconception_id": "quad_perimeter_as_area",
+        "diagnostic_note": "Used 120 ÷ (10 + 4 + 14 + ?) — mixed up perimeter components with area formula.",
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  {
+    "question_id": "quad_app_05",
+    "test_id": "quadrilaterals_grade8",
+    "question_order": 15,
+    "question_text": "Is every square a rectangle? Is every rectangle a square? Choose the correct answer.",
+    "image_path": null,
+    "image_description": null,
+    "concept": "quadrilateral_hierarchy",
+    "question_type": "application",
+    "tier": null,
+    "difficulty": "hard",
+    "requires_multiple_steps": false,
+    "critical_question": true,
+    "teaching_note": "Tests hierarchy understanding. A square satisfies all rectangle conditions but not vice versa.",
+    "options": [
+      {
+        "option_id": "quad_app_05_A",
+        "option_letter": "A",
+        "option_text": "Yes to both — squares and rectangles are the same shape",
+        "is_correct": false,
+        "misconception_id": "quad_all_quads_are_rectangles",
+        "diagnostic_note": "Treats square and rectangle as identical. Cannot distinguish between the two despite different side length conditions.",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_app_05_B",
+        "option_letter": "B",
+        "option_text": "Every square is a rectangle, but not every rectangle is a square",
+        "is_correct": true,
+        "explanation": "A square has all properties of a rectangle (4 right angles, opposite sides equal) PLUS equal adjacent sides. A rectangle need not have all sides equal."
+      },
+      {
+        "option_id": "quad_app_05_C",
+        "option_letter": "C",
+        "option_text": "Every rectangle is a square, but not every square is a rectangle",
+        "is_correct": false,
+        "misconception_id": "quad_rectangle_is_rhombus",
+        "diagnostic_note": "Reverses the hierarchy. Thinks the more general shape (rectangle) is a special case of the more specific (square).",
+        "severity": "HIGH"
+      },
+      {
+        "option_id": "quad_app_05_D",
+        "option_letter": "D",
+        "option_text": "Neither — squares and rectangles are completely different quadrilaterals",
+        "is_correct": false,
+        "misconception_id": "quad_square_is_only_equal_sided",
+        "diagnostic_note": "Cannot see any relationship between square and rectangle. Treats each shape as isolated.",
+        "severity": "HIGH"
+      }
+    ]
+  }
+]

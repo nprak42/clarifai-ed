@@ -1,0 +1,60 @@
+# Environment and secrets
+.env
+*.env
+config.local.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+
+# SQLite databases (legacy — project now uses Postgres)
+*.db
+*.db-shm
+*.db-wal
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Screenshots / local assets not for the repo
+*.png
+*.jpg
+*.jpeg
+
+# Data files for subjects not included in this release
+assessment-tool/data/misconceptions.json
+assessment-tool/data/patterns.json
+assessment-tool/data/tests_new.json
+assessment-tool/data/questions_fractions.json
+assessment-tool/data/questions_motion.json
+assessment-tool/data/questions_lines_angles.json
+assessment-tool/data/questions_circles.json
+assessment-tool/data/interventions.json
+
+# Working notes / generated docs
+assessment-tool/context.txt
+assessment-tool/misconceptions.txt
+assessment-tool/schema.sql
+
+# Images for excluded subjects
+assessment-tool/static/images/frac_*.svg
+
+# Internal dev instructions
+CLAUDE.md
