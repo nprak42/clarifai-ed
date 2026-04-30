@@ -1,7 +1,4 @@
-import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-
 import uuid
 from flask import g
 from db import get_conn, put_conn
@@ -21,7 +18,7 @@ def close_db(e=None):
 
 def init_db():
     """Apply schema.sql against the configured database. Safe to re-run."""
-    schema_path = os.path.join(os.path.dirname(__file__), '..', 'schema.sql')
+    schema_path = os.path.join(os.path.dirname(__file__), 'schema.sql')
     conn = get_conn()
     try:
         with open(schema_path) as f:

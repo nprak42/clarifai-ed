@@ -51,7 +51,6 @@ assessment-tool/data/interventions.json
 # Working notes / generated docs
 assessment-tool/context.txt
 assessment-tool/misconceptions.txt
-assessment-tool/schema.sql
 
 # Images for excluded subjects
 assessment-tool/static/images/frac_*.svg
