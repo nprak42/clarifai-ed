@@ -3,6 +3,8 @@ Teacher co-pilot: adapter from analyze_session() output → Gemini prompt/chat.
 """
 import os
 
+import database as db
+
 from google import genai
 from google.genai import types
 
@@ -26,56 +28,63 @@ def build_copilot_context(data: dict) -> dict:
     """
     Reshape analyze_session() output into the flat dict that build_system_prompt expects.
     """
-    session = data['session']
     test = data['test']
-    students = data['students']
     class_summary = data['class_summary']
     pattern_groups = data['pattern_groups']
     intervention_groups = data['intervention_groups']
-    all_misconceptions = data['all_misconceptions']
 
     n = class_summary['student_count']
     avg = class_summary['avg_score']
 
-    # Aggregate type_scores across all students for score_breakdown
-    type_totals = {}
-    type_counts = {}
-    for s in students:
-        for k, v in (s.get('type_scores') or {}).items():
-            type_totals[k] = type_totals.get(k, 0) + v
-            type_counts[k] = type_counts.get(k, 0) + 1
+    # Compute score_breakdown from raw responses so the class percentage per
+    # question_type is correct/total across every response, not an average of
+    # per-student percentages (which skews when students have partial submissions).
+    session_id = data['session']['session_id']
+    raw_responses = db.get_responses_for_session(session_id)
+    type_correct = {}
+    type_total = {}
+    for r in raw_responses:
+        qtype = r.get('question_type')
+        if not qtype:
+            continue
+        type_total[qtype] = type_total.get(qtype, 0) + 1
+        if r.get('is_correct'):
+            type_correct[qtype] = type_correct.get(qtype, 0) + 1
     score_breakdown = {
-        k: round(type_totals[k] / type_counts[k], 1)
-        for k in type_totals
-        if type_counts[k] > 0
+        k: round(type_correct.get(k, 0) / type_total[k] * 100, 1)
+        for k in type_total
+        if type_total[k] > 0
     }
 
-    patterns = []
-    for g in pattern_groups:
-        p = g['pattern']
-        patterns.append({
-            'pattern_id': p.get('pattern_id', ''),
-            'pattern_name': p.get('pattern_name', ''),
+    # Sort patterns by student count (prevalence) for the prompt.
+    # analyzer returns risk-first; prompt labels this section "ranked by prevalence".
+    patterns = sorted([
+        {
+            'pattern_id': g['pattern'].get('pattern_id', ''),
+            'pattern_name': g['pattern'].get('pattern_name', ''),
             'student_count': g['count'],
             'percent_of_class': round(g['count'] / n * 100) if n else 0,
-            'grade8_risk': p.get('grade8_risk', ''),
-            'diagnosis': p.get('diagnosis', ''),
-            'intervention_focus': p.get('intervention_focus', ''),
-            'estimated_intervention_time': p.get('estimated_intervention_time', ''),
-        })
+            'grade8_risk': g['pattern'].get('grade8_risk', ''),
+            'diagnosis': g['pattern'].get('diagnosis', ''),
+            'intervention_focus': g['pattern'].get('intervention_focus', ''),
+            'estimated_intervention_time': g['pattern'].get('estimated_intervention_time', ''),
+        }
+        for g in pattern_groups
+    ], key=lambda p: -p['student_count'])
 
-    top_misconceptions = []
-    for g in intervention_groups[:5]:
-        m = g['misconception']
-        top_misconceptions.append({
-            'misconception_id': m.get('misconception_id', ''),
-            'misconception_name': m.get('misconception_name', ''),
+    # Sort misconceptions by student count (prevalence) for the prompt.
+    top_misconceptions = sorted([
+        {
+            'misconception_id': g['misconception'].get('misconception_id', ''),
+            'misconception_name': g['misconception'].get('misconception_name', ''),
             'student_count': g['count'],
             'percent_of_class': round(g['count'] / n * 100) if n else 0,
-            'severity': m.get('severity', ''),
-            'root_cause': m.get('root_cause', ''),
-            'why_students_think_this': m.get('why_students_think_this', ''),
-        })
+            'severity': g['misconception'].get('severity', ''),
+            'root_cause': g['misconception'].get('root_cause', ''),
+            'why_students_think_this': g['misconception'].get('why_students_think_this', ''),
+        }
+        for g in intervention_groups
+    ], key=lambda m: -m['student_count'])[:5]
 
     return {
         'test': {
@@ -183,7 +192,7 @@ def build_system_prompt(class_data: dict) -> str:
     lines.append('')
 
     if patterns:
-        lines.append('DETECTED LEARNING PATTERNS (ranked by prevalence):')
+        lines.append('DETECTED LEARNING PATTERNS (ranked by number of students affected):')
         for p in patterns:
             lines.append(
                 f"  [{p['grade8_risk']}] {p['pattern_name']} — "
@@ -196,7 +205,7 @@ def build_system_prompt(class_data: dict) -> str:
             lines.append('')
 
     if misconceptions:
-        lines.append('SPECIFIC MISCONCEPTIONS DETECTED (ranked by prevalence):')
+        lines.append('SPECIFIC MISCONCEPTIONS DETECTED (ranked by number of students affected):')
         for m in misconceptions:
             lines.append(
                 f"  [{m['severity']}] {m['misconception_name']} — "

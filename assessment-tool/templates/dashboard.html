@@ -618,6 +618,7 @@
       }
       output.textContent = d.plan;
       copilotHistory = [{role: 'user', text: 'What should I do first with this class?'}, {role: 'model', text: d.plan}];
+      document.getElementById('copilot-chat-messages').innerHTML = '';
       document.getElementById('copilot-chat').hidden = false;
       btn.textContent = 'Regenerate Plan';
       btn.disabled = false;
