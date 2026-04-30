@@ -6,9 +6,11 @@ from datetime import date
 from flask import Flask, render_template, request, redirect, url_for, jsonify, abort
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 import database as db
 import analysis
+import copilot
 
 app = Flask(__name__)
 
@@ -24,8 +26,8 @@ app.config['SESSION_COOKIE_NAME'] = os.environ.get(
 app.config['SESSION_COOKIE_HTTPONLY'] = True
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'
 app.config['SESSION_COOKIE_SECURE'] = os.environ.get('SECURE_COOKIES', '0') == '1'
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
-TUTOR_BASE_URL = os.environ.get('TUTOR_BASE_URL', 'http://localhost:5001')
 PLATFORM_BASE_URL = os.environ.get('PLATFORM_BASE_URL', '').rstrip('/')
 
 limiter = Limiter(
@@ -322,11 +324,12 @@ def create_tutor_session():
 
     test = db.get_test_by_id(sess['test_id'])
     token = db.create_tutor_token(session_id, student_name, test['subject'])
-    public_base = PLATFORM_BASE_URL or request.host_url.rstrip('/')
-    # Embed the assessment tool's public URL so the tutor can call back correctly
-    # even when both apps are tunneled via different ngrok URLs.
+    public_base = request.host_url.rstrip('/') or PLATFORM_BASE_URL
+    tutor_base = f"{public_base}/tutor"
+    # Build tutor handoff URLs from the actual public origin so reverse proxies
+    # and ngrok links keep working when the app is opened off-device.
     from urllib.parse import urlencode
-    tutor_url = f"{TUTOR_BASE_URL}/start/{token}?{urlencode({'cb': public_base})}"
+    tutor_url = f"{tutor_base}/start/{token}?{urlencode({'cb': public_base})}"
     return jsonify({'success': True, 'token': token, 'tutor_url': tutor_url})
 
 
@@ -496,6 +499,82 @@ def dashboard_data(access_code):
             for g in data['pattern_groups']
         ],
     })
+
+
+# ---------------------------------------------------------------------------
+# Health check
+# ---------------------------------------------------------------------------
+
+@app.route('/health')
+def health():
+    return jsonify({'status': 'ok'})
+
+
+# ---------------------------------------------------------------------------
+# Teacher co-pilot
+# ---------------------------------------------------------------------------
+
+@app.route('/api/copilot/plan', methods=['POST'])
+@limiter.limit('20 per hour')
+def copilot_plan():
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'No JSON body'}), 400
+
+    access_code = data.get('access_code', '').strip().upper()
+    if not access_code:
+        return jsonify({'error': 'access_code required'}), 400
+
+    session = db.get_session_by_code(access_code)
+    if not session:
+        return jsonify({'error': 'Session not found'}), 404
+
+    try:
+        session_data = analysis.analyze_session(session['session_id'])
+        class_data = copilot.build_copilot_context(session_data)
+        plan = copilot.get_initial_plan(class_data)
+        return jsonify({'plan': plan, 'context': class_data})
+    except RuntimeError as e:
+        return jsonify({'error': str(e)}), 503
+    except Exception as e:
+        app.logger.exception('copilot_plan failed')
+        return jsonify({'error': 'Failed to generate plan'}), 500
+
+
+@app.route('/api/copilot/chat', methods=['POST'])
+@limiter.limit('60 per hour')
+def copilot_chat():
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'No JSON body'}), 400
+
+    access_code = data.get('access_code', '').strip().upper()
+    message = (data.get('message') or '').strip()
+    history = data.get('history') or []
+
+    if not access_code or not message:
+        return jsonify({'error': 'access_code and message required'}), 400
+
+    if not isinstance(history, list):
+        return jsonify({'error': 'history must be an array'}), 400
+
+    if len(message) > 2000:
+        return jsonify({'error': 'Message too long'}), 400
+
+    session = db.get_session_by_code(access_code)
+    if not session:
+        return jsonify({'error': 'Session not found'}), 404
+
+    try:
+        session_data = analysis.analyze_session(session['session_id'])
+        class_data = copilot.build_copilot_context(session_data)
+        reply = copilot.get_chat_reply(class_data, history, message)
+        return jsonify({'reply': reply})
+    except RuntimeError as e:
+        return jsonify({'error': str(e)}), 503
+    except Exception as e:
+        app.logger.exception('copilot_chat failed')
+        return jsonify({'error': 'Failed to generate reply'}), 500
 
 
 # ---------------------------------------------------------------------------

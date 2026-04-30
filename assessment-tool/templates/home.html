@@ -53,7 +53,7 @@
                 <div class="history-meta">Grade {{ s.grade }} · {{ s.subject | replace('_', ' ') | title }}</div>
               </td>
               <td>{{ s.class_section or '—' }}</td>
-              <td>{{ s.session_date or s.created_at[:10] }}</td>
+              <td>{{ s.session_date or (s.created_at.strftime('%Y-%m-%d') if s.created_at else '—') }}</td>
               <td><code class="code-pill">{{ s.access_code }}</code></td>
               <td>{{ s.students_completed }}</td>
               <td><span class="status-badge status-{{ s.status }}">{{ s.status }}</span></td>

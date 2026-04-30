@@ -174,6 +174,33 @@
     </section>
     {% endif %}
 
+    <!-- ===== TEACHER CO-PILOT ===== -->
+    <section class="dashboard-section no-print" id="copilot-section">
+      <div class="copilot-header">
+        <div>
+          <h2>Co-pilot: Intervention Planning</h2>
+          <p class="section-hint">Get a specific, ready-to-use classroom plan based on the patterns above.</p>
+        </div>
+        <button class="btn-copilot-plan" id="copilot-plan-btn" onclick="loadCopilotPlan()">
+          Get Intervention Plan
+        </button>
+      </div>
+
+      <div id="copilot-plan-area" hidden>
+        <div id="copilot-plan-output" class="copilot-output"></div>
+
+        <div class="copilot-chat" id="copilot-chat" hidden>
+          <div id="copilot-chat-messages" class="copilot-chat-messages"></div>
+          <div class="copilot-chat-input-row">
+            <input type="text" id="copilot-chat-input" class="copilot-chat-input"
+                   placeholder="Ask a follow-up (e.g. 'change the grouping', 'I only have 15 minutes')"
+                   onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendCopilotMessage()}" />
+            <button class="btn-copilot-send" onclick="sendCopilotMessage()">Send</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== STUDENT RESULTS ===== -->
     <section class="dashboard-section">
       <button class="section-toggle no-print" onclick="toggleSection('student-section', this)" aria-expanded="false">
@@ -256,7 +283,7 @@
       {% if data.session.status == 'closed' %}
       <div class="session-closed-banner">
         Session closed
-        {% if data.session.closed_at %} · {{ data.session.closed_at[:10] }}{% endif %}
+        {% if data.session.closed_at %} · {{ data.session.closed_at.strftime('%Y-%m-%d') if data.session.closed_at and data.session.closed_at is not string else data.session.closed_at[:10] }}{% endif %}
       </div>
       {% if data.session.teacher_notes %}
       <div class="teacher-notes-display">
@@ -561,6 +588,92 @@
     } catch (e) {
       alert('Error connecting to tutor service. Is it running?');
     }
+  }
+
+  // ---- Teacher co-pilot ----
+  let copilotHistory = [];
+
+  async function loadCopilotPlan() {
+    const btn = document.getElementById('copilot-plan-btn');
+    const area = document.getElementById('copilot-plan-area');
+    const output = document.getElementById('copilot-plan-output');
+
+    btn.disabled = true;
+    btn.textContent = 'Generating plan…';
+    area.hidden = false;
+    output.textContent = 'Thinking…';
+
+    try {
+      const resp = await fetch('/api/copilot/plan', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({access_code: ACCESS_CODE}),
+      });
+      const d = await resp.json();
+      if (!resp.ok) {
+        output.textContent = 'Error: ' + (d.error || 'Failed to generate plan.');
+        btn.disabled = false;
+        btn.textContent = 'Retry';
+        return;
+      }
+      output.textContent = d.plan;
+      copilotHistory = [{role: 'user', text: 'What should I do first with this class?'}, {role: 'model', text: d.plan}];
+      document.getElementById('copilot-chat').hidden = false;
+      btn.textContent = 'Regenerate Plan';
+      btn.disabled = false;
+    } catch (e) {
+      output.textContent = 'Could not reach the server. Please try again.';
+      btn.disabled = false;
+      btn.textContent = 'Retry';
+    }
+  }
+
+  async function sendCopilotMessage() {
+    const input = document.getElementById('copilot-chat-input');
+    const sendBtn = document.querySelector('.btn-copilot-send');
+    const messages = document.getElementById('copilot-chat-messages');
+    const message = input.value.trim();
+    if (!message) return;
+
+    input.value = '';
+    input.disabled = true;
+    sendBtn.disabled = true;
+
+    appendChatMsg('user', message);
+    const thinking = appendChatMsg('model', '…');
+
+    try {
+      const resp = await fetch('/api/copilot/chat', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({access_code: ACCESS_CODE, message, history: copilotHistory}),
+      });
+      const d = await resp.json();
+      const reply = resp.ok ? d.reply : ('Error: ' + (d.error || 'Failed to get reply.'));
+      thinking.textContent = reply;
+      if (resp.ok) {
+        copilotHistory.push({role: 'user', text: message});
+        copilotHistory.push({role: 'model', text: reply});
+      }
+    } catch (e) {
+      thinking.textContent = 'Could not reach the server. Please try again.';
+    }
+
+    input.disabled = false;
+    sendBtn.disabled = false;
+    input.focus();
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function appendChatMsg(role, text) {
+    const messages = document.getElementById('copilot-chat-messages');
+    const label = role === 'user' ? 'You' : 'Co-pilot';
+    const div = document.createElement('div');
+    div.className = 'chat-msg';
+    div.innerHTML = `<div class="chat-msg-label">${label}</div><div class="chat-msg-bubble ${role}">${esc(text)}</div>`;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+    return div.querySelector('.chat-msg-bubble');
   }
 
   // ---- Auto-refresh (silent, every 30s) ----
