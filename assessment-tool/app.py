@@ -538,7 +538,7 @@ def copilot_plan():
         return jsonify({'error': str(e)}), 503
     except Exception as e:
         app.logger.exception('copilot_plan failed')
-        return jsonify({'error': 'Failed to generate plan'}), 500
+        return jsonify({'error': f'Failed to generate plan: {e}'}), 500
 
 
 @app.route('/api/copilot/chat', methods=['POST'])
