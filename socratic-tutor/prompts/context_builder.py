@@ -25,6 +25,122 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../assessment-too
 SEVERITY_ORDER = {'CRITICAL': 0, 'HIGH': 1, 'MEDIUM': 2, 'LOW': 3}
 RISK_ORDER = {'CRITICAL': 0, 'HIGH': 1, 'MEDIUM-HIGH': 2, 'MEDIUM': 3, 'LOW': 4}
 
+# Resolution points per misconception — what "understood" looks like.
+# The tutor uses these to recognize when the session is complete.
+RESOLUTION_POINTS = {
+    # Fractions
+    'adding_numerators_and_denominators':
+        "Student explains that the denominators represent the size of each part, so you can only add "
+        "fractions when the parts are the same size (same denominator). They find a common denominator "
+        "without being told to. Correct transfer: solves 1/2 + 1/3 = 5/6 and explains why.",
+    'larger_denominator_larger_fraction':
+        "Student explains that a larger denominator means each piece is smaller, so 1/8 < 1/3. "
+        "They can compare two unit fractions without calculating. Correct transfer: correctly orders 1/5, 1/3, 1/9.",
+    'compares_numerators_only':
+        "Student explains that you can only compare numerators when the denominators are the same. "
+        "Correct transfer: correctly identifies 3/5 > 3/8 and explains the piece-size reasoning.",
+    'whole_number_thinking':
+        "Student explains that fraction operations require thinking about part-size, not just counting. "
+        "Correct transfer: correctly adds or compares two fractions without reverting to whole-number logic.",
+
+    # Electricity (Grade 9)
+    'elec_series_current_splits':
+        "Student explains that current is the same everywhere in a series circuit because charge is not "
+        "created or destroyed — it flows like water through a single pipe. Correct transfer: states the "
+        "current through each component in a simple series circuit without calculating.",
+    'elec_voltage_is_current':
+        "Student distinguishes voltage (pressure, energy per charge) from current (flow, charge per second) "
+        "using their own words or a water-pipe analogy. Correct transfer: identifies which quantity changes "
+        "when a battery is replaced vs when a bulb is added.",
+    'elec_ohm_inverted':
+        "Student correctly states I = V/R and explains the direction: more voltage → more current, more "
+        "resistance → less current. Correct transfer: calculates current given V=12V, R=4Ω without inverting.",
+    'elec_parallel_voltage_differs':
+        "Student explains that in a parallel circuit, each branch has the same voltage as the source. "
+        "Correct transfer: states the voltage across each branch in a simple parallel circuit.",
+
+    # Linear Equations (Grade 8)
+    'lin_eq_balance_misunderstood':
+        "Student explains that both sides of an equation must stay equal — any operation on one side must "
+        "be done to the other. Correct transfer: solves 2x + 5 = 13 with correct balance steps.",
+    'lin_eq_sign_error_transposing':
+        "Student explains that moving a term to the other side changes its sign because you are doing the "
+        "inverse operation to both sides. Correct transfer: solves x - 7 = 3 without sign error.",
+    'lin_eq_variable_both_sides':
+        "Student collects like terms correctly and explains why. Correct transfer: solves 3x + 4 = x + 10.",
+
+    # Algebraic Expressions (Grade 8)
+    'alg_like_terms_confusion':
+        "Student explains that only terms with the same variable and power can be combined. "
+        "Correct transfer: correctly simplifies 3x + 2y + x - y.",
+    'alg_distributive_error':
+        "Student applies the distributive law correctly and explains that the factor outside multiplies "
+        "every term inside. Correct transfer: correctly expands 3(2x - 4).",
+
+    # Ratios & Proportions (Grade 8)
+    'ratio_part_whole_confusion':
+        "Student distinguishes part:part ratios from part:whole fractions. Correct transfer: given "
+        "ratio 2:3, correctly identifies each part and the whole.",
+    'ratio_not_scale_invariant':
+        "Student explains that equivalent ratios represent the same relationship at different scales. "
+        "Correct transfer: correctly identifies 4:6 as equivalent to 2:3.",
+
+    # Triangles (Grade 8)
+    'tri_angle_sum_wrong':
+        "Student explains that angles in a triangle always sum to 180° and can demonstrate why with "
+        "a straight line argument. Correct transfer: finds missing angle in a triangle.",
+    'tri_congruence_confusion':
+        "Student distinguishes the congruence conditions (SSS, SAS, ASA, RHS) and explains what each "
+        "guarantees. Correct transfer: identifies which condition applies to a given pair of triangles.",
+
+    # Quadrilaterals (Grade 8)
+    'quad_all_same':
+        "Student correctly identifies at least two properties that distinguish a rectangle from a "
+        "parallelogram. Correct transfer: classifies a given quadrilateral by its properties.",
+
+    # Simple Interest (Grade 8)
+    'si_formula_confusion':
+        "Student correctly recalls SI = (P × R × T) / 100 and explains what each variable means. "
+        "Correct transfer: calculates SI for P=1000, R=5%, T=2 years.",
+    'si_adds_principal':
+        "Student distinguishes Simple Interest from Amount (A = P + SI). Correct transfer: correctly "
+        "calculates the total amount due after interest.",
+
+    # Lines & Angles (Grade 7)
+    'la_all_parallel_angles_equal':
+        "Student correctly distinguishes the three angle pair types (alternate, corresponding, co-interior) "
+        "and states the correct relationship for each. Correct transfer: finds co-interior angle given one angle.",
+    'la_supp_vs_comp_confusion':
+        "Student anchors 90° to complementary and 180° to supplementary without confusion. "
+        "Correct transfer: finds the supplement of 65° and the complement of 40°.",
+    'la_vertical_angles_supplementary':
+        "Student explains that vertically opposite angles are equal because they are both supplementary "
+        "to the same angle. Correct transfer: finds all four angles at an intersection given one.",
+
+    # Circles (Grade 7)
+    'circ_formula_swap':
+        "Student correctly associates πr² with area (2D, space inside) and 2πr with circumference "
+        "(1D, distance around). Correct transfer: correctly identifies which formula to use given a context.",
+    'circ_area_scales_linearly':
+        "Student explains that area involves r², so doubling the radius quadruples the area. "
+        "Correct transfer: calculates the area ratio when radius doubles.",
+    'circ_radius_equals_diameter':
+        "Student explains that radius is half the diameter and can move between the two fluently. "
+        "Correct transfer: given diameter 10cm, correctly uses r=5cm in the area formula.",
+
+    # Motion (Grade 8)
+    'motion_aristotelian_rest':
+        "Student explains that objects keep moving at constant velocity unless a net force acts on them "
+        "(Newton's First Law). Correct transfer: predicts motion of a puck on frictionless ice.",
+    'motion_force_needed_for_motion':
+        "Student distinguishes net force from individual forces and explains that constant velocity "
+        "requires zero net force, not zero force. Correct transfer: explains why a car at constant speed "
+        "still needs the engine running.",
+    'motion_third_law_cancel':
+        "Student explains that action-reaction pairs act on *different* objects, so they cannot cancel. "
+        "Correct transfer: explains why a horse-cart system accelerates despite Newton's Third Law.",
+}
+
 
 # ---------------------------------------------------------------------------
 # Core builder
@@ -123,6 +239,19 @@ def build_from_diagnostic(student_data: dict, all_misconceptions: dict,
         lines.append(f"  {opening}")
         lines.append("")
 
+    # Resolution points — what "understood" looks like for this student's misconceptions
+    resolution_lines = []
+    for mid in (misconception_ids or [])[:3]:
+        rp = RESOLUTION_POINTS.get(mid)
+        if rp:
+            m = all_misconceptions.get(mid, {})
+            label = m.get('misconception_name', mid)
+            resolution_lines.append(f"  [{label}]: {rp}")
+    if resolution_lines:
+        lines.append("RESOLUTION POINTS (session is complete when the student demonstrates these):")
+        lines.extend(resolution_lines)
+        lines.append("")
+
     # Assigned problem
     problem = _suggest_problem(misconception_ids, pattern_ids, all_misconceptions, subject)
     lines.append(f"ASSIGNED PROBLEM: {problem}")
@@ -201,6 +330,96 @@ def _suggest_opening(misconception_ids, pattern_ids, all_misconceptions, all_pat
             if key in top_mid:
                 return suggestion
 
+    elif subject == 'electricity':
+        openings = {
+            'elec_series_current_splits':
+                "Ask: 'In a series circuit with two bulbs, do you think the current through the first bulb "
+                "is more, less, or the same as the current through the second bulb? Why?'",
+            'elec_voltage_is_current':
+                "Ask: 'When you say a battery is 9 volts — what does that actually mean? What is voltage?'",
+            'elec_ohm_inverted':
+                "Ask: 'If you increase the resistance in a circuit but keep the battery the same, what "
+                "do you think happens to the current? Why?'",
+            'elec_parallel_voltage_differs':
+                "Ask: 'In a parallel circuit, does each branch get the full battery voltage or do they share it?'",
+        }
+        for key, suggestion in openings.items():
+            if key in top_mid:
+                return suggestion
+
+    elif subject in ('linear_equations', 'linear_eq'):
+        openings = {
+            'lin_eq_balance':
+                "Ask: 'If both sides of a scale are equal and you add something to one side, what do you "
+                "have to do to keep it balanced?'",
+            'lin_eq_sign_error':
+                "Ask: 'If x - 7 = 3, what is x? Walk me through how you got there.'",
+            'lin_eq_variable_both_sides':
+                "Ask: 'If you have 3 apples on one side and x apples on the other side and they balance, "
+                "what is x — and does it matter which side the variable is on?'",
+        }
+        for key, suggestion in openings.items():
+            if key in top_mid:
+                return suggestion
+
+    elif subject in ('algebraic_expressions', 'algebra'):
+        openings = {
+            'alg_like_terms':
+                "Ask: 'Can you add 3 apples and 2 oranges and call the result 5 apples? Why or why not?'",
+            'alg_distributive':
+                "Ask: 'If I give 3 bags to each of 5 people, and each bag has 2 pens and a notebook, "
+                "how many pens do I need altogether — and how did you work that out?'",
+        }
+        for key, suggestion in openings.items():
+            if key in top_mid:
+                return suggestion
+
+    elif subject in ('ratios_proportions', 'ratios'):
+        openings = {
+            'ratio_part_whole':
+                "Ask: 'If a class has 2 boys for every 3 girls, what fraction of the class is girls?'",
+            'ratio_not_scale':
+                "Ask: 'Are the ratios 2:3 and 4:6 the same or different? How do you know?'",
+        }
+        for key, suggestion in openings.items():
+            if key in top_mid:
+                return suggestion
+
+    elif subject == 'simple_interest':
+        openings = {
+            'si_formula':
+                "Ask: 'If you borrow ₹1000 for 1 year at 10% interest, how much extra do you pay back? "
+                "How did you figure that out?'",
+            'si_adds_principal':
+                "Ask: 'What is the difference between the interest on a loan and the total amount you owe?'",
+        }
+        for key, suggestion in openings.items():
+            if key in top_mid:
+                return suggestion
+
+    elif subject == 'triangles':
+        openings = {
+            'tri_angle_sum':
+                "Ask: 'If you tear off the three corners of any triangle and place them side by side, "
+                "what angle do they always make together?'",
+            'tri_congruence':
+                "Ask: 'If two triangles have the same three side lengths, must they be identical? "
+                "Could they be different shapes?'",
+        }
+        for key, suggestion in openings.items():
+            if key in top_mid:
+                return suggestion
+
+    elif subject == 'quadrilaterals':
+        openings = {
+            'quad_all_same':
+                "Ask: 'What is the difference between a rectangle and a parallelogram? Are all rectangles "
+                "parallelograms, or are all parallelograms rectangles?'",
+        }
+        for key, suggestion in openings.items():
+            if key in top_mid:
+                return suggestion
+
     # Generic fallback based on what they got wrong
     why = m.get('why_students_think_this') or m.get('explanation', '')
     if why:
@@ -238,6 +457,29 @@ def _suggest_problem(misconception_ids, pattern_ids, all_misconceptions, subject
         'motion_aristotelian_rest': "A hockey puck slides on frictionless ice. Will it keep moving or slow down? Why?",
         'motion_third_law_cancel': "A horse pulls a cart forward. The cart pulls the horse backward equally. Why does anything move at all?",
         'motion_weight_is_mass': "An astronaut has a mass of 70kg on Earth. What is their mass on the Moon?",
+        # Electricity
+        'elec_series_current_splits': "A series circuit has a 6V battery and two identical bulbs. What is the current through the second bulb if the current through the first is 0.5A?",
+        'elec_voltage_is_current': "A bulb has a resistance of 6Ω and a current of 0.5A flows through it. What is the voltage across the bulb?",
+        'elec_ohm_inverted': "A resistor of 4Ω is connected to a 12V battery. What current flows through it?",
+        'elec_parallel_voltage_differs': "Two bulbs are connected in parallel to a 9V battery. What is the voltage across each bulb?",
+        # Linear Equations
+        'lin_eq_balance': "Solve: 2x + 5 = 13",
+        'lin_eq_sign_error': "Solve: x - 7 = 3",
+        'lin_eq_variable_both_sides': "Solve: 3x + 4 = x + 10",
+        # Algebraic Expressions
+        'alg_like_terms': "Simplify: 3x + 2y + x - y",
+        'alg_distributive': "Expand and simplify: 3(2x - 4) + x",
+        # Ratios & Proportions
+        'ratio_part_whole': "A bag has red and blue marbles in the ratio 3:5. If there are 24 marbles in total, how many are red?",
+        'ratio_not_scale': "A recipe uses 2 cups of flour for every 3 cups of milk. How much milk is needed for 8 cups of flour?",
+        # Simple Interest
+        'si_formula': "Find the simple interest on ₹2000 at 5% per year for 3 years.",
+        'si_adds_principal': "₹1500 is invested at 8% simple interest for 2 years. What is the total amount at the end?",
+        # Triangles
+        'tri_angle_sum': "A triangle has angles 48° and 75°. What is the third angle?",
+        'tri_congruence': "Two triangles have sides 5cm, 7cm, 9cm each. Are they congruent? Which condition applies?",
+        # Quadrilaterals
+        'quad_all_same': "A quadrilateral has all sides equal but its angles are not 90°. What type of quadrilateral is it?",
     }
 
     for key, problem in problems.items():
@@ -253,7 +495,13 @@ def _default_problem(subject):
         'lines_angles': "Two parallel lines are cut by a transversal. One angle is 55°. Find the alternate interior angle and the co-interior angle.",
         'circles': "Find the area and circumference of a circle with radius 7cm.",
         'motion': "A 5kg object is pushed with a force of 20N. What is its acceleration?",
-        'electricity': "A resistor has a resistance of 10Ω. A current of 2A flows through it. What is the voltage across it?",
+        'electricity': "A series circuit has a 9V battery and a 3Ω resistor. What current flows through it?",
+        'linear_equations': "Solve: 3x - 4 = 11",
+        'algebraic_expressions': "Simplify: 4x + 3y - x + 2y",
+        'ratios_proportions': "A map uses a scale of 1:50000. Two towns are 4cm apart on the map. What is the actual distance?",
+        'simple_interest': "Find the simple interest on ₹5000 at 6% per year for 2 years.",
+        'triangles': "In triangle ABC, angle A = 50° and angle B = 70°. Find angle C.",
+        'quadrilaterals': "The angles of a quadrilateral are 90°, 85°, 95°, and x°. Find x.",
     }
     return defaults.get(subject, "Work through the problem your teacher has assigned.")
 

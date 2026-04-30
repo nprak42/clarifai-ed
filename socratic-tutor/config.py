@@ -40,5 +40,5 @@ ASSESSMENT_TOOL_BASE_URL = os.environ.get(
 # The tutor makes a server-side request to cb/api/student_context/<token>, so only
 # known assessment tool origins should be accepted.
 # Comma-separated, e.g. "http://localhost:8080,https://clarifai.example.com"
-_cb_raw = os.environ.get("ALLOWED_CB_ORIGINS", ASSESSMENT_TOOL_BASE_URL)
+_cb_raw = os.environ.get("ALLOWED_CB_ORIGINS", "")
 ALLOWED_CB_ORIGINS = {o.rstrip('/') for o in _cb_raw.split(',') if o.strip()}

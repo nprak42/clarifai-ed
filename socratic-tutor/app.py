@@ -151,15 +151,20 @@ def start_with_token(token):
     session.clear()
 
     cb_base = request.args.get('cb', '').rstrip('/')
-    if cb_base:
-        if cb_base not in config.ALLOWED_CB_ORIGINS:
+    request_origin = request.host_url.rstrip('/')
+    allowed_cb_origins = set(config.ALLOWED_CB_ORIGINS)
+    if request_origin:
+        allowed_cb_origins.add(request_origin)
+
+    if cb_base and allowed_cb_origins:
+        if cb_base not in allowed_cb_origins:
             return render_handoff_error(
                 title="Invalid callback origin",
                 message="The tutor received a request from an untrusted source.",
                 status_code=400,
                 details=f"Origin '{cb_base}' is not in the allowed callback list.",
             )
-    else:
+    if not cb_base:
         cb_base = config.ASSESSMENT_TOOL_BASE_URL.rstrip('/')
 
     try:

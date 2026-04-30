@@ -46,6 +46,45 @@ python eval/harness.py --model llama3.1:8b --output results/llama3_8b.json
 python eval/harness.py --model llama3.1:8b --scenario rule1_direct_ask
 ```
 
+## Two-phase benchmark
+
+Run a local-friendly benchmark across a 10-model shortlist, rank them on the
+existing rule harness, then advance the top 5 into 10 full conversation
+simulations scored with a session-level rubric.
+
+```bash
+python eval/benchmark.py --output results/benchmark.json
+```
+
+Useful flags:
+
+```bash
+# Override the shortlist
+python eval/benchmark.py --models qwen3:8b,qwen2.5:7b,llama3.1:8b,gemma2:9b
+
+# Change how many models advance to full conversations
+python eval/benchmark.py --top-k 3
+
+# Pull any missing local Ollama models before benchmarking
+python eval/benchmark.py --pull-missing
+
+# Remove weak models after benchmarking
+python eval/benchmark.py --pull-missing --prune --prune-below-phase1 60 --prune-non-finalists
+
+# Print every conversation turn during phase 2
+python eval/benchmark.py --verbose
+```
+
+Notes:
+
+- By default, missing Ollama models are skipped instead of being benchmarked as failures.
+- `--pull-missing` runs `ollama pull <model>` before phase 1 for any missing shortlist entries.
+- Phase 1 runs that return `ERROR:` responses are treated as invalid and do not advance to phase 2.
+- `--prune` only removes local Ollama models when paired with one or more prune rules such as:
+  - `--prune-below-phase1 50`
+  - `--prune-invalid`
+  - `--prune-non-finalists`
+
 ## What it tests
 
 | Scenario | Rule | What we're checking |

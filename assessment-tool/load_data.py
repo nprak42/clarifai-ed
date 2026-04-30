@@ -178,6 +178,7 @@ def main():
             for subject in ('algebraic_expressions', 'linear_equations', 'quadrilaterals',
                             'ratios_proportions', 'simple_interest', 'triangles'):
                 load_misconceptions(cur, f'misconceptions_{subject}_grade8.json')
+            load_misconceptions(cur, 'misconceptions_trig_prerequisites_grade10.json')
 
             print("Loading interventions:")
             load_interventions(cur)
@@ -187,9 +188,11 @@ def main():
             for subject in ('algebraic_expressions', 'linear_equations', 'quadrilaterals',
                             'ratios_proportions', 'simple_interest', 'triangles'):
                 load_patterns(cur, f'patterns_{subject}_grade8.json')
+            load_patterns(cur, 'patterns_trig_prerequisites_grade10.json')
 
             print("Loading tests:")
             load_tests(cur, 'tests.json')
+            load_tests(cur, 'tests_new.json')
 
             print("Loading questions and options:")
             for fname in [
@@ -200,6 +203,7 @@ def main():
                 'questions_triangles_grade8.json',
                 'questions_linear_equations_grade8.json',
                 'questions_algebraic_expressions_grade8.json',
+                'questions_trig_prerequisites_grade10.json',
             ]:
                 load_questions_and_options(cur, fname)
 

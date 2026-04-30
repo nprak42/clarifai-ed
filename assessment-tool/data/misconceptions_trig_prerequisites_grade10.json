@@ -1,0 +1,110 @@
+[
+  {
+    "misconception_id": "trig_pre_ratio_part_whole",
+    "concept": "ratio_part_whole",
+    "subject": "trig_prerequisites",
+    "misconception_name": "Confuses part:part ratio with part:whole ratio",
+    "explanation": "When asked for ratio of one group to the total, student gives ratio of one group to the other group instead.",
+    "why_students_think_this": "The word 'ratio' is taught with part:part examples (boys to girls). Part:whole is a different structure students haven't internalised.",
+    "severity": "CRITICAL",
+    "intervention_priority": "CRITICAL",
+    "trig_impact": "sin θ = opposite/hypotenuse is a part:whole ratio. Students with this gap will set it up as opposite:adjacent instead.",
+    "root_cause": "No distinction between part:part and part:whole ratio structures"
+  },
+  {
+    "misconception_id": "trig_pre_ratio_not_constant",
+    "concept": "ratio_scale_invariance",
+    "subject": "trig_prerequisites",
+    "misconception_name": "Thinks ratio changes when triangle size changes",
+    "explanation": "Student believes that if a triangle is scaled up, the ratio of two sides changes because the sides are now larger numbers.",
+    "why_students_think_this": "Absolute size feels like it should matter — a bigger triangle 'should' give a bigger ratio. Students conflate the ratio with the side length.",
+    "severity": "CRITICAL",
+    "intervention_priority": "CRITICAL",
+    "trig_impact": "This is the core insight behind trig. If the ratio changes with size, then sin 30° is not a fixed number — the entire concept of trig ratios collapses.",
+    "root_cause": "No understanding of ratio as scale-invariant. Multiplicative reasoning not yet developed."
+  },
+  {
+    "misconception_id": "trig_pre_ratio_flips",
+    "concept": "ratio_direction",
+    "subject": "trig_prerequisites",
+    "misconception_name": "Inverts the ratio — puts wrong term in numerator",
+    "explanation": "When asked for A/B, student gives B/A instead. Consistent inversion suggests no understanding of which quantity is being expressed 'per unit' of the other.",
+    "why_students_think_this": "Fractions feel arbitrary in direction. Students pick the larger number for the numerator, or reverse the order of the question.",
+    "severity": "HIGH",
+    "intervention_priority": "HIGH",
+    "trig_impact": "Will consistently produce 1/sin θ instead of sin θ, or use adjacent/hypotenuse when asked for opposite/hypotenuse.",
+    "root_cause": "No conceptual model for what a fraction represents as a directed relationship"
+  },
+  {
+    "misconception_id": "trig_pre_similar_not_equal",
+    "concept": "similarity_vs_congruence",
+    "subject": "trig_prerequisites",
+    "misconception_name": "Confuses similar triangles with congruent triangles",
+    "explanation": "Student thinks 'similar' means the triangles are identical — same angles AND same sides. Does not understand that similar means proportional, not equal.",
+    "why_students_think_this": "In everyday language, 'similar' means 'almost the same'. Mathematical similarity is a technical term with a precise meaning students haven't internalised.",
+    "severity": "CRITICAL",
+    "intervention_priority": "CRITICAL",
+    "trig_impact": "Student will not understand why sin 30° is the same in a small and a large triangle. Will think trig ratios are only valid for specific triangle sizes.",
+    "root_cause": "Everyday language meaning of 'similar' overrides mathematical meaning"
+  },
+  {
+    "misconception_id": "trig_pre_aa_insufficient",
+    "concept": "similarity_conditions",
+    "subject": "trig_prerequisites",
+    "misconception_name": "Thinks angle information alone is insufficient to prove similarity",
+    "explanation": "Student believes you need side lengths to prove similarity, not just angles. Does not know the AA (Angle-Angle) similarity condition.",
+    "why_students_think_this": "Congruence requires side information (SSS, SAS), so students overgeneralise — thinking similarity also needs sides.",
+    "severity": "HIGH",
+    "intervention_priority": "HIGH",
+    "trig_impact": "Student cannot reason that all 30-60-90 triangles are similar to each other, which is the justification for trig ratios being constant.",
+    "root_cause": "Congruence conditions overgeneralised to similarity"
+  },
+  {
+    "misconception_id": "trig_pre_pythagoras_formula_only",
+    "concept": "pythagoras",
+    "subject": "trig_prerequisites",
+    "misconception_name": "Applies Pythagoras formula without understanding which side is the hypotenuse",
+    "explanation": "Student knows a² + b² = c² but cannot reliably identify which side is c (the hypotenuse) from a problem description or diagram. May subtract squares in the wrong order.",
+    "why_students_think_this": "Taught the formula with labelled diagrams where c is always obvious. When the problem gives a real-world context, the student cannot map it to the formula.",
+    "severity": "HIGH",
+    "intervention_priority": "HIGH",
+    "trig_impact": "Will miscalculate the hypotenuse in trig problems. In sin θ = opposite/hypotenuse, using the wrong side as hypotenuse gives a ratio > 1, which is impossible.",
+    "root_cause": "Formula memorised without understanding that hypotenuse = longest side = side opposite the right angle"
+  },
+  {
+    "misconception_id": "trig_pre_pythagoras_adds_not_squares",
+    "concept": "pythagoras",
+    "subject": "trig_prerequisites",
+    "misconception_name": "Treats Pythagoras as addition/subtraction of sides, not squares",
+    "explanation": "Student uses a + b = c or c - a = b instead of a² + b² = c². Squaring is omitted entirely.",
+    "why_students_think_this": "Addition is the default operation for combining quantities. Squaring feels like an arbitrary extra step students drop under pressure.",
+    "severity": "CRITICAL",
+    "intervention_priority": "CRITICAL",
+    "trig_impact": "Will produce wrong side lengths for all trig ratio calculations. A 3-4-5 triangle becomes a 3-4-7 triangle, making sin θ = 3/7 instead of 3/5.",
+    "root_cause": "No understanding of why squares are involved — theorem taught as formula, not as area relationship"
+  },
+  {
+    "misconception_id": "trig_pre_fraction_operation",
+    "concept": "fraction_fluency",
+    "subject": "trig_prerequisites",
+    "misconception_name": "Cannot reliably evaluate or set up a fraction from a ratio description",
+    "explanation": "When told 'opposite divided by hypotenuse', student inverts the fraction or substitutes the wrong sides. The fraction structure of trig ratios creates a consistent operation error.",
+    "why_students_think_this": "Fractions as division are not fluent. Students see 'opposite/hypotenuse' as two separate numbers, not as a single quantity with a direction.",
+    "severity": "CRITICAL",
+    "intervention_priority": "CRITICAL",
+    "trig_impact": "Direct and immediate. Every trig calculation requires forming a fraction. If the fraction is inverted or uses wrong sides, every answer is wrong.",
+    "root_cause": "Fraction as division not internalised — numerator/denominator feels arbitrary"
+  },
+  {
+    "misconception_id": "trig_pre_fraction_ordering",
+    "concept": "fraction_fluency",
+    "subject": "trig_prerequisites",
+    "misconception_name": "Cannot compare or order fractions with different denominators",
+    "explanation": "Student cannot determine which of two fractions is larger without a calculator, or uses whole-number reasoning (larger numerator = larger fraction).",
+    "why_students_think_this": "Whole number intuition: 5 > 3, so 5/12 > 3/8 feels right for the wrong reason. Students don't convert to common denominators or decimals fluently.",
+    "severity": "MEDIUM",
+    "intervention_priority": "MEDIUM",
+    "trig_impact": "Student cannot reason about whether sin θ is large or small for a given angle, or compare trig values without a table. Limits application problem solving.",
+    "root_cause": "Fraction comparison taught procedurally — students apply cross-multiplication mechanically without understanding"
+  }
+]

@@ -103,7 +103,6 @@ def main():
     print_preflight()
 
     assessment_env = common_env.copy()
-    assessment_env["TUTOR_BASE_URL"] = config.TUTOR_PUBLIC_BASE_URL
     assessment_env["ASSESSMENT_SESSION_COOKIE_NAME"] = "clarifai_assessment_session"
 
     tutor_env = common_env.copy()

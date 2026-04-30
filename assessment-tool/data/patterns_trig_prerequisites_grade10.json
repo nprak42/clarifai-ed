@@ -1,0 +1,86 @@
+[
+  {
+    "pattern_id": "ratio_not_scale_invariant",
+    "pattern_name": "Ratio Thinking Not Yet Multiplicative",
+    "description": "Student does not understand that a ratio is scale-invariant — thinks the ratio changes when triangle size changes. This is the core blocker for trig.",
+    "subject": "trig_prerequisites",
+    "detection_logic": {
+      "misconception_ids": ["trig_pre_ratio_not_constant", "trig_pre_similar_not_equal"],
+      "min_count": 2
+    },
+    "diagnosis": "Student has not made the transition from additive to multiplicative reasoning about ratios. They understand that similar triangles exist but do not understand that the ratio of sides is preserved under scaling. This means sin θ will not make sense to them as a fixed value.",
+    "grade8_risk": "CRITICAL",
+    "symptoms": [
+      "Says ratio changes because triangle is bigger",
+      "Thinks similar triangles must have equal sides",
+      "Adds differences instead of using scale factor in similar triangle problems",
+      "Correct on mechanical ratio questions but wrong on concept_06"
+    ],
+    "recommended_intervention_type": "multiplicative_reasoning",
+    "intervention_focus": "Use scaling tasks: double every side of a triangle, check what happens to the ratio. Make the invariance visible before introducing trig vocabulary.",
+    "estimated_intervention_time": "2-3 weeks"
+  },
+  {
+    "pattern_id": "fraction_fluency_gap",
+    "pattern_name": "Fraction Fluency Gap",
+    "description": "Student cannot reliably set up or evaluate a fraction from a ratio description. Inverts fractions, uses wrong terms, or cannot compare fractions with different denominators.",
+    "subject": "trig_prerequisites",
+    "detection_logic": {
+      "misconception_ids": ["trig_pre_fraction_operation", "trig_pre_ratio_flips", "trig_pre_ratio_part_whole"],
+      "min_count": 2
+    },
+    "diagnosis": "Fraction as division is not fluent. Student treats numerator and denominator as interchangeable or confuses part:part with part:whole. Since every trig ratio is a fraction, this gap will produce systematic errors on all trig calculations regardless of conceptual understanding.",
+    "grade8_risk": "CRITICAL",
+    "symptoms": [
+      "Inverts opposite/hypotenuse to hypotenuse/opposite",
+      "Uses adjacent side when asked for opposite",
+      "Gives part:part ratio when part:whole is asked",
+      "Cannot compare 3/8 and 5/12 without a calculator"
+    ],
+    "recommended_intervention_type": "fraction_rebuilding",
+    "intervention_focus": "Return to fraction as division with physical contexts. Use 'how many times does the denominator fit into the numerator' framing. Practice reading ratio descriptions aloud before writing them as fractions.",
+    "estimated_intervention_time": "1-2 weeks"
+  },
+  {
+    "pattern_id": "pythagoras_procedural_only",
+    "pattern_name": "Pythagoras Without Understanding",
+    "description": "Student knows a² + b² = c² as a formula but cannot identify the hypotenuse from context, drops the squaring under pressure, or cannot rearrange to find a leg.",
+    "subject": "trig_prerequisites",
+    "detection_logic": {
+      "misconception_ids": ["trig_pre_pythagoras_adds_not_squares", "trig_pre_pythagoras_formula_only"],
+      "min_count": 2
+    },
+    "diagnosis": "Pythagoras is memorised as a symbol sequence, not understood as a relationship between areas. When context changes (finding a leg instead of hypotenuse, real-world description without a labelled diagram), the student cannot apply it correctly.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Adds sides directly: 5 + 12 = 17 instead of √(25+144)",
+      "Subtracts squares in wrong order when finding a leg",
+      "Cannot identify which side is the hypotenuse from a word problem",
+      "Gets standard problems right but fails the ladder/ramp application question"
+    ],
+    "recommended_intervention_type": "geometric_grounding",
+    "intervention_focus": "Draw the three squares on each side of the triangle and show that the areas add up. This makes the squaring feel necessary, not arbitrary. Then practice identifying the hypotenuse from context before any calculation.",
+    "estimated_intervention_time": "1-2 weeks"
+  },
+  {
+    "pattern_id": "similarity_congruence_confusion",
+    "pattern_name": "Similarity–Congruence Confusion",
+    "description": "Student conflates similar and congruent triangles, or does not know the AA similarity condition. Cannot reason that all triangles with the same angles have proportional sides.",
+    "subject": "trig_prerequisites",
+    "detection_logic": {
+      "misconception_ids": ["trig_pre_similar_not_equal", "trig_pre_aa_insufficient"],
+      "min_count": 2
+    },
+    "diagnosis": "The student's mental model of 'same shape' equates to 'same size'. They may know the word similar but apply it to mean congruent. This prevents them from understanding why trig ratios depend only on the angle — because they cannot accept that two triangles with the same angles but different sizes share the same side ratios.",
+    "grade8_risk": "HIGH",
+    "symptoms": [
+      "Says similar triangles have equal sides",
+      "Thinks you need side lengths to prove similarity",
+      "Copies sides directly from the given triangle instead of scaling",
+      "Cannot explain why sin 30° is the same for any size triangle"
+    ],
+    "recommended_intervention_type": "similarity_distinction",
+    "intervention_focus": "Draw two clearly different-sized triangles with the same angles. Measure sides. Show the ratio is constant. Contrast with congruent triangles where sides are equal. The distinction must be built from observation before stating the theorem.",
+    "estimated_intervention_time": "1-2 weeks"
+  }
+]
