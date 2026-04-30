@@ -7,9 +7,7 @@ Usage:
 """
 import json
 import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from db import get_conn, put_conn
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
