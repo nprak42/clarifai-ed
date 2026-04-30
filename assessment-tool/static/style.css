@@ -263,6 +263,12 @@ p  { margin: 0 0 .75rem; }
   font-size: .85rem;
 }
 .site-nav-links a.btn-sm-nav:hover { opacity: .88; background: var(--blue); color: #fff; }
+.site-nav-links a.btn-sm-nav-ghost {
+  background: transparent;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+.site-nav-links a.btn-sm-nav-ghost:hover { background: #f1f5f9; color: var(--text); }
 
 /* =====================================================================
    Home page

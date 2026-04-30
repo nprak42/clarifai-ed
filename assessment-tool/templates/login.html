@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clarifai — Sign In</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .login-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+    }
+    .login-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .login-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: .25rem;
+      color: var(--text);
+    }
+    .login-sub {
+      font-size: .9rem;
+      color: #64748b;
+      margin-bottom: 1.8rem;
+    }
+    .login-label {
+      display: block;
+      font-size: .85rem;
+      font-weight: 600;
+      margin-bottom: .4rem;
+      color: var(--text);
+    }
+    .login-input {
+      width: 100%;
+      padding: .6rem .8rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: var(--radius);
+      font-size: .95rem;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .login-input:focus { border-color: var(--blue); }
+    .login-error {
+      margin-top: .8rem;
+      padding: .5rem .8rem;
+      background: #fee2e2;
+      color: #991b1b;
+      border-radius: var(--radius);
+      font-size: .88rem;
+    }
+    .login-btn {
+      margin-top: 1.2rem;
+      width: 100%;
+      padding: .65rem;
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .login-btn:hover { background: var(--blue-dark); }
+  </style>
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="login-title">Clarifai</div>
+      <div class="login-sub">Teacher sign-in</div>
+      <form method="POST">
+        <label class="login-label" for="password">Password</label>
+        <input class="login-input" type="password" id="password" name="password"
+               autofocus autocomplete="current-password" />
+        {% if error %}
+        <div class="login-error">{{ error }}</div>
+        {% endif %}
+        <button class="login-btn" type="submit">Sign in</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

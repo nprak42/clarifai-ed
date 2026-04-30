@@ -2,8 +2,9 @@ import os
 import random
 import string
 from datetime import date
+from functools import wraps
 
-from flask import Flask, render_template, request, redirect, url_for, jsonify, abort
+from flask import Flask, render_template, request, redirect, url_for, jsonify, abort, session
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from werkzeug.middleware.proxy_fix import ProxyFix
@@ -36,6 +37,44 @@ limiter = Limiter(
     default_limits=[],
     storage_uri=os.environ.get('REDIS_URL', 'memory://'),
 )
+
+
+# ---------------------------------------------------------------------------
+# Auth
+# ---------------------------------------------------------------------------
+
+TEACHER_PASSWORD = os.environ.get('TEACHER_PASSWORD', '')
+
+def teacher_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if not TEACHER_PASSWORD:
+            return f(*args, **kwargs)
+        if not session.get('teacher_authed'):
+            if request.is_json:
+                return jsonify({'error': 'Unauthorized'}), 401
+            return redirect(url_for('login', next=request.url))
+        return f(*args, **kwargs)
+    return decorated
+
+
+@app.route('/login', methods=['GET', 'POST'])
+@limiter.limit('10 per minute')
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form.get('password') == TEACHER_PASSWORD:
+            session['teacher_authed'] = True
+            next_url = request.args.get('next') or url_for('home')
+            return redirect(next_url)
+        error = 'Incorrect password.'
+    return render_template('login.html', error=error)
+
+
+@app.route('/logout')
+def logout():
+    session.pop('teacher_authed', None)
+    return redirect(url_for('login'))
 
 
 # ---------------------------------------------------------------------------
@@ -101,6 +140,7 @@ def build_test_payload(test_id, session_id, student_name, resume_from=0):
 # ---------------------------------------------------------------------------
 
 @app.route('/')
+@teacher_required
 def home():
     recent = db.get_recent_sessions()
     return render_template('home.html', recent_sessions=recent)
@@ -111,6 +151,7 @@ def home():
 # ---------------------------------------------------------------------------
 
 @app.route('/create', methods=['GET', 'POST'])
+@teacher_required
 def create_session():
     if request.method == 'GET':
         tests = db.get_tests()
@@ -291,6 +332,7 @@ def complete_test():
 # ---------------------------------------------------------------------------
 
 @app.route('/api/close_session', methods=['POST'])
+@teacher_required
 def close_session():
     data = request.get_json()
     if not data:
@@ -391,6 +433,7 @@ def student_context(token):
 
 
 @app.route('/api/save_notes', methods=['POST'])
+@teacher_required
 def save_notes():
     data = request.get_json()
     if not data:
@@ -456,6 +499,7 @@ def student_results():
 # ---------------------------------------------------------------------------
 
 @app.route('/dashboard/<access_code>')
+@teacher_required
 def dashboard(access_code):
     session = db.get_session_by_code(access_code)
     if not session:
@@ -467,6 +511,7 @@ def dashboard(access_code):
 
 
 @app.route('/dashboard/<access_code>/data')
+@teacher_required
 def dashboard_data(access_code):
     """JSON endpoint for dashboard auto-refresh."""
     session = db.get_session_by_code(access_code)
@@ -516,6 +561,7 @@ def health():
 
 @app.route('/api/copilot/plan', methods=['POST'])
 @limiter.limit('20 per hour')
+@teacher_required
 def copilot_plan():
     data = request.get_json()
     if not data:
@@ -543,6 +589,7 @@ def copilot_plan():
 
 @app.route('/api/copilot/chat', methods=['POST'])
 @limiter.limit('60 per hour')
+@teacher_required
 def copilot_chat():
     data = request.get_json()
     if not data:
