@@ -1,20 +1,19 @@
 # Clarifai
 
-A diagnostic assessment tool and Socratic tutor for grade 8–9 math and science.
+A teacher co-pilot for acting on student misconceptions at classroom scale.
 
-Teachers run a short diagnostic test with their class. Every wrong answer maps to a specific misconception. The dashboard shows which students have which gaps — not just scores, but *why* they're struggling. From there, a teacher can launch a one-on-one AI tutor session for any student, pre-loaded with that student's specific misconceptions.
-
-The tutor never gives answers. It asks questions.
+Teachers run a short diagnostic test with their class. Every wrong answer maps to a named misconception. The dashboard shows which students have which gaps and why — not just scores. From there, a teacher gets a specific, ready-to-use intervention plan from an AI co-pilot, and can refine it through a follow-up chat.
 
 ---
 
 ## What's included
 
-**7 diagnostic tests** across grade 8–9 math and science:
+**8 diagnostic tests** across grade 8–10 math and science:
 
 | Subject | Grade | Questions |
 |---|---|---|
 | Electricity (Ohm's Law, circuits, resistance) | 9 | 15 |
+| Trig Prerequisites (ratios, similarity, Pythagoras) | 10 | 15 |
 | Linear Equations | 8 | 15 |
 | Algebraic Expressions | 8 | 15 |
 | Ratios & Proportions | 8 | 15 |
@@ -23,9 +22,9 @@ The tutor never gives answers. It asks questions.
 | Quadrilaterals | 8 | 15 |
 
 Each test has:
-- 15 MCQ questions with shuffled correct answers (not always option A)
+- 15 MCQ questions with shuffled correct answers
 - Every wrong answer mapped to a named misconception with severity and root cause
-- Pattern detection logic that identifies clusters of related misconceptions
+- Pattern detection that identifies clusters of related misconceptions
 
 ---
 
@@ -33,12 +32,12 @@ Each test has:
 
 ```
 Student takes test → Teacher sees misconception patterns on dashboard
-                   → Teacher clicks "Start Tutor" for a struggling student
-                   → Tutor session opens pre-loaded with that student's gaps
-                   → Tutor probes understanding through Socratic questioning
+                   → Teacher clicks "Get Intervention Plan"
+                   → Co-pilot generates a specific, ready-to-use classroom plan
+                   → Teacher refines it through follow-up chat
 ```
 
-The tutor runs on a local LLM (gemma2:9b via Ollama). No student data leaves your machine.
+The co-pilot is backed by Gemini. It is given the class's actual diagnostic data — which patterns were detected, how many students, what the root causes are — and generates plans tied directly to that evidence, not generic teaching advice.
 
 ---
 
@@ -48,79 +47,86 @@ The tutor runs on a local LLM (gemma2:9b via Ollama). No student data leaves you
 
 - Python 3.10+
 - PostgreSQL
-- [Ollama](https://ollama.com) with gemma2:9b pulled
-
-```bash
-ollama pull gemma2:9b
-```
+- A [Google AI Studio](https://aistudio.google.com) API key (free tier works)
 
 ### Setup
 
 ```bash
-# 1. Clone and install dependencies
 git clone https://github.com/your-username/clarifai
 cd clarifai
+
 pip install -r assessment-tool/requirements.txt
 
-# 2. Create the database
+# Create the database schema
 createdb clarifai
 psql clarifai -f schema.sql
 
-# 3. Set environment variables
+# Set environment variables
 export DATABASE_URL="postgresql://localhost/clarifai"
 export SECRET_KEY="$(python -c 'import secrets; print(secrets.token_hex(32))')"
+export GOOGLE_API_KEY="your-api-key-here"
 
-# 4. Load the test data
+# Load test data
 cd assessment-tool
 python load_data.py
-cd ..
 ```
 
 ### Running
 
 ```bash
-# Terminal 1 — start the LLM
-ollama serve
-
-# Terminal 2 — start the platform
-python platform/run_platform.py
+cd assessment-tool
+python app.py
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
-For debug mode: `PLATFORM_DEV=1 python platform/run_platform.py`
+Open [http://localhost:8080](http://localhost:8080).
 
 ### Simulating test data (optional)
 
 To populate the dashboard with fake student responses before trying it with a real class:
 
 ```bash
-python assessment-tool/simulate_session.py --test elec_grade9 --students 30
-python assessment-tool/simulate_session.py --test linear_equations_grade8 --students 25
+python simulate_session.py --test elec_grade9 --students 30
+python simulate_session.py --test linear_equations_grade8 --students 25
 ```
 
-Other test IDs: `algebraic_expressions_grade8`, `ratios_proportions_grade8`, `simple_interest_grade8`, `triangles_grade8`, `quadrilaterals_grade8`
+Other test IDs: `algebraic_expressions_grade8`, `ratios_proportions_grade8`, `simple_interest_grade8`, `triangles_grade8`, `quadrilaterals_grade8`, `trig_prerequisites_grade10`
 
 ---
 
 ## For teachers
 
-**Creating a session:**
-1. Go to [http://localhost:3000](http://localhost:3000)
-2. Click "New Session", pick the test, enter your class details
-3. Share the access code with students — they enter it on the same URL
+**Running a diagnostic:**
+1. Go to the home page and click "New Session"
+2. Pick a test and enter your class details
+3. Share the access code with students — they enter it at the same URL
 4. Watch responses come in live; the dashboard updates as students submit
 
 **Reading the dashboard:**
 - Each card is a detected learning pattern — a cluster of related misconceptions
-- Risk levels (Low / Medium / High / Critical) indicate how much this gap will hurt in grade 10 boards
-- Click a pattern card to see which students are affected and what specifically they misunderstand
-- Click "Start Tutor" next to any student to launch a personalised tutor session for them
+- Risk levels (CRITICAL / HIGH / MEDIUM) indicate impact on grade 10 boards
+- Click a pattern card to see which students are affected and what they specifically misunderstand
 
-**The tutor:**
-- Opens pre-loaded with that student's specific misconceptions
-- Uses Socratic questioning — it will not give answers, only ask questions that lead the student to the answer themselves
-- Responses take 5–15 seconds (local LLM — no internet required)
+**Getting an intervention plan:**
+- Click "Get Intervention Plan" on any session dashboard
+- The co-pilot reads the actual diagnostic data and returns a structured plan:
+  - Priority misconception with root cause
+  - A concrete classroom move for tomorrow
+  - A grouping suggestion based on the data
+  - What to listen for (resolution signals)
+  - Follow-up problems to expose the gap and confirm resolution
+- Use the chat input to refine: "I only have 15 minutes", "change the grouping", "suggest a different analogy"
+
+---
+
+## Deploying (Railway)
+
+The app deploys as a single service from `assessment-tool/`.
+
+1. Push the repo to GitHub
+2. New Railway project → Deploy from GitHub → set root directory to `assessment-tool/`
+3. Add a Postgres plugin (Railway sets `DATABASE_URL` automatically)
+4. Set environment variables: `SECRET_KEY`, `GOOGLE_API_KEY`, `SECURE_COOKIES=1`
+5. Open a Railway shell and run `python load_data.py` once to seed the database
 
 ---
 
@@ -128,31 +134,22 @@ Other test IDs: `algebraic_expressions_grade8`, `ratios_proportions_grade8`, `si
 
 ```
 clarifai/
-  assessment-tool/     # Flask app — diagnostic tests, dashboard, session management
-    app.py             # Routes
-    database.py        # Postgres queries
-    analysis.py        # Pattern detection and session analytics
-    load_data.py       # Populate DB from data/ JSON files
-    simulate_session.py
-    data/              # Questions, misconceptions, patterns per subject
+  assessment-tool/       # The deployable app
+    app.py               # Flask routes
+    database.py          # Postgres queries
+    analysis.py          # Pattern detection and session analytics
+    copilot.py           # Adapter + Gemini calls for teacher co-pilot
+    load_data.py         # Populate DB from data/ JSON files
+    simulate_session.py  # Generate fake student responses for testing
+    data/                # Questions, misconceptions, patterns per subject
     templates/
     static/
-  socratic-tutor/      # Flask app — Socratic chat tutor (local LLM)
-    app.py             # Routes, session state, stuck-turn escalation
-    logs.py            # Postgres session and message storage
-    config.py
-    prompts/
-      socratic_fractions.py   # System prompt builder
-      context_builder.py      # Builds diagnostic context from assessment data
-    eval/              # Model eval harness, 13 adversarial scenarios
-    templates/
-    static/
-  platform/            # Single-origin runner and reverse proxy
-    run_platform.py    # Starts both apps + proxy, health-checks each
-    proxy.py           # Routes /tutor/* → tutor, /* → assessment
-    config.py
-  schema.sql           # Postgres schema (assessment + tutor schemas)
-  db.py                # Shared connection pool
+    Dockerfile
+    railway.json
+  teacher-copilot/
+    prompt_test.py       # Offline prompt iteration against simulated class data
+  schema.sql             # Postgres schema
+  db.py                  # Shared connection pool
 ```
 
 ---
@@ -163,33 +160,21 @@ clarifai/
 |---|---|---|
 | `DATABASE_URL` | — | Required. Postgres connection string |
 | `SECRET_KEY` | — | Required. Flask session signing key |
-| `OLLAMA_BASE_URL` | `http://127.0.0.1:11434` | Ollama server URL |
-| `MODEL_NAME` | `gemma2:9b` | Ollama model to use for tutor |
+| `GOOGLE_API_KEY` | — | Required. Gemini API key for the co-pilot |
 | `SECURE_COOKIES` | `0` | Set to `1` when running behind HTTPS |
-| `ALLOWED_CB_ORIGINS` | value of `ASSESSMENT_TOOL_BASE_URL` | Comma-separated trusted origins for tutor token handoff |
-| `PLATFORM_DEV` | `0` | Set to `1` for debug mode |
 
 ---
 
 ## Contributing
 
-The most useful contributions right now:
+Most useful right now:
 
-- **New diagnostic tests** — the data format is in `assessment-tool/data/`. Each subject needs a `questions_<subject>.json`, `misconceptions_<subject>.json`, and `patterns_<subject>.json`. Polynomials and chemical reactions are the biggest gaps for the grade 9 syllabus.
-- **Subject-specific tutor opening questions** — `socratic-tutor/prompts/context_builder.py` has opening question hooks for electricity and some math subjects. The grade 8 math subjects need better subject-specific openers.
-- **Language support** — the tutor prompt and question bank are English-only. Hindi support would significantly expand reach.
-- **Eval harness** — `socratic-tutor/eval/` has 13 adversarial scenarios testing Socratic rule adherence. More scenarios, especially subject-specific ones, improve model selection confidence.
-
----
-
-## Why local LLM
-
-Student diagnostic data — names, wrong answers, learning gaps — is sensitive. Running the tutor model locally means no student data is sent to any external service. It also works on school WiFi that blocks external traffic, and has no per-query cost.
-
-The tradeoff is setup complexity and slower responses. A future version will support API-hosted models behind a teacher-controlled proxy for schools that prefer managed infrastructure.
+- **New diagnostic tests** — data format is in `assessment-tool/data/`. Each subject needs `questions_<subject>.json`, `misconceptions_<subject>.json`, and `patterns_<subject>.json`. Polynomials and quadratic equations are the biggest gaps for the grade 10 syllabus.
+- **Pedagogical review of co-pilot strategies** — the quality of the intervention plans depends on the quality of the `intervention_focus` and `diagnosis` fields in the patterns data. Subject-matter feedback on whether the suggested approaches are actually sound is the most valuable contribution.
+- **Language support** — the question bank and co-pilot prompts are English-only. Hindi support would significantly expand reach.
 
 ---
 
 ## Motivation
 
-Grade 9 is the last real intervention window before board exams. A student who reaches grade 10 with a foundational misconception in algebra or physics is already behind, and exam pressure leaves no time to go back. Most diagnostic tools tell teachers that students are struggling. This one tells them why — and then does something about it.
+Grade 9 is the last real intervention window before board exams. A student who reaches grade 10 with a foundational misconception in algebra or physics is already behind, and exam pressure leaves no time to go back. Most diagnostic tools tell teachers that students are struggling. This one tells them why — and then helps the teacher do something about it.
