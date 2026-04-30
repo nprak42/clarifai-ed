@@ -28,7 +28,7 @@
     "subject": "electricity",
     "detection_logic": {
       "mechanical_score_min": 60,
-      "rearrangement_score_max": 40,
+      "application_score_max": 40,
       "requires_both": true
     },
     "diagnosis": "Knows physics but weak algebra prevents solving problems",
@@ -50,7 +50,7 @@
     "subject": "electricity",
     "detection_logic": {
       "mechanical_score_min": 60,
-      "circuit_score_max": 50,
+      "application_score_max": 50,
       "requires_both": true
     },
     "diagnosis": "Can solve isolated formula problems but cannot analyze multi-component circuits",

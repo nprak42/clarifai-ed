@@ -133,7 +133,11 @@ def _evaluate_pattern(detection_logic_str, tier_scores, type_scores,
 
         actual = _get_score_for_key(key, tier_scores, type_scores)
         if actual is None:
-            continue
+            # Rule references a score category that doesn't exist for this test.
+            # Treat the whole pattern as unevaluable rather than silently ignoring
+            # the rule — otherwise a _max guard that would exclude a high scorer
+            # gets skipped and the pattern fires incorrectly.
+            return None
 
         evaluable_rules += 1
         if key.endswith('_min') and actual < threshold:
