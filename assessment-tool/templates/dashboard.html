@@ -265,9 +265,6 @@
                 <td>{{ s.type_scores.get('mechanical', '—') }}{% if s.type_scores.get('mechanical') is not none %}%{% endif %}</td>
                 <td>{{ s.type_scores.get('understanding', '—') }}{% if s.type_scores.get('understanding') is not none %}%{% endif %}</td>
                 {% endif %}
-                <td class="no-print">
-                  <button class="btn-tutor" onclick="startTutorSession('{{ data.session.session_id }}', '{{ s.name }}')">Start Tutor</button>
-                </td>
               </tr>
               {% endfor %}
             </tbody>
@@ -432,7 +429,6 @@
       </td>
       <td>${pills || '<span class="text-muted">None detected</span>'}</td>
       ${tierCells}
-      <td class="no-print"><button class="btn-tutor" onclick="startTutorSession('${SESSION_ID}', '${esc(s.name)}')">Start Tutor</button></td>
     </tr>`;
   }
 
@@ -568,25 +564,6 @@
       }
     } catch (e) {
       showActionMsg('Error closing session.', true);
-    }
-  }
-
-  // ---- Start Tutor Session ----
-  async function startTutorSession(sessionId, studentName) {
-    try {
-      const resp = await fetch('/api/create_tutor_session', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({session_id: sessionId, student_name: studentName}),
-      });
-      const d = await resp.json();
-      if (d.success) {
-        window.open(d.tutor_url, '_blank');
-      } else {
-        alert('Could not create tutor session: ' + (d.error || 'unknown error'));
-      }
-    } catch (e) {
-      alert('Error connecting to tutor service. Is it running?');
     }
   }
 
