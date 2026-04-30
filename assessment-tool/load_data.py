@@ -65,7 +65,16 @@ def load_patterns(cur, filename):
                  recommended_intervention_type, symptoms,
                  intervention_focus, estimated_intervention_time)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-            ON CONFLICT (pattern_id) DO NOTHING
+            ON CONFLICT (pattern_id) DO UPDATE SET
+                pattern_name = EXCLUDED.pattern_name,
+                description = EXCLUDED.description,
+                detection_logic = EXCLUDED.detection_logic,
+                diagnosis = EXCLUDED.diagnosis,
+                grade8_risk = EXCLUDED.grade8_risk,
+                recommended_intervention_type = EXCLUDED.recommended_intervention_type,
+                symptoms = EXCLUDED.symptoms,
+                intervention_focus = EXCLUDED.intervention_focus,
+                estimated_intervention_time = EXCLUDED.estimated_intervention_time
         """, (
             p['pattern_id'], p['pattern_name'], p['description'], p['subject'],
             json.dumps(p['detection_logic']), p['diagnosis'], p['grade8_risk'],

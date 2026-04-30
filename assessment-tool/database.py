@@ -342,12 +342,28 @@ def get_all_interventions():
 # ---------------------------------------------------------------------------
 
 def get_patterns_for_subject(subject):
+    import json as _json
     with _cur() as cur:
         cur.execute(
             "SELECT * FROM assessment.performance_patterns WHERE subject = %s",
             (subject,)
         )
-        return cur.fetchall()
+        rows = cur.fetchall()
+        result = []
+        for r in rows:
+            p = dict(r)
+            if isinstance(p.get('symptoms'), str):
+                try:
+                    p['symptoms'] = _json.loads(p['symptoms'])
+                except (ValueError, TypeError):
+                    p['symptoms'] = []
+            if isinstance(p.get('detection_logic'), str):
+                try:
+                    p['detection_logic'] = _json.loads(p['detection_logic'])
+                except (ValueError, TypeError):
+                    p['detection_logic'] = {}
+            result.append(p)
+        return result
 
 
 # ---------------------------------------------------------------------------

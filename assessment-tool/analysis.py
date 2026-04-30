@@ -107,7 +107,7 @@ def _evaluate_pattern(detection_logic_str, tier_scores, type_scores,
         {"misconception_ids": ["mid1", "mid2"], "min_count": 2}
     """
     try:
-        rules = json.loads(detection_logic_str)
+        rules = detection_logic_str if isinstance(detection_logic_str, dict) else json.loads(detection_logic_str)
     except (json.JSONDecodeError, TypeError):
         return None
 
