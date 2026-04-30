@@ -10,12 +10,10 @@ producing realistic misconception patterns the dashboard can detect.
 """
 import argparse
 import random
-import sqlite3
 import uuid
-import os
 from datetime import date
 
-DATABASE = os.path.join(os.path.dirname(__file__), 'assessment.db')
+from db import get_conn, put_conn
 
 # ---------------------------------------------------------------------------
 # Student profiles — each profile has a set of misconception_ids it's likely
@@ -209,13 +207,6 @@ FIRST_NAMES = [
 ]
 
 
-def get_conn():
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON")
-    return conn
-
-
 def generate_access_code():
     chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
     return ''.join(random.choices(chars, k=6))
@@ -243,115 +234,119 @@ def pick_option(options, profile_misconceptions, accuracy):
 
 def simulate(test_id, n_students, access_code=None, teacher='Ms. Demo', school='Demo School', section='Class A'):
     conn = get_conn()
+    try:
+        with conn.cursor() as cur:
+            # Validate test exists
+            cur.execute("SELECT * FROM assessment.tests WHERE test_id = %s", (test_id,))
+            test = cur.fetchone()
+            if not test:
+                print(f"ERROR: test_id '{test_id}' not found.")
+                return None
 
-    # Validate test exists
-    test = conn.execute("SELECT * FROM tests WHERE test_id = ?", (test_id,)).fetchone()
-    if not test:
-        print(f"ERROR: test_id '{test_id}' not found.")
-        conn.close()
-        return None
+            # Create session with unique access code
+            if not access_code:
+                access_code = generate_access_code()
+                cur.execute("SELECT 1 FROM assessment.test_sessions WHERE access_code = %s", (access_code,))
+                while cur.fetchone():
+                    access_code = generate_access_code()
+                    cur.execute("SELECT 1 FROM assessment.test_sessions WHERE access_code = %s", (access_code,))
 
-    # Create session
-    if not access_code:
-        access_code = generate_access_code()
-        # Ensure unique
-        while conn.execute("SELECT 1 FROM test_sessions WHERE access_code = ?", (access_code,)).fetchone():
-            access_code = generate_access_code()
+            session_id = str(uuid.uuid4())
+            cur.execute("""
+                INSERT INTO assessment.test_sessions
+                    (session_id, test_id, access_code, created_by_teacher, school_name, class_section, session_date, students_completed)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, 0)
+            """, (session_id, test_id, access_code, teacher, school, section, date.today().isoformat()))
 
-    session_id = str(uuid.uuid4())
-    conn.execute("""
-        INSERT INTO test_sessions
-            (session_id, test_id, access_code, created_by_teacher, school_name, class_section, session_date, students_completed)
-        VALUES (?, ?, ?, ?, ?, ?, ?, 0)
-    """, (session_id, test_id, access_code, teacher, school, section, date.today().isoformat()))
-    conn.commit()
+            # Load questions and options
+            cur.execute("SELECT * FROM assessment.questions WHERE test_id = %s ORDER BY question_order", (test_id,))
+            questions = cur.fetchall()
 
-    # Load questions and options
-    questions = conn.execute(
-        "SELECT * FROM questions WHERE test_id = ? ORDER BY question_order", (test_id,)
-    ).fetchall()
+            cur.execute("""
+                SELECT o.* FROM assessment.options o
+                JOIN assessment.questions q ON o.question_id = q.question_id
+                WHERE q.test_id = %s
+            """, (test_id,))
+            options_by_q = {}
+            for row in cur.fetchall():
+                options_by_q.setdefault(row['question_id'], []).append(dict(row))
 
-    options_by_q = {}
-    for row in conn.execute("""
-        SELECT o.* FROM options o
-        JOIN questions q ON o.question_id = q.question_id
-        WHERE q.test_id = ?
-    """, (test_id,)):
-        qid = row['question_id']
-        options_by_q.setdefault(qid, []).append(dict(row))
+            # Expand profiles into individual student slots
+            profiles = PROFILES.get(test_id, [])
+            if not profiles:
+                profiles = [{'name': 'student', 'target_misconceptions': [], 'base_accuracy': 0.60, 'count': n_students}]
 
-    # Expand profiles into individual student slots
-    profiles = PROFILES.get(test_id, [])
-    if not profiles:
-        # Generic fallback
-        profiles = [{'name': 'student', 'target_misconceptions': [], 'base_accuracy': 0.60, 'count': n_students}]
+            student_slots = []
+            for p in profiles:
+                for _ in range(p['count']):
+                    student_slots.append(p)
+            random.shuffle(student_slots)
 
-    student_slots = []
-    for p in profiles:
-        for _ in range(p['count']):
-            student_slots.append(p)
-    random.shuffle(student_slots)
+            while len(student_slots) < n_students:
+                student_slots.extend(student_slots)
+            student_slots = student_slots[:n_students]
 
-    # Trim or extend to n_students
-    while len(student_slots) < n_students:
-        student_slots.extend(student_slots)
-    student_slots = student_slots[:n_students]
+            names_pool = FIRST_NAMES.copy()
+            random.shuffle(names_pool)
+            while len(names_pool) < n_students:
+                names_pool += [f"{n}{i}" for i, n in enumerate(FIRST_NAMES)]
+            student_names = names_pool[:n_students]
 
-    # Generate unique names
-    names_pool = FIRST_NAMES.copy()
-    random.shuffle(names_pool)
-    while len(names_pool) < n_students:
-        names_pool += [f"{n}{i}" for i, n in enumerate(FIRST_NAMES)]
-    student_names = names_pool[:n_students]
+            completed = 0
+            for student_name, profile in zip(student_names, student_slots):
+                target_misconceptions = set(profile.get('target_misconceptions', []))
+                accuracy = min(0.97, max(0.05, profile['base_accuracy'] + random.gauss(0, 0.08)))
 
-    completed = 0
-    for student_name, profile in zip(student_names, student_slots):
-        target_misconceptions = set(profile.get('target_misconceptions', []))
-        # Add slight per-student noise to accuracy
-        accuracy = min(0.97, max(0.05, profile['base_accuracy'] + random.gauss(0, 0.08)))
+                for q in questions:
+                    qid = q['question_id']
+                    opts = options_by_q.get(qid, [])
+                    if not opts:
+                        continue
 
-        for q in questions:
-            qid = q['question_id']
-            opts = options_by_q.get(qid, [])
-            if not opts:
-                continue
+                    chosen = pick_option(opts, target_misconceptions, accuracy)
+                    if not chosen:
+                        continue
 
-            chosen = pick_option(opts, target_misconceptions, accuracy)
-            if not chosen:
-                continue
+                    is_correct = bool(chosen['is_correct'])
+                    misconception_id = chosen['misconception_id'] if not is_correct else None
+                    time_spent = max(5, min(180, int(random.gauss(45, 20))))
 
-            is_correct = bool(chosen['is_correct'])
-            misconception_id = chosen['misconception_id'] if not is_correct else None
-            time_spent = int(random.gauss(45, 20))
-            time_spent = max(5, min(180, time_spent))
+                    cur.execute("""
+                        INSERT INTO assessment.student_responses
+                            (response_id, session_id, student_name, question_id, selected_option_id,
+                             time_spent_seconds, is_correct, misconception_detected)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                    """, (str(uuid.uuid4()), session_id, student_name, qid,
+                          chosen['option_id'], time_spent, is_correct, misconception_id))
 
-            conn.execute("""
-                INSERT INTO student_responses
-                    (response_id, session_id, student_name, question_id, selected_option_id,
-                     time_spent_seconds, is_correct, misconception_detected)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """, (str(uuid.uuid4()), session_id, student_name, qid,
-                  chosen['option_id'], time_spent, is_correct, misconception_id))
+                completed += 1
 
-        completed += 1
+            cur.execute(
+                "UPDATE assessment.test_sessions SET students_completed = %s WHERE session_id = %s",
+                (completed, session_id)
+            )
 
-    conn.execute(
-        "UPDATE test_sessions SET students_completed = ? WHERE session_id = ?",
-        (completed, session_id)
-    )
-    conn.commit()
-    conn.close()
-
-    print(f"Created session {access_code} for '{test['title']}'")
-    print(f"  {completed} students simulated")
-    print(f"  Dashboard: http://localhost:8080/dashboard/{access_code}")
-    return access_code
+        conn.commit()
+        print(f"Created session {access_code} for '{test['title']}'")
+        print(f"  {completed} students simulated")
+        print(f"  Dashboard: /dashboard/{access_code}")
+        return access_code
+    except Exception as e:
+        conn.rollback()
+        print(f"Error: {e}")
+        raise
+    finally:
+        put_conn(conn)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--test', default='lines_angles_grade7',
-                        choices=['lines_angles_grade7', 'circles_grade7', 'motion_grade8', 'elec_grade9', 'frac_grade4'])
+    parser.add_argument('--test', default='elec_grade9',
+                        choices=['elec_grade9', 'trig_prerequisites_grade10',
+                                 'linear_equations_grade8', 'algebraic_expressions_grade8',
+                                 'ratios_proportions_grade8', 'simple_interest_grade8',
+                                 'triangles_grade8', 'quadrilaterals_grade8',
+                                 'lines_angles_grade7', 'circles_grade7', 'motion_grade8', 'frac_grade4'])
     parser.add_argument('--students', type=int, default=30)
     parser.add_argument('--code', default=None, help='Override access code (optional)')
     parser.add_argument('--section', default='Grade 7-A')
