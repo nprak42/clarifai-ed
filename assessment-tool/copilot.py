@@ -2,6 +2,7 @@
 Teacher co-pilot: adapter from analyze_session() output → Gemini prompt/chat.
 """
 import os
+import re
 
 import database as db
 
@@ -22,6 +23,15 @@ def _get_client():
 
 MODEL = 'gemini-2.5-flash'
 MAX_HISTORY_TURNS = 10  # max user+model pairs kept from client
+
+
+SECTION_HEADERS = [
+    'PRIORITY MISCONCEPTION',
+    "TOMORROW'S MOVE",
+    'GROUPING SUGGESTION',
+    'LISTEN FOR (resolution signal)',
+    'FOLLOW-UP PROBLEMS',
+]
 
 
 def build_copilot_context(data: dict) -> dict:
@@ -134,6 +144,12 @@ def build_system_prompt(class_data: dict) -> str:
     )
     lines.append('')
     lines.append(
+        'Be a collaborative planning partner. When the teacher asks for a worksheet, whole-class activity, recall strategy, '
+        'teacher script, example set, or explanation, give that thing directly in a usable format instead of redirecting them '
+        'back to the earlier plan.'
+    )
+    lines.append('')
+    lines.append(
         'Do not add conversational filler like "Okay, let\'s try something else" or "Here\'s a plan". '
         'Start with the answer itself.'
     )
@@ -178,6 +194,9 @@ def build_system_prompt(class_data: dict) -> str:
         '- If the teacher asks a direct question, answer it in 2-4 sentences. No template.\n'
         '- Never produce more output than the teacher asked for.\n'
         '- For follow-up questions, start from the previously suggested move unless the teacher asks to switch focus.\n'
+        '- Do not block the teacher\'s request by insisting on a different prerequisite path. You may note one prerequisite concern in a single sentence, then do exactly what was asked.\n'
+        '- If the teacher asks for an instructional artifact such as a worksheet, whole-class activity, board routine, recall strategy, memory pattern, or discussion prompt, return the artifact itself with clear headings or numbered items.\n'
+        '- When the teacher shares a pattern or mnemonic they like, build on it and make the structure visible. Do not dismiss it as "just memorisation" unless the teacher explicitly asks for that critique.\n'
         '- Do not invent student-level certainty you do not have. If the data shows class-level counts but not named students, '
         'say how the teacher should identify who goes in which group.\n'
         '- Do not say "pair stronger students with struggling students" unless the context includes evidence for who the stronger students are.\n'
@@ -231,6 +250,80 @@ def build_system_prompt(class_data: dict) -> str:
     return '\n'.join(lines)
 
 
+def _extract_section(text: str, header: str) -> str:
+    lines = text.splitlines()
+    try:
+        start = lines.index(header) + 1
+    except ValueError:
+        return ''
+
+    collected = []
+    for line in lines[start:]:
+        if line.strip() in SECTION_HEADERS:
+            break
+        if line.strip() == '---':
+            continue
+        collected.append(line.rstrip())
+    return '\n'.join(collected).strip()
+
+
+def _compress_model_history(text: str) -> str:
+    """
+    Reduce anchoring from the full plan template in later chat turns while
+    preserving the key prior recommendation.
+    """
+    if 'PRIORITY MISCONCEPTION' not in text:
+        return text
+
+    priority = _extract_section(text, 'PRIORITY MISCONCEPTION').splitlines()
+    move = _extract_section(text, "TOMORROW'S MOVE").splitlines()
+    follow_up = _extract_section(text, 'FOLLOW-UP PROBLEMS').splitlines()
+
+    parts = ['Previous co-pilot plan summary:']
+    if priority:
+        parts.append(f'Priority misconception: {priority[0]}')
+        if len(priority) > 1:
+            parts.append(priority[1])
+    if move:
+        parts.append(f"Tomorrow's move: {move[0]}")
+    if follow_up:
+        parts.append(f'Follow-up problems: {follow_up[0]}')
+    return '\n'.join(parts)
+
+
+def _turn_specific_instruction(message: str) -> str:
+    msg = message.lower()
+
+    if re.search(r'\b(new plan|regenerate plan|what should i do first|what do i do first|priority misconception)\b', msg):
+        return 'The teacher is explicitly asking for a plan. Use the full plan template.'
+
+    if re.search(r'\b(group|grouping|pair|pairs|small group)\b', msg):
+        return (
+            'The teacher is asking only about grouping. Return only a practical grouping routine for the named activity. '
+            'Do not restate the plan or add other template sections.'
+        )
+
+    if re.search(r'\b(analogy|metaphor|example to explain|different way to explain)\b', msg):
+        return (
+            'The teacher is asking for an explanation device. Return only the replacement analogy, script, or explanation they asked for. '
+            'Do not append adjusted template sections unless explicitly requested.'
+        )
+
+    if re.search(r'\b(worksheet|activity|task|exit ticket|do now|starter|board work|teacher script|discussion prompt)\b', msg):
+        return (
+            'The teacher is asking for a classroom artifact. Return the artifact directly in a practical format. '
+            'Do not restate the old plan. Do not argue against the request.'
+        )
+
+    if re.search(r'\b(recall|remember|memor|mnemonic|pattern|special angle|sine|cosine|trig values)\b', msg):
+        return (
+            'The teacher is asking for an explanatory strategy or memory structure. '
+            'Build on the pattern they mention, explain the structure behind it, and avoid dismissing it as rote memorisation.'
+        )
+
+    return 'Answer the teacher\'s exact request directly and concisely. No full plan template.'
+
+
 def get_initial_plan(class_data: dict) -> str:
     system_prompt = build_system_prompt(class_data)
     client = _get_client()
@@ -261,17 +354,19 @@ def get_chat_reply(class_data: dict, history: list, message: str) -> str:
     # Keep last MAX_HISTORY_TURNS pairs (each pair = 2 items)
     clean = clean[-(MAX_HISTORY_TURNS * 2):]
 
-    contents = [
-        types.Content(role=h['role'], parts=[types.Part(text=h['text'])])
-        for h in clean
-    ]
+    contents = []
+    for h in clean:
+        text = h['text']
+        if h['role'] == 'model':
+            text = _compress_model_history(text)
+        contents.append(types.Content(role=h['role'], parts=[types.Part(text=text)]))
     contents.append(types.Content(role='user', parts=[types.Part(text=message)]))
 
     response = client.models.generate_content(
         model=MODEL,
         contents=contents,
         config=types.GenerateContentConfig(
-            system_instruction=system_prompt,
+            system_instruction=f'{system_prompt}\n\nTURN-SPECIFIC INSTRUCTION:\n{_turn_specific_instruction(message)}',
             temperature=0.3,
         ),
     )
