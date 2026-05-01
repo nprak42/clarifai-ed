@@ -116,19 +116,6 @@ Other test IDs: `algebraic_expressions_grade8`, `ratios_proportions_grade8`, `si
   - Follow-up problems to expose the gap and confirm resolution
 - Use the chat input to refine: "I only have 15 minutes", "change the grouping", "suggest a different analogy"
 
----
-
-## Deploying (Railway)
-
-The app deploys as a single service from `assessment-tool/`.
-
-1. Push the repo to GitHub
-2. New Railway project → Deploy from GitHub → set root directory to `assessment-tool/`
-3. Add a Postgres plugin (Railway sets `DATABASE_URL` automatically)
-4. Set environment variables: `SECRET_KEY`, `GOOGLE_API_KEY`, `SECURE_COOKIES=1`
-5. Open a Railway shell and run `python load_data.py` once to seed the database
-
----
 
 ## Project structure
 
