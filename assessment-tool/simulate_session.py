@@ -167,6 +167,58 @@ PROFILES = {
         },
     ],
 
+    'trig_prerequisites_grade10': [
+        {
+            # Triggers ratio_not_scale_invariant + fraction_fluency_gap (two patterns)
+            'name': 'ratio_fraction_weak',
+            'target_misconceptions': [
+                'trig_pre_ratio_not_constant',   # ratio_not_scale_invariant
+                'trig_pre_similar_not_equal',    # ratio_not_scale_invariant + similarity_congruence_confusion
+                'trig_pre_fraction_operation',   # fraction_fluency_gap
+                'trig_pre_ratio_flips',          # fraction_fluency_gap
+            ],
+            'base_accuracy': 0.35,
+            'count': 8,
+        },
+        {
+            # Triggers pythagoras_procedural_only
+            'name': 'pythagoras_procedural',
+            'target_misconceptions': [
+                'trig_pre_pythagoras_adds_not_squares',  # pythagoras_procedural_only
+                'trig_pre_pythagoras_formula_only',      # pythagoras_procedural_only
+            ],
+            'base_accuracy': 0.50,
+            'count': 7,
+        },
+        {
+            # Triggers similarity_congruence_confusion
+            'name': 'similarity_confused',
+            'target_misconceptions': [
+                'trig_pre_similar_not_equal',   # similarity_congruence_confusion
+                'trig_pre_aa_insufficient',     # similarity_congruence_confusion
+            ],
+            'base_accuracy': 0.48,
+            'count': 6,
+        },
+        {
+            # Triggers fraction_fluency_gap only — part:whole confusion
+            'name': 'fraction_gap',
+            'target_misconceptions': [
+                'trig_pre_fraction_operation',  # fraction_fluency_gap
+                'trig_pre_ratio_part_whole',    # fraction_fluency_gap
+            ],
+            'base_accuracy': 0.55,
+            'count': 4,
+        },
+        {
+            # Strong students — should trigger no patterns
+            'name': 'strong_student',
+            'target_misconceptions': [],
+            'base_accuracy': 0.92,
+            'count': 3,
+        },
+    ],
+
     # Fractions profiles
     'frac_grade4': [
         {
