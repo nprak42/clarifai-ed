@@ -187,7 +187,7 @@ CREATE INDEX IF NOT EXISTS idx_tutor_sessions_school  ON tutor.sessions(school_i
 -- Teacher co-pilot conversation logs
 CREATE TABLE IF NOT EXISTS assessment.copilot_conversations (
     id              SERIAL PRIMARY KEY,
-    session_id      UUID NOT NULL REFERENCES assessment.test_sessions(session_id) ON DELETE CASCADE,
+    session_id      TEXT NOT NULL REFERENCES assessment.test_sessions(session_id) ON DELETE CASCADE,
     role            TEXT NOT NULL CHECK (role IN ('user', 'model')),
     content         TEXT NOT NULL,
     turn_index      INTEGER NOT NULL,
