@@ -174,7 +174,9 @@ def build_system_prompt(class_data: dict) -> str:
         '- Do not invent student-level certainty you do not have. If the data shows class-level counts but not named students, '
         'say how the teacher should identify who goes in which group.\n'
         '- Do not say "pair stronger students with struggling students" unless the context includes evidence for who the stronger students are.\n'
-        '- Prefer teacher-feasible grouping instructions such as a quick hinge question, desk-zone grouping, or self-sort by confidence.'
+        '- Prefer teacher-feasible grouping instructions such as a quick hinge question, desk-zone grouping, or self-sort by confidence.\n'
+        '- Do not use, repeat, or store individual student names. If the teacher mentions a student by name in chat, '
+        'refer to that student only by their role (e.g. "that student", "the student you mentioned") — never echo the name back.'
     )
     lines.append('')
 

@@ -113,7 +113,8 @@ CREATE TABLE IF NOT EXISTS assessment.student_responses (
     time_spent_seconds      INTEGER,
     answered_at             TIMESTAMPTZ DEFAULT NOW(),
     is_correct              BOOLEAN,
-    misconception_detected  TEXT
+    misconception_detected  TEXT,
+    UNIQUE (session_id, student_name, question_id)
 );
 
 CREATE TABLE IF NOT EXISTS assessment.student_pattern_detections (
@@ -182,3 +183,35 @@ CREATE TABLE IF NOT EXISTS tutor.messages (
 
 CREATE INDEX IF NOT EXISTS idx_tutor_messages_session ON tutor.messages(session_id);
 CREATE INDEX IF NOT EXISTS idx_tutor_sessions_school  ON tutor.sessions(school_id);
+
+-- Teacher co-pilot conversation logs
+CREATE TABLE IF NOT EXISTS assessment.copilot_conversations (
+    id              SERIAL PRIMARY KEY,
+    session_id      UUID NOT NULL REFERENCES assessment.test_sessions(session_id) ON DELETE CASCADE,
+    role            TEXT NOT NULL CHECK (role IN ('user', 'model')),
+    content         TEXT NOT NULL,
+    turn_index      INTEGER NOT NULL,
+    created_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_copilot_convos_session ON assessment.copilot_conversations(session_id);
+
+-- Migrations (safe to re-run)
+DO $$ BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_constraint
+        WHERE conname = 'student_responses_session_student_question_key'
+          AND conrelid = 'assessment.student_responses'::regclass
+    ) THEN
+        -- Remove any existing duplicates before adding the constraint (keep latest by rowid)
+        DELETE FROM assessment.student_responses sr
+        WHERE ctid NOT IN (
+            SELECT max(ctid)
+            FROM assessment.student_responses
+            GROUP BY session_id, student_name, question_id
+        );
+        ALTER TABLE assessment.student_responses
+            ADD CONSTRAINT student_responses_session_student_question_key
+            UNIQUE (session_id, student_name, question_id);
+    END IF;
+END $$;

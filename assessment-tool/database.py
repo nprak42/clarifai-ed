@@ -160,13 +160,18 @@ def get_session_by_id(session_id):
         return cur.fetchone()
 
 
-def increment_students_completed(session_id):
+def sync_students_completed(session_id):
     conn = get_db()
     with conn.cursor() as cur:
-        cur.execute(
-            "UPDATE assessment.test_sessions SET students_completed = students_completed + 1 WHERE session_id = %s",
-            (session_id,)
-        )
+        cur.execute("""
+            UPDATE assessment.test_sessions
+            SET students_completed = (
+                SELECT COUNT(DISTINCT student_name)
+                FROM assessment.student_responses
+                WHERE session_id = %s
+            )
+            WHERE session_id = %s
+        """, (session_id, session_id))
     conn.commit()
 
 
@@ -244,10 +249,10 @@ def save_response(session_id, student_name, question_id, option_id, time_spent, 
                 (response_id, session_id, student_name, question_id, selected_option_id,
                  time_spent_seconds, is_correct, misconception_detected)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-            ON CONFLICT (response_id) DO UPDATE SET
-                selected_option_id  = EXCLUDED.selected_option_id,
-                time_spent_seconds  = EXCLUDED.time_spent_seconds,
-                is_correct          = EXCLUDED.is_correct,
+            ON CONFLICT (session_id, student_name, question_id) DO UPDATE SET
+                selected_option_id     = EXCLUDED.selected_option_id,
+                time_spent_seconds     = EXCLUDED.time_spent_seconds,
+                is_correct             = EXCLUDED.is_correct,
                 misconception_detected = EXCLUDED.misconception_detected
         """, (response_id, session_id, student_name, question_id, option_id,
               time_spent, is_correct, misconception_id))
@@ -417,3 +422,29 @@ def save_pattern_detection(session_id, student_name, pattern_id, evidence, t1, t
         """, (detection_id, session_id, student_name, pattern_id,
               evidence, t1, t2, t3))
     conn.commit()
+
+
+# ---------------------------------------------------------------------------
+# Copilot conversation logs
+# ---------------------------------------------------------------------------
+
+def save_copilot_turn(session_id, role, content, turn_index):
+    conn = get_db()
+    with conn.cursor() as cur:
+        cur.execute("""
+            INSERT INTO assessment.copilot_conversations
+                (session_id, role, content, turn_index)
+            VALUES (%s, %s, %s, %s)
+        """, (session_id, role, content, turn_index))
+    conn.commit()
+
+
+def get_copilot_conversation(session_id):
+    with _cur() as cur:
+        cur.execute("""
+            SELECT role, content, turn_index, created_at
+            FROM assessment.copilot_conversations
+            WHERE session_id = %s
+            ORDER BY turn_index
+        """, (session_id,))
+        return cur.fetchall()

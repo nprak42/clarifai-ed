@@ -267,9 +267,9 @@ def submit_response():
     if not all([session_id, student_name, question_id, option_id]):
         return jsonify({'success': False, 'error': 'Missing required fields'}), 400
 
-    # Look up the option to determine correctness and misconception
+    # Verify option exists and belongs to the submitted question
     option = db.get_option_by_id(option_id)
-    if not option:
+    if not option or option['question_id'] != question_id:
         return jsonify({'success': False, 'error': 'Invalid option_id'}), 400
 
     is_correct = bool(option['is_correct'])
@@ -320,10 +320,11 @@ def complete_test():
         return jsonify({'success': False, 'error': 'No JSON body'}), 400
 
     session_id = data.get('session_id')
-    if not session_id:
-        return jsonify({'success': False, 'error': 'Missing session_id'}), 400
+    student_name = (data.get('student_name') or '').strip()
+    if not session_id or not student_name:
+        return jsonify({'success': False, 'error': 'Missing session_id or student_name'}), 400
 
-    db.increment_students_completed(session_id)
+    db.sync_students_completed(session_id)
     return jsonify({'success': True})
 
 
@@ -579,6 +580,7 @@ def copilot_plan():
         session_data = analysis.analyze_session(session['session_id'])
         class_data = copilot.build_copilot_context(session_data)
         plan = copilot.get_initial_plan(class_data)
+        db.save_copilot_turn(session['session_id'], 'model', plan, 0)
         return jsonify({'plan': plan, 'context': class_data})
     except RuntimeError as e:
         return jsonify({'error': str(e)}), 503
@@ -616,6 +618,10 @@ def copilot_chat():
         session_data = analysis.analyze_session(session['session_id'])
         class_data = copilot.build_copilot_context(session_data)
         reply = copilot.get_chat_reply(class_data, history, message)
+        # turn_index: 2 * number of prior user turns + 1 for user, +2 for model
+        prior_turns = len([h for h in history if h.get('role') == 'user'])
+        db.save_copilot_turn(session['session_id'], 'user', message, prior_turns * 2 + 1)
+        db.save_copilot_turn(session['session_id'], 'model', reply, prior_turns * 2 + 2)
         return jsonify({'reply': reply})
     except RuntimeError as e:
         return jsonify({'error': str(e)}), 503
