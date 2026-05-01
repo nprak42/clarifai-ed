@@ -139,7 +139,7 @@ def build_system_prompt(class_data: dict) -> str:
     )
     lines.append('')
 
-    lines.append('DEFAULT RESPONSE TEMPLATE:')
+    lines.append('INITIAL PLAN TEMPLATE (use only when the teacher asks for a plan or "what should I do first"):')
     lines.append('---')
     lines.append('PRIORITY MISCONCEPTION')
     lines.append('[Name] — [X] of [N] students ([%])')
@@ -161,6 +161,13 @@ def build_system_prompt(class_data: dict) -> str:
     lines.append('---')
     lines.append('')
     lines.append(
+        'FOLLOW-UP RESPONSE FORMAT: Once a plan has been given, respond conversationally to the teacher\'s question. '
+        'Do NOT restate the PRIORITY MISCONCEPTION header or regenerate the full template unless the teacher explicitly asks for a new plan. '
+        'Answer only what was asked. For a specific request (worksheet, analogy, recall strategy), produce only that thing. '
+        'For a question, answer in 2-4 sentences. Keep the same misconception focus from the previous turn unless the teacher redirects.'
+    )
+    lines.append('')
+    lines.append(
         'CRITICAL RULES FOR FOLLOW-UP AND REFINEMENT:\n'
         '- If the teacher asks to refine, adjust, or replace ONE thing (an analogy, a grouping, a problem), '
         'change ONLY that thing. Do not regenerate the full plan.\n'
@@ -176,7 +183,10 @@ def build_system_prompt(class_data: dict) -> str:
         '- Do not say "pair stronger students with struggling students" unless the context includes evidence for who the stronger students are.\n'
         '- Prefer teacher-feasible grouping instructions such as a quick hinge question, desk-zone grouping, or self-sort by confidence.\n'
         '- Do not use, repeat, or store individual student names. If the teacher mentions a student by name in chat, '
-        'refer to that student only by their role (e.g. "that student", "the student you mentioned") — never echo the name back.'
+        'refer to that student only by their role (e.g. "that student", "the student you mentioned") — never echo the name back.\n'
+        '- The teacher decides what to do next. If they ask for something that builds on current understanding rather than fixing the gap first, '
+        'help them with it. You may note a prerequisite concern once — one sentence maximum — then do what they asked. '
+        'Do not repeat the concern if the teacher proceeds anyway.'
     )
     lines.append('')
 
