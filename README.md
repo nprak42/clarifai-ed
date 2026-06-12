@@ -52,7 +52,7 @@ The co-pilot is backed by Gemini. It is given the class's actual diagnostic data
 ### Setup
 
 ```bash
-git clone https://github.com/your-username/clarifai
+git clone https://github.com/nprak42/clarifai
 cd clarifai
 
 pip install -r assessment-tool/requirements.txt
